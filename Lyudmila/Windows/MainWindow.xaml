@@ -14,6 +14,7 @@
                       GlowBrush="{DynamicResource AccentColorBrush}"
                       IconBitmapScalingMode="Fant"
                       IconEdgeMode="Aliased"
+                      Loaded="MetroWindow_Loaded"
                       ShowIconOnTitleBar="True"
                       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                       TitleCaps="False"
@@ -39,6 +40,14 @@
                              Position="Right"
                              Theme="Dark">
                 <flyouts:Music />
+            </controls:Flyout>
+            <controls:Flyout x:Name="NotificationFlyout"
+                             AreAnimationsEnabled="True"
+                             IsModal="False"
+                             IsPinned="False"
+                             Height="60"
+                             Position="Top">
+                <flyouts:Notification x:Name="Notifier" />
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>

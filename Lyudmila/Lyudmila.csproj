@@ -81,6 +81,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Flyouts\Notification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -91,6 +95,9 @@
     </Compile>
     <Compile Include="Flyouts\Music.xaml.cs">
       <DependentUpon>Music.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Flyouts\Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MaterialDesignIcons.cs" />
     <Compile Include="Helpers\MaterialDesignIconsCodepoints.cs" />

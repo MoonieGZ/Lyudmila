@@ -5,6 +5,8 @@
 using System;
 using System.Windows;
 
+using Lyudmila.Windows;
+
 namespace Lyudmila
 {
     /// <summary>
@@ -24,7 +26,7 @@ namespace Lyudmila
                 }
             };
 
-            new Windows.MainWindow().Show();
+            new MainWindow().Show();
         }
     }
 }
