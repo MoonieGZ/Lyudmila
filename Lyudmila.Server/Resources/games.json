@@ -1,0 +1,14 @@
+{
+  "games": {
+    "cod2": {
+		"ico": "http://imgur.com/gay",
+		"bgimg": "http://imgur.com/gay",
+		"file": "http://static/file"
+	},
+    "cod4": {
+		"ico": "http://imgur.com/gay",
+		"bgimg": "http://imgur.com/gay",
+		"file": "http://static/file"
+	}
+  }
+}
