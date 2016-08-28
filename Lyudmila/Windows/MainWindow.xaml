@@ -41,11 +41,20 @@
                              Theme="Dark">
                 <flyouts:Music />
             </controls:Flyout>
-            <controls:Flyout x:Name="NotificationFlyout"
+            <controls:Flyout x:Name="NicknameFlyout"
+                             AnimateOpacity="True"
                              AreAnimationsEnabled="True"
+                             Header="Nickname"
+                             Position="Top"
+                             Theme="Dark">
+                <flyouts:NickChanger />
+            </controls:Flyout>
+            <controls:Flyout x:Name="NotificationFlyout"
+                             Height="60"
+                             AreAnimationsEnabled="True"
+                             Header="Notification"
                              IsModal="False"
                              IsPinned="False"
-                             Height="60"
                              Position="Top">
                 <flyouts:Notification x:Name="Notifier" />
             </controls:Flyout>

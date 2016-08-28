@@ -27,26 +27,28 @@ namespace Lyudmila.Windows
         private void GetServerIP()
         {
             Notify("Searching for server...");
+
             var udpclient = new UdpClient();
+            var client = new UdpClient();
 
             var multicastaddress = IPAddress.Parse("239.0.0.222");
+
+            var remoteEp = new IPEndPoint(multicastaddress, 2222);
+            var localEp = new IPEndPoint(IPAddress.Any, 2222);
+
+            client.Client.Bind(localEp);
+            client.JoinMulticastGroup(multicastaddress);
             udpclient.JoinMulticastGroup(multicastaddress);
-            var remoteep = new IPEndPoint(multicastaddress, 2222);
 
             var buffer = Encoding.Unicode.GetBytes("$SENDIP$");
-            udpclient.Send(buffer, buffer.Length, remoteep);
-
-            var client = new UdpClient();
-            var localEp = new IPEndPoint(IPAddress.Any, 2222);
-            client.Client.Bind(localEp);
-            client.JoinMulticastGroup(IPAddress.Parse("239.0.0.222"));
+            udpclient.Send(buffer, buffer.Length, remoteEp);
 
             while(true)
             {
                 var data = client.Receive(ref localEp);
                 var strData = Encoding.Unicode.GetString(data);
 
-                if (!strData.Equals("$SENDIP$"))
+                if(!strData.Equals("$SENDIP$"))
                 {
                     Settings.Default.ServerIP = strData;
                     Notify($"Found server at {strData}!");
@@ -88,7 +90,35 @@ namespace Lyudmila.Windows
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            new Thread(GetServerIP).Start();
+            if(string.IsNullOrEmpty(Settings.Default.Username))
+            {
+                new Thread(WaitForNickname).Start();
+            }
+            else
+            {
+                new Thread(GetServerIP).Start();
+            }
+        }
+
+        private void WaitForNickname()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                NicknameFlyout.IsOpen = true;
+                NicknameFlyout.ClosingFinished += NickCheck;
+            });
+        }
+
+        private void NickCheck(object sender, RoutedEventArgs e)
+        {
+            if(string.IsNullOrEmpty(Settings.Default.Username))
+            {
+                NicknameFlyout.IsOpen = true;
+            }
+            else
+            {
+                new Thread(GetServerIP).Start();
+            }
         }
     }
 }

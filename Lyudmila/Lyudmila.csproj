@@ -81,6 +81,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Flyouts\NickChanger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Flyouts\Notification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +99,9 @@
     </Compile>
     <Compile Include="Flyouts\Music.xaml.cs">
       <DependentUpon>Music.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Flyouts\NickChanger.xaml.cs">
+      <DependentUpon>NickChanger.xaml</DependentUpon>
     </Compile>
     <Compile Include="Flyouts\Notification.xaml.cs">
       <DependentUpon>Notification.xaml</DependentUpon>
