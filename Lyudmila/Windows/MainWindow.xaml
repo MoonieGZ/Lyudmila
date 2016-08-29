@@ -20,7 +20,7 @@
                       TitleCaps="False"
                       WindowButtonCommandsOverlayBehavior="Always"
                       WindowStartupLocation="CenterScreen"
-                      mc:Ignorable="d">
+                      mc:Ignorable="d" Closing="MetroWindow_Closing">
 
     <Window.Resources>
         <ResourceDictionary>

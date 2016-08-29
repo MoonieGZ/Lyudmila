@@ -3,6 +3,7 @@
 // -----------------------------------------------------------
 
 using System;
+using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -120,5 +121,7 @@ namespace Lyudmila.Windows
                 new Thread(GetServerIP).Start();
             }
         }
+
+        private void MetroWindow_Closing(object sender, CancelEventArgs e) => Environment.Exit(0);
     }
 }
