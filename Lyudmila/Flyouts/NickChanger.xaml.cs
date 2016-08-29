@@ -32,6 +32,6 @@ namespace Lyudmila.Flyouts
         private static bool VerifyName(string username)
             =>
                 username.Length <= 16 && username.Length >= 4 && Regex.IsMatch(username, @"^[a-zA-Z0-9_\-\[\]\s]+$") && !Regex.IsMatch(username, @"^[\s]+$")
-                && !username.ToLower().Contains("Admin") && !username.ToLower().Equals("Nickname");
+                && !username.ToLower().Contains("admin") && !username.Equals("Nickname");
     }
 }
