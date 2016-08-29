@@ -8,16 +8,21 @@
              mc:Ignorable="d">
     <Grid Width="400">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="120" />
         </Grid.ColumnDefinitions>
 
+        <TextBlock Grid.Column="0"
+                   Margin="5"
+                   VerticalAlignment="Center"
+                   Text="Enter nickname:" />
         <TextBox x:Name="NickBox"
-                 Grid.Column="0"
+                 Grid.Column="1"
                  Margin="5"
                  VerticalAlignment="Center"
                  Text="Nickname" />
-        <Button Grid.Column="1"
+        <Button Grid.Column="2"
                 Margin="5"
                 VerticalAlignment="Center"
                 Click="ChangeNick_Click"
