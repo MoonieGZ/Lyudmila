@@ -55,6 +55,11 @@ namespace Lyudmila.Flyouts
         {
             SongList.Items.Clear();
 
+            if(!Directory.Exists("music"))
+            {
+                Directory.CreateDirectory("music");
+            }
+
             var files = Directory.GetFiles(Path.Combine(Environment.CurrentDirectory, "music"), "*.mp3");
 
             foreach(var toAdd in files.Select(file => file.Split('\\').Last()).Select(toAdd => toAdd.Substring(0, toAdd.Length - 4)))
