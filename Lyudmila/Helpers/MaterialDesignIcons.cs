@@ -4,7 +4,7 @@ namespace Lyudmila.Helpers
      * MaterialDesignIcons-C#-Consts
      * https://github.com/chteuchteu/MaterialDesignIcons-CSharp-Consts
      *
-     * MaterialDesignIcons v1.7.12
+     * MaterialDesignIcons v1.7.22
      */
     public abstract class Mdi
     {
@@ -68,6 +68,7 @@ namespace Lyudmila.Helpers
         public const string Android = "mdi-android";
         public const string AndroidDebugBridge = "mdi-android-debug-bridge";
         public const string AndroidStudio = "mdi-android-studio";
+        public const string Angular = "mdi-angular";
         public const string Animation = "mdi-animation";
         public const string Apple = "mdi-apple";
         public const string AppleFinder = "mdi-apple-finder";
@@ -555,6 +556,7 @@ namespace Lyudmila.Helpers
         public const string Dns = "mdi-dns";
         public const string DoNotDisturb = "mdi-do-not-disturb";
         public const string DoNotDisturbOff = "mdi-do-not-disturb-off";
+        public const string Dolby = "mdi-dolby";
         public const string Domain = "mdi-domain";
         public const string DotsHorizontal = "mdi-dots-horizontal";
         public const string DotsVertical = "mdi-dots-vertical";
@@ -585,6 +587,7 @@ namespace Lyudmila.Helpers
         public const string EmailOutline = "mdi-email-outline";
         public const string EmailSecure = "mdi-email-secure";
         public const string EmailVariant = "mdi-email-variant";
+        public const string Emby = "mdi-emby";
         public const string Emoticon = "mdi-emoticon";
         public const string EmoticonCool = "mdi-emoticon-cool";
         public const string EmoticonDead = "mdi-emoticon-dead";
@@ -933,6 +936,7 @@ namespace Lyudmila.Helpers
         public const string Label = "mdi-label";
         public const string LabelOutline = "mdi-label-outline";
         public const string Lambda = "mdi-lambda";
+        public const string Lamp = "mdi-lamp";
         public const string Lan = "mdi-lan";
         public const string LanConnect = "mdi-lan-connect";
         public const string LanDisconnect = "mdi-lan-disconnect";
@@ -1014,9 +1018,11 @@ namespace Lyudmila.Helpers
         public const string Memory = "mdi-memory";
         public const string Menu = "mdi-menu";
         public const string MenuDown = "mdi-menu-down";
+        public const string MenuDownOutline = "mdi-menu-down-outline";
         public const string MenuLeft = "mdi-menu-left";
         public const string MenuRight = "mdi-menu-right";
         public const string MenuUp = "mdi-menu-up";
+        public const string MenuUpOutline = "mdi-menu-up-outline";
         public const string Message = "mdi-message";
         public const string MessageAlert = "mdi-message-alert";
         public const string MessageBulleted = "mdi-message-bulleted";
@@ -1086,6 +1092,8 @@ namespace Lyudmila.Helpers
         public const string NfcVariant = "mdi-nfc-variant";
         public const string Nodejs = "mdi-nodejs";
         public const string Note = "mdi-note";
+        public const string NoteMultiple = "mdi-note-multiple";
+        public const string NoteMultipleOutline = "mdi-note-multiple-outline";
         public const string NoteOutline = "mdi-note-outline";
         public const string NotePlus = "mdi-note-plus";
         public const string NotePlusOutline = "mdi-note-plus-outline";
@@ -1206,6 +1214,7 @@ namespace Lyudmila.Helpers
         public const string Pinterest = "mdi-pinterest";
         public const string PinterestBox = "mdi-pinterest-box";
         public const string Pizza = "mdi-pizza";
+        public const string PlaneShield = "mdi-plane-shield";
         public const string Play = "mdi-play";
         public const string PlayBoxOutline = "mdi-play-box-outline";
         public const string PlayCircle = "mdi-play-circle";
@@ -1218,6 +1227,7 @@ namespace Lyudmila.Helpers
         public const string PlaylistPlus = "mdi-playlist-plus";
         public const string PlaylistRemove = "mdi-playlist-remove";
         public const string Playstation = "mdi-playstation";
+        public const string Plex = "mdi-plex";
         public const string Plus = "mdi-plus";
         public const string PlusBox = "mdi-plus-box";
         public const string PlusCircle = "mdi-plus-circle";

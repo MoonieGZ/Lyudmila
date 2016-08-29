@@ -4,7 +4,7 @@ namespace Lyudmila.Helpers
      * MaterialDesignIcons-C#-Consts
      * https://github.com/chteuchteu/MaterialDesignIcons-CSharp-Consts
      *
-     * MaterialDesignIcons v1.7.12
+     * MaterialDesignIcons v1.7.22
      */
     public abstract class MdiCodepoints
     {
@@ -68,6 +68,7 @@ namespace Lyudmila.Helpers
         public const string Android = "F032";
         public const string AndroidDebugBridge = "F033";
         public const string AndroidStudio = "F034";
+        public const string Angular = "F6B1";
         public const string Animation = "F5D8";
         public const string Apple = "F035";
         public const string AppleFinder = "F036";
@@ -555,6 +556,7 @@ namespace Lyudmila.Helpers
         public const string Dns = "F1D6";
         public const string DoNotDisturb = "F697";
         public const string DoNotDisturbOff = "F698";
+        public const string Dolby = "F6B2";
         public const string Domain = "F1D7";
         public const string DotsHorizontal = "F1D8";
         public const string DotsVertical = "F1D9";
@@ -585,6 +587,7 @@ namespace Lyudmila.Helpers
         public const string EmailOutline = "F1F0";
         public const string EmailSecure = "F1F1";
         public const string EmailVariant = "F5F0";
+        public const string Emby = "F6B3";
         public const string Emoticon = "F1F2";
         public const string EmoticonCool = "F1F3";
         public const string EmoticonDead = "F69A";
@@ -933,6 +936,7 @@ namespace Lyudmila.Helpers
         public const string Label = "F315";
         public const string LabelOutline = "F316";
         public const string Lambda = "F627";
+        public const string Lamp = "F6B4";
         public const string Lan = "F317";
         public const string LanConnect = "F318";
         public const string LanDisconnect = "F319";
@@ -1014,9 +1018,11 @@ namespace Lyudmila.Helpers
         public const string Memory = "F35B";
         public const string Menu = "F35C";
         public const string MenuDown = "F35D";
+        public const string MenuDownOutline = "F6B5";
         public const string MenuLeft = "F35E";
         public const string MenuRight = "F35F";
         public const string MenuUp = "F360";
+        public const string MenuUpOutline = "F6B6";
         public const string Message = "F361";
         public const string MessageAlert = "F362";
         public const string MessageBulleted = "F6A1";
@@ -1086,6 +1092,8 @@ namespace Lyudmila.Helpers
         public const string NfcVariant = "F398";
         public const string Nodejs = "F399";
         public const string Note = "F39A";
+        public const string NoteMultiple = "F6B7";
+        public const string NoteMultipleOutline = "F6B8";
         public const string NoteOutline = "F39B";
         public const string NotePlus = "F39C";
         public const string NotePlusOutline = "F39D";
@@ -1206,6 +1214,7 @@ namespace Lyudmila.Helpers
         public const string Pinterest = "F407";
         public const string PinterestBox = "F408";
         public const string Pizza = "F409";
+        public const string PlaneShield = "F6BA";
         public const string Play = "F40A";
         public const string PlayBoxOutline = "F40B";
         public const string PlayCircle = "F40C";
@@ -1218,6 +1227,7 @@ namespace Lyudmila.Helpers
         public const string PlaylistPlus = "F412";
         public const string PlaylistRemove = "F413";
         public const string Playstation = "F414";
+        public const string Plex = "F6B9";
         public const string Plus = "F415";
         public const string PlusBox = "F416";
         public const string PlusCircle = "F417";
