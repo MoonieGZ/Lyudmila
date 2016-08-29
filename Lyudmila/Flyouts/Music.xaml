@@ -60,9 +60,9 @@
                         Margin="5"
                         Maximum="100"
                         Minimum="0"
-                        MouseEnter="timelineSlider_MouseEnter"
-                        MouseLeave="timelineSlider_MouseLeave"
-                        Orientation="Horizontal" />
+                        Orientation="Horizontal"
+                        PreviewMouseDown="timelineSlider_PreviewMouseDown"
+                        PreviewMouseUp="timelineSlider_PreviewMouseUp" />
                 <Label x:Name="progressLabel"
                        Grid.Row="2"
                        Margin="5"

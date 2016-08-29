@@ -87,23 +87,6 @@ namespace Lyudmila.Flyouts
                                     + $"{new DateTime(MediaPlayer.NaturalDuration.TimeSpan.Ticks).ToString("mm:ss")}";
         }
 
-        private void timelineSlider_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if(isPlaying)
-            {
-                playTimer.Stop();
-            }
-        }
-
-        private void timelineSlider_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if(isPlaying)
-            {
-                MediaPlayer.Position = new TimeSpan(0, 0, 0, (int) (timelineSlider.Value * MediaPlayer.NaturalDuration.TimeSpan.TotalSeconds / 100));
-                playTimer.Start();
-            }
-        }
-
         private async void Element_MediaOpened(object sender, RoutedEventArgs e)
         {
             await Task.Delay(10);
@@ -114,6 +97,23 @@ namespace Lyudmila.Flyouts
         {
             MediaPlayer.Stop();
             playTimer.Stop();
+        }
+
+        private void timelineSlider_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (isPlaying)
+            {
+                playTimer.Stop();
+            }
+        }
+
+        private void timelineSlider_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (isPlaying)
+            {
+                MediaPlayer.Position = new TimeSpan(0, 0, 0, (int)(timelineSlider.Value * MediaPlayer.NaturalDuration.TimeSpan.TotalSeconds / 100));
+                playTimer.Start();
+            }
         }
     }
 }
