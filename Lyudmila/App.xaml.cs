@@ -20,7 +20,7 @@ namespace Lyudmila
             {
                 var exception = (Exception)eargs.ExceptionObject;
 
-                if (MessageBox.Show($"Unhandled exception: {exception}", "Lyudmila", MessageBoxButton.OK, MessageBoxImage.Error) == MessageBoxResult.OK)
+                if (MessageBox.Show($"Unhandled exception:{Environment.NewLine}{exception.GetType()}: {exception.Message}", "Lyudmila", MessageBoxButton.OK, MessageBoxImage.Error) == MessageBoxResult.OK)
                 {
                     Environment.Exit(1);
                 }
