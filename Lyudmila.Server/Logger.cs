@@ -73,6 +73,11 @@ namespace Lyudmila.Server
                     Tools.ColoredWrite(ConsoleColor.DarkGray, message);
                     Log($"[{dateFormat}] {message}");
                     break;
+                case LogLevel.UDP:
+                    message = $"[UDP]     {message}";
+                    Tools.ColoredWrite(ConsoleColor.DarkMagenta, message);
+                    Log($"[{dateFormat}] {message}");
+                    break;
                 case LogLevel.Debug:
                     message = $"[DEBUG]   {message}";
                     Tools.ColoredWrite(ConsoleColor.Cyan, message);
@@ -84,12 +89,13 @@ namespace Lyudmila.Server
 
     public enum LogLevel
     {
-        None = 0,
-        Info = 1,
-        Warning = 2,
-        Error = 3,
-        Debug = 4,
-        Console = 5,
-        HTTP = 6
+        None,
+        Info,
+        Warning,
+        Error,
+        Debug,
+        Console,
+        HTTP,
+        UDP
     }
 }
