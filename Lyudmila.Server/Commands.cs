@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -58,8 +59,11 @@ namespace Lyudmila.Server
         {
             Logger.Write("Opening JsonBuilder for games...", LogLevel.Console);
 
-            Application.EnableVisualStyles();
-            Application.Run(new JsonBuilder());
+            // TODO: finish up graphical designer
+            //Application.EnableVisualStyles();
+            //Application.Run(new JsonBuilder());
+
+            Process.Start("notepad.exe", "Web\\games.json");
         }
     }
 }
