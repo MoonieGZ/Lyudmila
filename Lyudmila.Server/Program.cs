@@ -15,12 +15,13 @@ namespace Lyudmila.Server
     internal class Program
     {
         public static readonly int httpPort = 8080;
+        public static HttpServer httpServer = new HttpServer(httpPort, Routes.GET);
 
         private const int port = 54545;
         private const string broadcastAddress = "192.168.0.255";
         private static string MyIP = string.Empty;
-        private static UdpClient receivingClient;
-        private static UdpClient sendingClient;
+        public static UdpClient receivingClient;
+        public static UdpClient sendingClient;
 
         private static void Main(string[] args)
         {
@@ -38,7 +39,6 @@ namespace Lyudmila.Server
             }
 
             Logger.Write("Starting Web Server...", LogLevel.Info);
-            var httpServer = new HttpServer(httpPort, Routes.GET);
             new Thread(httpServer.Listen).Start();
             HttpServer.IPList();
 
@@ -55,15 +55,7 @@ namespace Lyudmila.Server
                 running = cmdHost.InvokeCommand(Console.ReadLine());
             }
 
-            Logger.Write("Stopping Web Server...", LogLevel.HTTP);
-            httpServer.IsActive = false;
-            Thread.Sleep(500);
-            Logger.Write("Stopping receiver...", LogLevel.UDP);
-            receivingClient.Close();
-            Thread.Sleep(500);
-            Logger.Write("Stopping sender...", LogLevel.UDP);
-            sendingClient.Close();
-            Thread.Sleep(1000);
+            Commands.Quit();
             Environment.Exit(0);
         }
 

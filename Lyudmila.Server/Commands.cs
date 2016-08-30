@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 
 namespace Lyudmila.Server
 {
@@ -37,6 +38,19 @@ namespace Lyudmila.Server
                 Logger.Write($"{ex.GetType()}: {ex.Message}", LogLevel.Error);
             }
             Logger.Write("Flushed all log files.", LogLevel.Console);
+        }
+
+        public static void Quit()
+        {
+            Logger.Write("Stopping Web Server...", LogLevel.HTTP);
+            Program.httpServer.IsActive = false;
+            Thread.Sleep(500);
+            Logger.Write("Stopping receiver...", LogLevel.UDP);
+            Program.receivingClient.Close();
+            Thread.Sleep(500);
+            Logger.Write("Stopping sender...", LogLevel.UDP);
+            Program.sendingClient.Close();
+            Thread.Sleep(1000);
         }
     }
 }
