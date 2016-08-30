@@ -44,27 +44,37 @@ namespace Lyudmila.Server
             switch(level)
             {
                 case LogLevel.None:
-                    message = $"[NONE]  {message}";
+                    message = $"[NONE]    {message}";
                     Tools.ColoredWrite(ConsoleColor.White, message);
                     Log($"[{dateFormat}] {message}");
                     break;
                 case LogLevel.Info:
-                    message = $"[INFO]  {message}";
+                    message = $"[INFO]    {message}";
                     Tools.ColoredWrite(ConsoleColor.Green, message);
                     Log($"[{dateFormat}] {message}");
                     break;
                 case LogLevel.Warning:
-                    message = $"[WARN]  {message}";
+                    message = $"[WARN]    {message}";
                     Tools.ColoredWrite(ConsoleColor.Yellow, message);
                     Log($"[{dateFormat}] {message}");
                     break;
                 case LogLevel.Error:
-                    message = $"[ERROR] {message}";
+                    message = $"[ERROR]   {message}";
                     Tools.ColoredWrite(ConsoleColor.Red, message);
                     Log($"[{dateFormat}] {message}");
                     break;
+                case LogLevel.Console:
+                    message = $"[CONSOLE] {message}";
+                    Tools.ColoredWrite(ConsoleColor.Magenta, message);
+                    Log($"[{dateFormat}] {message}");
+                    break;
+                case LogLevel.HTTP:
+                    message = $"[HTTP]    {message}";
+                    Tools.ColoredWrite(ConsoleColor.DarkGray, message);
+                    Log($"[{dateFormat}] {message}");
+                    break;
                 case LogLevel.Debug:
-                    message = $"[DEBUG] {message}";
+                    message = $"[DEBUG]   {message}";
                     Tools.ColoredWrite(ConsoleColor.Cyan, message);
                     Log($"[{dateFormat}] {message}");
                     break;
@@ -78,6 +88,8 @@ namespace Lyudmila.Server
         Info = 1,
         Warning = 2,
         Error = 3,
-        Debug = 4
+        Debug = 4,
+        Console = 5,
+        HTTP = 6
     }
 }
