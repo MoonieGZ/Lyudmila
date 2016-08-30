@@ -14,16 +14,10 @@ namespace Lyudmila.Server
 {
     public class HttpServer
     {
-        #region Fields
-
         private readonly int Port;
         private TcpListener Listener;
         private readonly HttpProcessor Processor;
-        private readonly bool IsActive = true;
-
-        #endregion
-
-        #region Public Methods
+        public bool IsActive;
 
         public HttpServer(int port, IEnumerable<Route> routes)
         {
@@ -40,6 +34,8 @@ namespace Lyudmila.Server
         {
             Listener = new TcpListener(IPAddress.Any, Port);
             Listener.Start();
+            IsActive = true;
+
             while(IsActive)
             {
                 var s = Listener.AcceptTcpClient();
@@ -52,10 +48,8 @@ namespace Lyudmila.Server
         public static void IPList()
         {
             foreach(var ipaddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList.Where(ipaddress => ipaddress.ToString().StartsWith("192."))) {
-                Logger.Write($"Listening on {ipaddress}:{Program.port}", LogLevel.Debug);
+                Logger.Write($"Listening on {ipaddress}:{Program.httpPort}", LogLevel.Debug);
             }
         }
-
-        #endregion
     }
 }
