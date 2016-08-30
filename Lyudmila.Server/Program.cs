@@ -56,6 +56,7 @@ namespace Lyudmila.Server
             }
 
             Commands.Quit();
+
             Environment.Exit(0);
         }
 
