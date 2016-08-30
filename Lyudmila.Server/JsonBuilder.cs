@@ -3,7 +3,9 @@
 // -----------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 using Newtonsoft.Json;
@@ -13,6 +15,7 @@ namespace Lyudmila.Server
     public partial class JsonBuilder : Form
     {
         private static readonly dynamic dynObj = JsonConvert.DeserializeObject(File.ReadAllText("Web\\games.json"));
+        private static readonly StringBuilder sb = new StringBuilder();
 
         public JsonBuilder()
         {
@@ -92,6 +95,55 @@ namespace Lyudmila.Server
                         }
                     }
                     break;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(textBox1.Text.StartsWith("http://"))
+            {
+                try
+                {
+                    Process.Start(textBox1.Text);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show($"{ex.GetType()}: {ex.Message}");
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text.StartsWith("http://"))
+            {
+                try
+                {
+                    Process.Start(textBox2.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.GetType()}: {ex.Message}");
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var i = 1;
+            Build();
+
+            foreach(var item in listBox1.Items)
+            {
+                
+            }
+        }
+
+        private static void Build(string str = null)
+        {
+            if(str == null)
+            {
+                sb.Append("{\"EnabledGames\": {\"game1\": { ");
             }
         }
     }
