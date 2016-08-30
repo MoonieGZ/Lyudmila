@@ -58,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandler.cs" />
+    <Compile Include="Commands.cs" />
     <Compile Include="HttpBuilder.cs" />
     <Compile Include="HttpProcessor.cs" />
     <Compile Include="Logger.cs" />
