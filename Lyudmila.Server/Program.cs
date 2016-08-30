@@ -9,69 +9,119 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Lyudmila.Server
 {
     internal class Program
     {
-        public static int port = 8080;
+        private const int port = 54545;
+        private const string broadcastAddress = "192.168.0.255";
+        public static int httpPort = 8080;
+        private static readonly string Time = $"[{DateTime.Now.ToString("HH:mm:ss")}]";
+        private static string MyIP = string.Empty;
+        private static UdpClient receivingClient;
+        private static UdpClient sendingClient;
 
         private static void Main(string[] args)
         {
             Console.Title = "Lyudmila Server App";
             Logger.Init();
 
-            if(!File.Exists("games.json"))
+            if (!Directory.Exists("Web"))
             {
-                Tools.CreateFile("games.json");
+                Directory.CreateDirectory("Web");
+            }
+            if (!File.Exists("Web\\games.json"))
+            {
+                Tools.CreateFile("Web\\games.json");
                 Tools.ForceClose("Games list is not ready for deployment.");
             }
 
             Logger.Write("Starting Web Server...", LogLevel.Info);
-            new Thread(new HttpServer(port, Routes.GET).Listen).Start();
+            var httpServer = new HttpServer(httpPort, Routes.GET);
+            new Thread(httpServer.Listen).Start();
             HttpServer.IPList();
 
-            new Thread(WaitForRequests).Start();
+            MyIP = LocalIPAddress();
+            InitializeSender();
+            InitializeReceiver();
+
+            var cmdHost = new CommandHost();
+
+            var running = cmdHost.InvokeCommand(Console.ReadLine());
+            while(running)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                running = cmdHost.InvokeCommand(Console.ReadLine());
+            }
+
+            Logger.Write("Stopping Web Server...", LogLevel.Info);
+            httpServer.IsActive = false;
+            Thread.Sleep(500);
+            Logger.Write("Stopping receiver...", LogLevel.Info);
+            receivingClient.Close();
+            Thread.Sleep(500);
+            Logger.Write("Stopping sender...", LogLevel.Info);
+            sendingClient.Close();
+            Thread.Sleep(1000);
+            Environment.Exit(0);
         }
 
-        private static async void WaitForRequests()
+        public static string LocalIPAddress()
         {
-            Logger.Write("Starting UDP broadcaster...", LogLevel.Info);
+            var localIP = string.Empty;
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach(var ip in host.AddressList.Where(ip => ip.AddressFamily == AddressFamily.InterNetwork))
+            {
+                localIP = ip.ToString();
+                break;
+            }
+            return localIP;
+        }
 
-            var client = new UdpClient();
-            var localEp = new IPEndPoint(IPAddress.Any, 2222);
-            client.Client.Bind(localEp);
-            client.JoinMulticastGroup(IPAddress.Parse("239.0.0.222"));
+        private static void InitializeReceiver()
+        {
+            receivingClient = new UdpClient(port);
+            new Thread(Receiver).Start();
+        }
+
+        private static void InitializeSender()
+        {
+            sendingClient = new UdpClient(broadcastAddress, port) {EnableBroadcast = true};
+        }
+
+        private static void SendToClients(string msg)
+        {
+            // TODO: Send info to other clients.
+
+            var data = Encoding.ASCII.GetBytes(msg);
+            sendingClient.Send(data, data.Length);
+
+            Console.WriteLine($"{Time} > {msg}");
+        }
+
+        private static void Receiver()
+        {
+            var endPoint = new IPEndPoint(IPAddress.Any, port);
 
             while(true)
             {
-                var data = client.Receive(ref localEp);
-                var strData = Encoding.Unicode.GetString(data);
-
-                if(strData.Equals("$SENDIP$"))
+                try
                 {
-                    await Task.Delay(200);
-                    SendServerIP();
+                    var data = receivingClient.Receive(ref endPoint);
+                    var message = Encoding.ASCII.GetString(data);
+
+                    // TODO: Handle incoming messages here
+
+                    Logger.Write($"{Time} ({endPoint}) < {message}", LogLevel.Info);
                 }
-            }
-        }
-
-        private static void SendServerIP()
-        {
-            var udpclient = new UdpClient();
-
-            var multicastaddress = IPAddress.Parse("239.0.0.222");
-            udpclient.JoinMulticastGroup(multicastaddress);
-            var remoteep = new IPEndPoint(multicastaddress, 2222);
-
-            foreach(var address in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
-            {
-                if(address.ToString().StartsWith("192.168.0."))
+                catch(Exception ex)
                 {
-                    var buffer = Encoding.Unicode.GetBytes(address.ToString());
-                    udpclient.Send(buffer, buffer.Length, remoteep);
-                    Logger.Write($"Sent {address} to {remoteep}", LogLevel.Info);
+                    if(ex.Message.Equals("A blocking operation was interrupted by a call to WSACancelBlockingCall"))
+                    {
+                        break; // Shutdown causes this, we break to actually stop the receiver.
+                    }
+                    Logger.Write($"{ex.GetType()}: {ex.Message}", LogLevel.Error);
                 }
             }
         }
