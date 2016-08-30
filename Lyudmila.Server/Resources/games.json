@@ -1,6 +1,6 @@
 {
   "EnabledGames": {
-    "cod2": {
+    "game1": {
       "longname": "Call of Duty 2",
       "ico": "http://domain.tld/img.ico",
       "bgimg": "http://domain.tld/bgimg.png",
@@ -8,7 +8,7 @@
       "filesize": "200MB",
       "description": "test"
     },
-    "cod4": {
+    "game2": {
       "longname": "Call of Duty 4",
       "ico": "http://domain.tld/img.ico",
       "bgimg": "http://domain.tld/bgimg.png",
@@ -18,7 +18,7 @@
     }
   },
   "DisabledGames": {
-    "cod5": {
+    "game3": {
       "longname": "Call of Duty 5",
       "ico": "http://domain.tld/img.ico",
       "bgimg": "http://domain.tld/bgimg.png",
@@ -26,7 +26,7 @@
       "filesize": "200MB",
       "description": "test"
     },
-    "cod6": {
+    "game4": {
       "longname": "Call of Duty 6",
       "ico": "http://domain.tld/img.ico",
       "bgimg": "http://domain.tld/bgimg.png",
