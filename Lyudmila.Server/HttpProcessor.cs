@@ -19,17 +19,7 @@ namespace Lyudmila.Server
 {
     public class HttpProcessor
     {
-        #region Fields
-
-#pragma warning disable 169
-        private static int MAX_POST_SIZE = 10 * 1024 * 1024; // 10MB
-#pragma warning restore 169
-
         private readonly List<Route> Routes = new List<Route>();
-
-        #endregion
-
-        #region Public Methods
 
         public void HandleClient(TcpClient tcpClient)
         {
@@ -40,7 +30,7 @@ namespace Lyudmila.Server
             // route and handle the request...
             var response = RouteRequest(inputStream, outputStream, request);
 
-            Console.WriteLine("{0} {1}", response.StatusCode, request.Url);
+            Logger.Write($"{response.StatusCode} {request.Url}", LogLevel.HTTP);
             // build a default response for errors
             if(response.Content == null)
             {
@@ -87,10 +77,6 @@ namespace Lyudmila.Server
         {
             Routes.Add(route);
         }
-
-        #endregion
-
-        #region Private Methods
 
         private static string Readline(Stream stream)
         {
@@ -225,7 +211,5 @@ namespace Lyudmila.Server
 
             return new HttpRequest {Method = method, Url = url, Headers = headers, Content = content};
         }
-
-        #endregion
     }
 }
