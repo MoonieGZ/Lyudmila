@@ -14,10 +14,10 @@ namespace Lyudmila.Server
 {
     internal class Program
     {
+        public static readonly int httpPort = 8080;
+
         private const int port = 54545;
         private const string broadcastAddress = "192.168.0.255";
-        public static int httpPort = 8080;
-        private static readonly string Time = $"[{DateTime.Now.ToString("HH:mm:ss")}]";
         private static string MyIP = string.Empty;
         private static UdpClient receivingClient;
         private static UdpClient sendingClient;
@@ -55,13 +55,13 @@ namespace Lyudmila.Server
                 running = cmdHost.InvokeCommand(Console.ReadLine());
             }
 
-            Logger.Write("Stopping Web Server...", LogLevel.Info);
+            Logger.Write("Stopping Web Server...", LogLevel.HTTP);
             httpServer.IsActive = false;
             Thread.Sleep(500);
-            Logger.Write("Stopping receiver...", LogLevel.Info);
+            Logger.Write("Stopping receiver...", LogLevel.UDP);
             receivingClient.Close();
             Thread.Sleep(500);
-            Logger.Write("Stopping sender...", LogLevel.Info);
+            Logger.Write("Stopping sender...", LogLevel.UDP);
             sendingClient.Close();
             Thread.Sleep(1000);
             Environment.Exit(0);
@@ -83,6 +83,8 @@ namespace Lyudmila.Server
         {
             receivingClient = new UdpClient(port);
             new Thread(Receiver).Start();
+
+            Logger.Write($"Listening to client requests on {MyIP}", LogLevel.UDP);
         }
 
         private static void InitializeSender()
@@ -90,14 +92,14 @@ namespace Lyudmila.Server
             sendingClient = new UdpClient(broadcastAddress, port) {EnableBroadcast = true};
         }
 
-        private static void SendToClients(string msg)
+        private static void SendToClients(string message)
         {
             // TODO: Send info to other clients.
 
-            var data = Encoding.ASCII.GetBytes(msg);
+            var data = Encoding.ASCII.GetBytes(message);
             sendingClient.Send(data, data.Length);
 
-            Console.WriteLine($"{Time} > {msg}");
+            Logger.Write($"> {message}", LogLevel.UDP);
         }
 
         private static void Receiver()
@@ -111,9 +113,13 @@ namespace Lyudmila.Server
                     var data = receivingClient.Receive(ref endPoint);
                     var message = Encoding.ASCII.GetString(data);
 
-                    // TODO: Handle incoming messages here
+                    if(!endPoint.Address.ToString().Equals(MyIP))
+                    {
+                        Logger.Write($"< {message} ({endPoint.Address})", LogLevel.UDP);
 
-                    Logger.Write($"{Time} ({endPoint}) < {message}", LogLevel.Info);
+                        // TODO: Handle incoming messages here
+                        Handle(message);
+                    }
                 }
                 catch(Exception ex)
                 {
@@ -123,6 +129,14 @@ namespace Lyudmila.Server
                     }
                     Logger.Write($"{ex.GetType()}: {ex.Message}", LogLevel.Error);
                 }
+            }
+        }
+
+        private static void Handle(string message)
+        {
+            if(message.Equals("$SERVERREQUEST$"))
+            {
+                SendToClients("$SERVER$");
             }
         }
     }
