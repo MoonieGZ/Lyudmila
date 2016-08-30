@@ -1,14 +1,38 @@
 {
-  "games": {
+  "EnabledGames": {
     "cod2": {
-		"ico": "http://imgur.com/gay",
-		"bgimg": "http://imgur.com/gay",
-		"file": "http://static/file"
-	},
+      "longname": "Call of Duty 2",
+      "ico": "http://domain.tld/img.ico",
+      "bgimg": "http://domain.tld/bgimg.png",
+      "file": "http://domain.tld/file.zip",
+      "filesize": "200MB",
+      "description": "test"
+    },
     "cod4": {
-		"ico": "http://imgur.com/gay",
-		"bgimg": "http://imgur.com/gay",
-		"file": "http://static/file"
-	}
+      "longname": "Call of Duty 4",
+      "ico": "http://domain.tld/img.ico",
+      "bgimg": "http://domain.tld/bgimg.png",
+      "file": "http://domain.tld/file.zip",
+      "filesize": "200MB",
+      "description": "test"
+    }
+  },
+  "DisabledGames": {
+    "cod5": {
+      "longname": "Call of Duty 5",
+      "ico": "http://domain.tld/img.ico",
+      "bgimg": "http://domain.tld/bgimg.png",
+      "file": "http://domain.tld/file.zip",
+      "filesize": "200MB",
+      "description": "test"
+    },
+    "cod6": {
+      "longname": "Call of Duty 6",
+      "ico": "http://domain.tld/img.ico",
+      "bgimg": "http://domain.tld/bgimg.png",
+      "file": "http://domain.tld/file.zip",
+      "filesize": "200MB",
+      "description": "test"
+    }
   }
 }
