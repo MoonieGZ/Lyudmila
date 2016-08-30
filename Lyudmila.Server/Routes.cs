@@ -2,7 +2,9 @@
 // Copyrights (c) 2016 Seditio 🍂 INC. All rights reserved.
 // -----------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 using Lyudmila.Server.Models;
 using Lyudmila.Server.RouteHandlers;
@@ -18,7 +20,7 @@ namespace Lyudmila.Server
                     new Route {Callable = HomeIndex, UrlRegex = "^\\/$", Method = "GET"},
                     new Route
                     {
-                        Callable = new FileSystemRouteHandler {BasePath = @"C:\Users\William\Desktop\http"}.Handle,
+                        Callable = new FileSystemRouteHandler {BasePath = Path.Combine(Environment.CurrentDirectory, "Web")}.Handle,
                         UrlRegex = "^\\/Static\\/(.*)$",
                         Method = "GET"
                     }
