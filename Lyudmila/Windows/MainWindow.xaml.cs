@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
+using Lyudmila.Helpers;
 using Lyudmila.Properties;
 
 namespace Lyudmila.Windows
@@ -25,37 +26,17 @@ namespace Lyudmila.Windows
             InitializeComponent();
         }
 
-        private void GetServerIP()
+        private async void GetServerIP()
         {
             Notify("Searching for server...");
-
-            var udpclient = new UdpClient();
-            var client = new UdpClient();
-
-            var multicastaddress = IPAddress.Parse("239.0.0.222");
-
-            var remoteEp = new IPEndPoint(multicastaddress, 2222);
-            var localEp = new IPEndPoint(IPAddress.Any, 2222);
-
-            client.Client.Bind(localEp);
-            client.JoinMulticastGroup(multicastaddress);
-            udpclient.JoinMulticastGroup(multicastaddress);
-
-            var buffer = Encoding.Unicode.GetBytes("$SENDIP$");
-            udpclient.Send(buffer, buffer.Length, remoteEp);
-
-            while(true)
+            NetTools.Init();
+            do
             {
-                var data = client.Receive(ref localEp);
-                var strData = Encoding.Unicode.GetString(data);
-
-                if(!strData.Equals("$SENDIP$"))
-                {
-                    Settings.Default.ServerIP = strData;
-                    Notify($"Found server at {strData}!");
-                    break;
-                }
+                await Task.Delay(1000);
             }
+            while(string.IsNullOrEmpty(Settings.Default.ServerIP));
+
+            Notify($"Found server at {Settings.Default.ServerIP}");
         }
 
         private async void Notify(string message)
