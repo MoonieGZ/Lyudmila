@@ -31,7 +31,7 @@ namespace Lyudmila.Server
 
         public static void CreateFile(string file)
         {
-            if(file == "games.json")
+            if(file == "Web\\games.json")
             {
                 using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lyudmila.Server.Resources.games.json"))
                 {
