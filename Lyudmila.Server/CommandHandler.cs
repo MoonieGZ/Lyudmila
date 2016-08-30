@@ -23,6 +23,7 @@ namespace Lyudmila.Server
             RegisterCommand("help", "Show available commands", Commands.Help);
             RegisterCommand("clear", "Clear the console display", Commands.Clear);
             RegisterCommand("flush", "Clear all log files", Commands.Flush);
+            RegisterCommand("games", "Manage available games", Commands.Games);
         }
 
         public void RegisterCommand(string commandName, string helpText, CommandHandler handler)

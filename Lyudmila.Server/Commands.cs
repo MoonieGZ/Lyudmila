@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Lyudmila.Server
 {
@@ -51,6 +52,14 @@ namespace Lyudmila.Server
             Logger.Write("Stopping sender...", LogLevel.UDP);
             Program.sendingClient.Close();
             Thread.Sleep(1000);
+        }
+
+        public static void Games(string param, Dictionary<string, CommandRecord> commandmap)
+        {
+            Logger.Write("Opening JsonBuilder for games...", LogLevel.Console);
+
+            Application.EnableVisualStyles();
+            Application.Run(new JsonBuilder());
         }
     }
 }
