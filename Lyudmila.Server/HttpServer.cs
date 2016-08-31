@@ -48,7 +48,7 @@ namespace Lyudmila.Server
         public static void IPList()
         {
             foreach(var ipaddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList.Where(ipaddress => ipaddress.ToString().StartsWith("192."))) {
-                Logger.Write($"Listening on {ipaddress}:{Program.httpPort}", LogLevel.Debug);
+                Logger.Write($"Listening on {ipaddress}:{Program.httpPort}", LogLevel.HTTP);
             }
         }
     }
