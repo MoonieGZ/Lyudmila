@@ -9,6 +9,7 @@
                       Width="1280"
                       Height="720"
                       Background="{DynamicResource MaterialDesignPaper}"
+                      Closing="MetroWindow_Closing"
                       DataContext="{Binding RelativeSource={RelativeSource Self}}"
                       FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
                       GlowBrush="{DynamicResource AccentColorBrush}"
@@ -20,7 +21,7 @@
                       TitleCaps="False"
                       WindowButtonCommandsOverlayBehavior="Always"
                       WindowStartupLocation="CenterScreen"
-                      mc:Ignorable="d" Closing="MetroWindow_Closing">
+                      mc:Ignorable="d">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -125,13 +126,7 @@
                 Margin="2"
                 BorderBrush="{DynamicResource AccentColorBrush}"
                 BorderThickness="1">
-            <ListBox x:Name="ListBox_Games" Width="250">
-                <ListBoxItem Content="🎮 Game 1" />
-                <ListBoxItem Content="🎮 Game 2" />
-                <ListBoxItem Content="🎮 Game 3" />
-                <ListBoxItem Content="🎮 Game 4" />
-                <ListBoxItem Content="🎮 Game 5" />
-            </ListBox>
+            <ListBox x:Name="ListBox_Games" Width="250" />
         </Border>
 
         <Border Grid.Row="0"
