@@ -25,6 +25,7 @@ namespace Lyudmila.Flyouts
             if(VerifyName(NickBox.Text))
             {
                 Settings.Default.Username = NickBox.Text;
+                Settings.Default.Save();
                 ((MainWindow) Application.Current.MainWindow).NicknameFlyout.IsOpen = false;
             }
         }
