@@ -3,6 +3,7 @@
 // -----------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -23,6 +24,8 @@ namespace Lyudmila.Server
         public static UdpClient receivingClient;
         public static UdpClient sendingClient;
 
+        public static List<string> tempBuffer = new List<string>();
+
         private static void Main(string[] args)
         {
             Console.Title = "Lyudmila Server App";
@@ -38,7 +41,7 @@ namespace Lyudmila.Server
                 Tools.ForceClose("Games list is not ready for deployment.");
             }
 
-            Logger.Write("Starting Web Server...", LogLevel.Info);
+            Logger.Write("Starting Web Server...", LogLevel.HTTP);
             new Thread(httpServer.Listen).Start();
             HttpServer.IPList();
 
@@ -85,14 +88,14 @@ namespace Lyudmila.Server
             sendingClient = new UdpClient(broadcastAddress, port) {EnableBroadcast = true};
         }
 
-        private static void SendToClients(string message)
+        public static void SendToClients(string message)
         {
             // TODO: Send info to other clients.
 
             var data = Encoding.ASCII.GetBytes(message);
             sendingClient.Send(data, data.Length);
 
-            Logger.Write($"> {message}", LogLevel.UDP);
+            Logger.Write($"> {message}", LogLevel.Debug);
         }
 
         private static void Receiver()
@@ -108,10 +111,10 @@ namespace Lyudmila.Server
 
                     if(!endPoint.Address.ToString().Equals(MyIP))
                     {
-                        Logger.Write($"< {message} ({endPoint.Address})", LogLevel.UDP);
+                        Logger.Write($"< {message} ({endPoint.Address})", LogLevel.Debug);
 
                         // TODO: Handle incoming messages here
-                        Handle(message);
+                        Handle(message, endPoint.Address);
                     }
                 }
                 catch(Exception ex)
@@ -125,11 +128,15 @@ namespace Lyudmila.Server
             }
         }
 
-        private static void Handle(string message)
+        private static void Handle(string message, IPAddress address)
         {
             if(message.Equals("$SERVERREQUEST$"))
             {
                 SendToClients("$SERVER$");
+            }
+            if(message.Contains("$CLIENT$"))
+            {
+                tempBuffer.Add($"{message.Split(new[] {"$CLIENT$ "}, StringSplitOptions.None)[1]} @ {address}");
             }
         }
     }
