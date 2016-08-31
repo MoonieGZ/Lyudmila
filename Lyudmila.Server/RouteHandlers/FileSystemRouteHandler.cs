@@ -41,17 +41,11 @@ namespace Lyudmila.Server.RouteHandlers
             }
             var local_path = Path.Combine(BasePath, url_part);
 
-            if(ShowDirectories && Directory.Exists(local_path))
-            {
-                // Console.WriteLine("FileSystemRouteHandler Dir {0}",local_path);
-                return Handle_LocalDir(request, local_path);
-            }
-            if(File.Exists(local_path))
-            {
-                // Console.WriteLine("FileSystemRouteHandler File {0}", local_path);
-                return Handle_LocalFile(request, local_path);
-            }
-            return new HttpResponse {StatusCode = "404", ReasonPhrase = $"Not Found ({local_path}) handler({request.Route.Name})"};
+            return ShowDirectories && Directory.Exists(local_path)
+                ? Handle_LocalDir(request, local_path)
+                : (File.Exists(local_path)
+                    ? Handle_LocalFile(request, local_path)
+                    : new HttpResponse {StatusCode = "404", ReasonPhrase = $"Not Found ({local_path}) handler({request.Route.Name})"});
         }
 
         private static HttpResponse Handle_LocalFile(HttpRequest request, string local_path)
@@ -74,7 +68,8 @@ namespace Lyudmila.Server.RouteHandlers
             var output = new StringBuilder();
             output.Append($"<h1> Directory: {request.Url} </h1>");
 
-            foreach(var filename in Directory.GetFiles(local_path).Select(entry => new FileInfo(entry)).Select(file_info => file_info.Name)) {
+            foreach(var filename in Directory.GetFiles(local_path).Select(entry => new FileInfo(entry)).Select(file_info => file_info.Name))
+            {
                 output.Append(string.Format("<a href=\"{0}\">{0}</a> <br>", filename));
             }
 
