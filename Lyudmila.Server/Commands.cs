@@ -25,9 +25,9 @@ namespace Lyudmila.Server
             Logger.Write("--- help", LogLevel.Console);
         }
 
-        public static void Clear(string param, Dictionary<string, CommandRecord> commandmap) => Console.Clear();
+        public static void Clear(string param, Dictionary<string, CommandRecord> commandMap) => Console.Clear();
 
-        public static void Flush(string param, Dictionary<string, CommandRecord> commandmap)
+        public static void Flush(string param, Dictionary<string, CommandRecord> commandMap)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace Lyudmila.Server
             Thread.Sleep(1000);
         }
 
-        public static void Games(string param, Dictionary<string, CommandRecord> commandmap)
+        public static void Games(string param, Dictionary<string, CommandRecord> commandMap)
         {
             Logger.Write("Opening JsonBuilder for games...", LogLevel.Console);
 
