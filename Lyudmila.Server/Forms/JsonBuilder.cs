@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 using Newtonsoft.Json;
 
-namespace Lyudmila.Server
+namespace Lyudmila.Server.Forms
 {
     public partial class JsonBuilder : Form
     {

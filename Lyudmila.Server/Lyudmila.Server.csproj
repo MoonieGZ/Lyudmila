@@ -68,10 +68,10 @@
     <Compile Include="Commands.cs" />
     <Compile Include="HttpBuilder.cs" />
     <Compile Include="HttpProcessor.cs" />
-    <Compile Include="JsonBuilder.cs">
+    <Compile Include="Forms\JsonBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JsonBuilder.Designer.cs">
+    <Compile Include="Forms\JsonBuilder.Designer.cs">
       <DependentUpon>JsonBuilder.cs</DependentUpon>
     </Compile>
     <Compile Include="Logger.cs" />
@@ -87,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EmbeddedResource Include="JsonBuilder.resx">
+    <EmbeddedResource Include="Forms\JsonBuilder.resx">
       <DependentUpon>JsonBuilder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\games.json" />

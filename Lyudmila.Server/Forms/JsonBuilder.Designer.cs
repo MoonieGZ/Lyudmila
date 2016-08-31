@@ -1,4 +1,4 @@
-﻿namespace Lyudmila.Server
+﻿namespace Lyudmila.Server.Forms
 {
     partial class JsonBuilder
     {
