@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lyudmila.Server
@@ -64,6 +65,18 @@ namespace Lyudmila.Server
             //Application.Run(new JsonBuilder());
 
             Process.Start("notepad.exe", "Web\\games.json");
+        }
+
+        public static async void Clients(string param, Dictionary<string, CommandRecord> commandMap)
+        {
+            Logger.Write("Gathering client data...", LogLevel.Console);
+            Program.SendToClients("$CLIENTLIST$");
+            await Task.Delay(3000);
+            foreach(var client in Program.tempBuffer)
+            {
+                Logger.Write(client, LogLevel.Console);
+            }
+            Logger.Write("Listed all connected clients", LogLevel.Console);
         }
     }
 }
