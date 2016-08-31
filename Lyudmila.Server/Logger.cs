@@ -70,7 +70,7 @@ namespace Lyudmila.Server
                     break;
                 case LogLevel.HTTP:
                     message = $"[HTTP]    {message}";
-                    Tools.ColoredWrite(ConsoleColor.DarkGray, message);
+                    Tools.ColoredWrite(ConsoleColor.Cyan, message);
                     Log($"[{dateFormat}] {message}");
                     break;
                 case LogLevel.UDP:
@@ -80,7 +80,7 @@ namespace Lyudmila.Server
                     break;
                 case LogLevel.Debug:
                     message = $"[DEBUG]   {message}";
-                    Tools.ColoredWrite(ConsoleColor.Cyan, message);
+                    Tools.ColoredWrite(ConsoleColor.DarkGray, message);
                     Log($"[{dateFormat}] {message}");
                     break;
             }
