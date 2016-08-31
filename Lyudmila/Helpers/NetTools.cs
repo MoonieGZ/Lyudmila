@@ -54,6 +54,10 @@ namespace Lyudmila.Helpers
                     {
                         Settings.Default.ServerIP = endPoint.Address.ToString();
                     }
+                    if(message.Equals("$CLIENTLIST$"))
+                    {
+                        SendToClients($"$CLIENT$ {Settings.Default.Username}");
+                    }
                 }
                 catch (Exception ex)
                 {
