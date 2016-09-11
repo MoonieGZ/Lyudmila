@@ -7,9 +7,8 @@ using System.Collections.Generic;
 using System.IO;
 
 using Lyudmila.Server.Models;
-using Lyudmila.Server.RouteHandlers;
 
-namespace Lyudmila.Server
+namespace Lyudmila.Server.RouteHandlers
 {
     internal static class Routes
     {

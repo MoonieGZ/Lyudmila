@@ -11,6 +11,10 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
+using Lyudmila.Server.Helpers;
+using Lyudmila.Server.Models;
+using Lyudmila.Server.RouteHandlers;
+
 namespace Lyudmila.Server
 {
     internal class Program
@@ -90,8 +94,6 @@ namespace Lyudmila.Server
 
         public static void SendToClients(string message)
         {
-            // TODO: Send info to other clients.
-
             var data = Encoding.ASCII.GetBytes(message);
             sendingClient.Send(data, data.Length);
 
@@ -113,7 +115,6 @@ namespace Lyudmila.Server
                     {
                         Logger.Write($"< {message} ({endPoint.Address})", LogLevel.Debug);
 
-                        // TODO: Handle incoming messages here
                         Handle(message, endPoint.Address);
                     }
                 }

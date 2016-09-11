@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace Lyudmila.Server
+namespace Lyudmila.Server.Helpers
 {
     public struct CommandRecord
     {

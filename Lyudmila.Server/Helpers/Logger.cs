@@ -5,7 +5,7 @@
 using System;
 using System.IO;
 
-namespace Lyudmila.Server
+namespace Lyudmila.Server.Helpers
 {
     public class Logger
     {
@@ -31,10 +31,17 @@ namespace Lyudmila.Server
 
         private static void Log(string message)
         {
-            using(var log = File.AppendText(Path.Combine(_logDirectory, _currentFile + ".txt")))
+            try
             {
-                log.WriteLine(message);
-                log.Flush();
+                using (var log = File.AppendText(Path.Combine(_logDirectory, _currentFile + ".txt")))
+                {
+                    log.WriteLine(message);
+                    log.Flush();
+                }
+            }
+            catch(Exception)
+            {
+                Write($"Error writing \"{message}\" to log file.", LogLevel.Error);
             }
         }
 

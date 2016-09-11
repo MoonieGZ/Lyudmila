@@ -10,7 +10,7 @@ using System.Threading;
 
 using Lyudmila.Server.Models;
 
-namespace Lyudmila.Server
+namespace Lyudmila.Server.Helpers
 {
     public class HttpServer
     {

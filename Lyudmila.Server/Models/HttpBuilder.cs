@@ -4,9 +4,7 @@
 
 using System.IO;
 
-using Lyudmila.Server.Models;
-
-namespace Lyudmila.Server
+namespace Lyudmila.Server.Models
 {
     internal class HttpBuilder
     {

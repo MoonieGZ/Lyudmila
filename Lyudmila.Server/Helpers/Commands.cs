@@ -9,7 +9,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Lyudmila.Server
+namespace Lyudmila.Server.Helpers
 {
     internal class Commands
     {
@@ -74,8 +74,11 @@ namespace Lyudmila.Server
             foreach(var client in Program.tempBuffer)
             {
                 Logger.Write(client, LogLevel.Console);
+                var splitter = client.Split(new[] {" @ "}, StringSplitOptions.None);
+                PlayerList.PrepareAddToPlayersJS(splitter[0], splitter[1]);
             }
             Logger.Write("Listed all connected clients", LogLevel.Console);
+            PlayerList.AddToPlayersJS();
         }
     }
 }

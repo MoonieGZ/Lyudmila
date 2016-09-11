@@ -64,26 +64,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandler.cs" />
-    <Compile Include="Commands.cs" />
-    <Compile Include="HttpBuilder.cs" />
-    <Compile Include="HttpProcessor.cs" />
+    <Compile Include="Helpers\CommandHandler.cs" />
+    <Compile Include="Helpers\Commands.cs" />
+    <Compile Include="Helpers\PlayerList.cs" />
+    <Compile Include="Models\HttpBuilder.cs" />
+    <Compile Include="Models\HttpProcessor.cs" />
     <Compile Include="Forms\JsonBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\JsonBuilder.Designer.cs">
       <DependentUpon>JsonBuilder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logger.cs" />
+    <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Models\HttpRequest.cs" />
     <Compile Include="Models\HttpResponse.cs" />
     <Compile Include="Models\Route.cs" />
-    <Compile Include="HttpServer.cs" />
+    <Compile Include="Helpers\HttpServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteHandlers\FileSystemRouteHandler.cs" />
-    <Compile Include="Routes.cs" />
-    <Compile Include="Tools.cs" />
+    <Compile Include="RouteHandlers\Routes.cs" />
+    <Compile Include="Helpers\Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -92,6 +93,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\games.json" />
     <None Include="packages.config" />
+    <None Include="Resources\Web\Web.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -101,8 +103,20 @@
     <Content Include="Resources\Pages\500.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Web\bundles\bootstrap.js" />
+    <Content Include="Resources\Web\bundles\jquery.js" />
+    <Content Include="Resources\Web\bundles\modernizr.js" />
+    <Content Include="Resources\Web\bundles\sorttable.js" />
+    <Content Include="Resources\Web\Content\background.png" />
+    <Content Include="Resources\Web\Content\favicon.png" />
+    <Content Include="Resources\Web\Content\stylesheet.css" />
+    <Content Include="Resources\Web\Players.html" />
+    <Content Include="Resources\Web\Teams.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy "$(ProjectDir)Resources\Web\*.*" "$(TargetDir)Web" /Y /I /E</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

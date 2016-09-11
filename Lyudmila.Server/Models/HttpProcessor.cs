@@ -11,11 +11,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-using Lyudmila.Server.Models;
+using Lyudmila.Server.Helpers;
 
 // ReSharper disable UnusedVariable
 
-namespace Lyudmila.Server
+namespace Lyudmila.Server.Models
 {
     public class HttpProcessor
     {
@@ -30,7 +30,11 @@ namespace Lyudmila.Server
             // route and handle the request...
             var response = RouteRequest(inputStream, outputStream, request);
 
-            Logger.Write($"{response.StatusCode} {request.Url}", LogLevel.HTTP);
+            if(response.StatusCode != "200")
+            {
+                Logger.Write($"{response.StatusCode} {request.Url}", LogLevel.HTTP);
+            }
+            
             // build a default response for errors
             if(response.Content == null)
             {
