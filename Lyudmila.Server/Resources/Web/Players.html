@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourney - Players</title>
+    <link rel="icon" type="image/png" href="Content/favicon.png">
+    <link href="Content/stylesheet.css" rel="stylesheet"/>
+    <script src="bundles/modernizr.js"></script>
+    <script src="bundles/sorttable.js"></script>
+    <script src="http://localhost:8080/Static/bundles/Players.js"></script>
+	<script>
+        window.onload = function () {
+            var o = document.getElementById('players');
+            if (window.data != null && window.data !== "") {
+                o.innerHTML = window.data;
+            } else {
+                o.innerHTML = '<tr><td colspan=\"3\">No players available.</td></tr>';
+            }
+		}
+    </script>
+</head>
+<body>
+<div class="background-image"></div>
+<div class="container body-content">
+    <div class="page-header">
+        <h1>Lyudmila - Players</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active">
+                    <a href="/Static/Players.html">Players</a>
+                </li>
+                <li role="presentation">
+                    <a href="/Static/Teams.html">Teams</a>
+                </li>
+            </ul>
+            &nbsp;
+            <div class="panel panel-default">
+                <table class="table table-hover sortable">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>IP</th>
+                    </tr>
+                    </thead>
+                    <tbody id="players">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="bundles/jquery.js"></script>
+<script src="bundles/bootstrap.js"></script>
+</body>
+</html>
