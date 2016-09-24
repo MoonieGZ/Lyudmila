@@ -6,7 +6,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace Lyudmila.Client.Resources.Helpers
+namespace Lyudmila.Client.Helpers
 {
     [ValueConversion(typeof(TimeSpan?), typeof(string))]
     internal class TimeSpanToStringConverter : IValueConverter
