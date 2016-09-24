@@ -165,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Games.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -192,7 +196,10 @@
     <Compile Include="Helpers\DataItem.cs" />
     <Compile Include="Helpers\MaterialDesignIcons.cs" />
     <Compile Include="Helpers\MaterialDesignIconsCodepoints.cs" />
-    <Compile Include="Resources\Helpers\TimeSpanToStringConverter.cs" />
+    <Compile Include="Helpers\TimeSpanToStringConverter.cs" />
+    <Compile Include="Views\Games.xaml.cs">
+      <DependentUpon>Games.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -235,6 +242,28 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Entypo-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\img\10090.jpg" />
+    <Resource Include="Resources\img\1250.jpg" />
+    <Resource Include="Resources\img\13210.jpg" />
+    <Resource Include="Resources\img\21660.jpg" />
+    <Resource Include="Resources\img\218620.jpg" />
+    <Resource Include="Resources\img\2200.jpg" />
+    <Resource Include="Resources\img\221380.jpg" />
+    <Resource Include="Resources\img\222880.jpg" />
+    <Resource Include="Resources\img\240.jpg" />
+    <Resource Include="Resources\img\24960.jpg" />
+    <Resource Include="Resources\img\2630.jpg" />
+    <Resource Include="Resources\img\2990.jpg" />
+    <Resource Include="Resources\img\300.jpg" />
+    <Resource Include="Resources\img\42640.jpg" />
+    <Resource Include="Resources\img\440.jpg" />
+    <Resource Include="Resources\img\550.jpg" />
+    <Resource Include="Resources\img\570.jpg" />
+    <Resource Include="Resources\img\6030.jpg" />
+    <Resource Include="Resources\img\730.jpg" />
+    <Resource Include="Resources\img\7940.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,6 +6,7 @@
                       xmlns:helpers="clr-namespace:Lyudmila.Client.Helpers"
                       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                       xmlns:windows="clr-namespace:Lyudmila.Client.Windows"
+                      xmlns:views="clr-namespace:Lyudmila.Client.Views"
                       Title="Lyudmila 🎮"
                       Width="1280"
                       Height="720"
@@ -163,6 +164,7 @@
                         <ListBox x:Name="ItemsListBox"
                                  Margin="0 16 0 16"
                                  PreviewMouseLeftButtonUp="UIElement_OnPreviewMouseLeftButtonUp"
+                                  Width="200"
                                  SelectedIndex="0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="helpers:DataItem">
@@ -171,7 +173,7 @@
                             </ListBox.ItemTemplate>
                             <helpers:DataItem Name="Games" x:Name="_Games">
                                 <helpers:DataItem.Content>
-                                    <TextBlock Text="HELLO" />
+                                    <views:Games />
                                 </helpers:DataItem.Content>
                             </helpers:DataItem>
                         </ListBox>
@@ -189,9 +191,9 @@
                                           Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
                             <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges">
                                 <ListBox Margin="0 6 0 6">
-                                    <ListBoxItem>Hello World</ListBoxItem>
-                                    <ListBoxItem>Nice Popup</ListBoxItem>
-                                    <ListBoxItem>Goodbye.</ListBoxItem>
+                                    <ListBoxItem>put</ListBoxItem>
+                                    <ListBoxItem>stuff</ListBoxItem>
+                                    <ListBoxItem>here</ListBoxItem>
                                 </ListBox>
                             </materialDesign:PopupBox>
                             <TextBlock HorizontalAlignment="Center"
