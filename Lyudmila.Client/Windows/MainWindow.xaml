@@ -64,18 +64,6 @@
                     </Rectangle>
                 </StackPanel>
             </Button>
-            <Button Click="ButtonChat_OnClick" ToolTip="Chat">
-                <StackPanel Orientation="Horizontal">
-                    <Rectangle Width="16"
-                               Height="16"
-                               Fill="{Binding RelativeSource={RelativeSource AncestorType=Button},
-                                              Path=Foreground}">
-                        <Rectangle.OpacityMask>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_chat}" />
-                        </Rectangle.OpacityMask>
-                    </Rectangle>
-                </StackPanel>
-            </Button>
             <Button Click="ButtonTeamSpeak_OnClick" ToolTip="TeamSpeak">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="16"
@@ -115,13 +103,6 @@
             <controls:Flyout Width="500"
                              AnimateOpacity="True"
                              Header="Friends"
-                             Position="Right">
-                <flyouts:Notifications />
-            </controls:Flyout>
-
-            <controls:Flyout Width="500"
-                             AnimateOpacity="True"
-                             Header="Chat"
                              Position="Right">
                 <flyouts:Notifications />
             </controls:Flyout>
@@ -204,7 +185,7 @@
 
                         </DockPanel>
                     </materialDesign:ColorZone>
-                    <ContentControl Margin="16" Content="{Binding ElementName=ItemsListBox, Path=SelectedItem.Content}" />
+                    <ContentControl Margin="16,0,2,0" Content="{Binding ElementName=ItemsListBox, Path=SelectedItem.Content}" />
                 </DockPanel>
             </materialDesign:DrawerHost>
         </materialDesign:DialogHost>
