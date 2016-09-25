@@ -5,8 +5,8 @@
                       xmlns:flyouts="clr-namespace:Lyudmila.Client.Flyouts"
                       xmlns:helpers="clr-namespace:Lyudmila.Client.Helpers"
                       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-                      xmlns:windows="clr-namespace:Lyudmila.Client.Windows"
                       xmlns:views="clr-namespace:Lyudmila.Client.Views"
+                      xmlns:windows="clr-namespace:Lyudmila.Client.Windows"
                       Title="Lyudmila 🎮"
                       Width="1280"
                       Height="720"
@@ -162,9 +162,9 @@
                                                           Mode=TwoWay}"
                                       Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
                         <ListBox x:Name="ItemsListBox"
+                                 Width="200"
                                  Margin="0 16 0 16"
                                  PreviewMouseLeftButtonUp="UIElement_OnPreviewMouseLeftButtonUp"
-                                  Width="200"
                                  SelectedIndex="0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="helpers:DataItem">
@@ -181,11 +181,12 @@
                 </materialDesign:DrawerHost.LeftDrawerContent>
                 <DockPanel>
                     <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                              DockPanel.Dock="Top"
                                               Background="{Binding StatusBarBrush}"
+                                              DockPanel.Dock="Top"
                                               Mode="PrimaryMid">
                         <DockPanel>
                             <ToggleButton x:Name="MenuToggleButton"
+                                          Margin="5,0,0,0"
                                           HorizontalAlignment="Left"
                                           IsChecked="False"
                                           Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
@@ -200,7 +201,7 @@
                                        VerticalAlignment="Center"
                                        FontSize="22"
                                        Text="{Binding ActivePage}" />
-                            
+
                         </DockPanel>
                     </materialDesign:ColorZone>
                     <ContentControl Margin="16" Content="{Binding ElementName=ItemsListBox, Path=SelectedItem.Content}" />

@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using Lyudmila.Client.Helpers;
+using Lyudmila.Client.Views;
 
 using MahApps.Metro.Controls;
 
@@ -35,6 +36,8 @@ namespace Lyudmila.Client.Windows
             ClockUpdater.Start();
         }
 
+        public event Action<SolidColorBrush> SetGamesColor;
+        
         private void ToggleFlyout(int index)
         {
             var flyout = Flyouts.Items[index] as Flyout;
@@ -114,11 +117,13 @@ namespace Lyudmila.Client.Windows
         private void MetroWindow_GotFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             StatusBarBrush = (SolidColorBrush) new BrushConverter().ConvertFrom("#F57C00");
+            SetGamesColor(StatusBarBrush);
         }
 
         private void MetroWindow_LostFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             StatusBarBrush = (SolidColorBrush) new BrushConverter().ConvertFrom("#808080");
+            SetGamesColor(StatusBarBrush);
         }
 
         private void ButtonDownloads_Click(object sender, MouseButtonEventArgs e)
@@ -130,14 +135,17 @@ namespace Lyudmila.Client.Windows
         {
             ToggleFlyout(0);
         }
+
         private void ButtonFriends_OnClick(object sender, RoutedEventArgs e)
         {
             ToggleFlyout(1);
         }
+
         private void ButtonChat_OnClick(object sender, RoutedEventArgs e)
         {
             ToggleFlyout(2);
         }
+
         private void ButtonTeamSpeak_OnClick(object sender, RoutedEventArgs e)
         {
             ToggleFlyout(3);

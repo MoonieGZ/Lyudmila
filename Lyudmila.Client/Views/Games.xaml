@@ -1,6 +1,8 @@
 ﻿<UserControl x:Class="Lyudmila.Client.Views.Games"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:windows="clr-namespace:Lyudmila.Client.Windows"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -8,129 +10,138 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Border Grid.Row="0"
                 Grid.Column="0"
+                Width="390"
                 Margin="10"
-                BorderBrush="{DynamicResource AccentColorBrush}"
+                BorderBrush="{Binding ActiveColorBrush}"
                 BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity="1"
                                   ShadowDepth="0"
-                                  Color="#F57C00" />
+                                  Color="{Binding ActiveColor}" />
             </Border.Effect>
-            <Image Width="390" Source="../Resources/img/10090.jpg" />
+            <Image Source="../Resources/img/10090.jpg" />
         </Border>
         <Border Grid.Row="0"
                 Grid.Column="1"
+                Width="390"
                 Margin="10"
-                BorderBrush="{DynamicResource AccentColorBrush}"
+                BorderBrush="{Binding ActiveColorBrush}"
                 BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity="1"
                                   ShadowDepth="0"
-                                  Color="#F57C00" />
+                                  Color="{Binding ActiveColor}" />
             </Border.Effect>
-            <Image Width="390" Source="../Resources/img/1250.jpg" />
+            <Image Source="../Resources/img/1250.jpg" />
         </Border>
         <Border Grid.Row="0"
                 Grid.Column="2"
+                Width="390"
                 Margin="10"
-                BorderBrush="{DynamicResource AccentColorBrush}"
+                BorderBrush="{Binding ActiveColorBrush}"
                 BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity="1"
                                   ShadowDepth="0"
-                                  Color="#F57C00" />
+                                  Color="{Binding ActiveColor}" />
             </Border.Effect>
-            <Image Width="390" Source="../Resources/img/13210.jpg" />
+            <Image Source="../Resources/img/13210.jpg" />
         </Border>
 
         <Border Grid.Row="1"
                 Grid.Column="0"
+                Width="390"
                 Margin="10"
-                BorderBrush="{DynamicResource AccentColorBrush}"
+                BorderBrush="{Binding ActiveColorBrush}"
                 BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity="1"
                                   ShadowDepth="0"
-                                  Color="#F57C00" />
+                                  Color="{Binding ActiveColor}" />
             </Border.Effect>
-            <Image Width="390" Source="../Resources/img/21660.jpg" />
+            <Image Source="../Resources/img/21660.jpg" />
         </Border>
         <Border Grid.Row="1"
                 Grid.Column="1"
+                Width="390"
                 Margin="10"
-                BorderBrush="{DynamicResource AccentColorBrush}"
+                BorderBrush="{Binding ActiveColorBrush}"
                 BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity="1"
                                   ShadowDepth="0"
-                                  Color="#F57C00" />
+                                  Color="{Binding ActiveColor}" />
             </Border.Effect>
-            <Image Width="390" Source="../Resources/img/218620.jpg" />
+            <Image Source="../Resources/img/218620.jpg" />
         </Border>
         <Border Grid.Row="1"
                 Grid.Column="2"
+                Width="390"
                 Margin="10"
-                BorderBrush="{DynamicResource AccentColorBrush}"
+                BorderBrush="{Binding ActiveColorBrush}"
                 BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity="1"
                                   ShadowDepth="0"
-                                  Color="#F57C00" />
+                                  Color="{Binding ActiveColor}" />
             </Border.Effect>
-            <Image Width="390" Source="../Resources/img/2200.jpg" />
+            <Image Source="../Resources/img/2200.jpg" />
         </Border>
 
         <Border Grid.Row="2"
                 Grid.Column="0"
+                Width="390"
                 Margin="10"
-                BorderBrush="{DynamicResource AccentColorBrush}"
+                BorderBrush="{Binding ActiveColorBrush}"
                 BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity="1"
                                   ShadowDepth="0"
-                                  Color="#F57C00" />
+                                  Color="{Binding ActiveColor}" />
             </Border.Effect>
-            <Image Width="390" Source="../Resources/img/300.jpg" />
+            <Image Source="../Resources/img/300.jpg" />
         </Border>
         <Border Grid.Row="2"
                 Grid.Column="1"
+                Width="390"
                 Margin="10"
-                BorderBrush="{DynamicResource AccentColorBrush}"
+                BorderBrush="{Binding ActiveColorBrush}"
                 BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity="1"
                                   ShadowDepth="0"
-                                  Color="#F57C00" />
+                                  Color="{Binding ActiveColor}" />
             </Border.Effect>
-            <Image Width="390" Source="../Resources/img/42640.jpg" />
+            <Image Source="../Resources/img/42640.jpg" />
         </Border>
         <Border Grid.Row="2"
                 Grid.Column="2"
+                Width="390"
                 Margin="10"
-                BorderBrush="{DynamicResource AccentColorBrush}"
+                BorderBrush="{Binding ActiveColorBrush}"
                 BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity="1"
                                   ShadowDepth="0"
-                                  Color="#F57C00" />
+                                  Color="{Binding ActiveColor}" />
             </Border.Effect>
-            <Image Width="390" Source="../Resources/img/6030.jpg" />
+            <Image Source="../Resources/img/6030.jpg" />
         </Border>
     </Grid>
 </UserControl>
