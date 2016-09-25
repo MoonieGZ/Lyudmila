@@ -3,6 +3,7 @@
 // -----------------------------------------------------------
 
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 
@@ -24,6 +25,17 @@ namespace Lyudmila.Client.Views
 
             ((MainWindow) Application.Current.MainWindow).SetGamesColor += _SetColor;
         }
+
+        #region buttons
+
+        private void BtnClick_More(object sender, RoutedEventArgs e)
+        {
+            Process.Start("http://wiki");
+        }
+
+        #endregion
+
+        #region color stuff
 
         public Color ActiveColor
         {
@@ -57,5 +69,7 @@ namespace Lyudmila.Client.Views
         {
             return Color.FromArgb(br.Color.A, br.Color.R, br.Color.G, br.Color.B);
         }
+
+        #endregion
     }
 }

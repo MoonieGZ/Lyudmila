@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Lyudmila.Client</RootNamespace>
     <AssemblyName>Lyudmila.Client</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -62,7 +62,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MahApps.Metro.IconPacks.Modern, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.IconPacks.Modern.1.1.0\lib\net45\MahApps.Metro.IconPacks.Modern.dll</HintPath>
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Modern.1.1.0\lib\net46\MahApps.Metro.IconPacks.Modern.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -81,8 +81,17 @@
       <HintPath>..\packages\Metro.Dialogs.0.0.0.2\lib\net45\Metro.Dialogs.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NAudio, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.7.3\lib\net35\NAudio.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="policy.2.0.taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <HintPath>..\packages\taglib.2.1.0.0\lib\policy.2.0.taglib-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.4.0-ALPHA001\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -96,9 +105,19 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <HintPath>..\packages\taglib.2.1.0.0\lib\taglib-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfMouseWheelLib">
+      <HintPath>..\packages\WpfMouseWheelLib.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFSoundVisualizationLib">
+      <HintPath>..\packages\WPFSoundVisualizationLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -169,6 +188,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Music.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -193,9 +216,15 @@
     <Compile Include="Helpers\DataItem.cs" />
     <Compile Include="Helpers\MaterialDesignIcons.cs" />
     <Compile Include="Helpers\MaterialDesignIconsCodepoints.cs" />
+    <Compile Include="Helpers\NAudioEngine.cs" />
+    <Compile Include="Helpers\SampleAggregator.cs" />
     <Compile Include="Helpers\TimeSpanToStringConverter.cs" />
+    <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Views\Games.xaml.cs">
       <DependentUpon>Games.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Music.xaml.cs">
+      <DependentUpon>Music.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -235,32 +264,37 @@
     <Resource Include="Resources\Green-Leaf.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\img\CoD5.jpg" />
+    <Resource Include="Resources\img\KF.jpg" />
+    <Resource Include="Resources\img\UT3.jpg" />
+    <Resource Include="Resources\img\SSIV.jpg" />
+    <Resource Include="Resources\img\Q3.jpg" />
+    <Resource Include="Resources\img\AoE2HD.jpg" />
+    <Resource Include="Resources\img\Insurgency.jpg" />
+    <Resource Include="Resources\img\CSS.jpg" />
+    <Resource Include="Resources\img\BFBC2.jpg" />
+    <Resource Include="Resources\img\CoD2.jpg" />
+    <Resource Include="Resources\img\F2.jpg" />
+    <Resource Include="Resources\img\DoDS.jpg" />
+    <Resource Include="Resources\img\Blur.jpg" />
+    <Resource Include="Resources\img\TF2.jpg" />
+    <Resource Include="Resources\img\L4D2.jpg" />
+    <Resource Include="Resources\img\D2.jpg" />
+    <Resource Include="Resources\img\SWJK2.jpg" />
+    <Resource Include="Resources\img\CSGO.jpg" />
+    <Resource Include="Resources\img\CoD4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GamesList.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\img\more.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\WindowsIcons-license.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Entypo-license.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\img\10090.jpg" />
-    <Resource Include="Resources\img\1250.jpg" />
-    <Resource Include="Resources\img\13210.jpg" />
-    <Resource Include="Resources\img\21660.jpg" />
-    <Resource Include="Resources\img\218620.jpg" />
-    <Resource Include="Resources\img\2200.jpg" />
-    <Resource Include="Resources\img\221380.jpg" />
-    <Resource Include="Resources\img\222880.jpg" />
-    <Resource Include="Resources\img\240.jpg" />
-    <Resource Include="Resources\img\24960.jpg" />
-    <Resource Include="Resources\img\2630.jpg" />
-    <Resource Include="Resources\img\2990.jpg" />
-    <Resource Include="Resources\img\300.jpg" />
-    <Resource Include="Resources\img\42640.jpg" />
-    <Resource Include="Resources\img\440.jpg" />
-    <Resource Include="Resources\img\550.jpg" />
-    <Resource Include="Resources\img\570.jpg" />
-    <Resource Include="Resources\img\6030.jpg" />
-    <Resource Include="Resources\img\730.jpg" />
-    <Resource Include="Resources\img\7940.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

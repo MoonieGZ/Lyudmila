@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="Lyudmila.Client.Views.Games"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:input="clr-namespace:Lada.Windows.Input;assembly=WpfMouseWheelLib"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <UserControl.Resources>
@@ -11,10 +12,14 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <ScrollViewer>
+    <ScrollViewer input:MouseWheel.Enhanced="True" input:MouseWheel.VScrollSmoothing="Smooth" input:MouseWheel.Smoothing="Smooth">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="16" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -38,7 +43,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/10090.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/AoE2HD.jpg" />
+                </Button>
             </Border>
             <Border Grid.Row="1"
                     Grid.Column="1"
@@ -52,7 +59,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/1250.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/BFBC2.jpg" />
+                </Button>
             </Border>
             <Border Grid.Row="1"
                     Grid.Column="2"
@@ -66,7 +75,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/13210.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/Blur.jpg" />
+                </Button>
             </Border>
 
             <Border Grid.Row="2"
@@ -81,7 +92,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/21660.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/CoD2.jpg" />
+                </Button>
             </Border>
             <Border Grid.Row="2"
                     Grid.Column="1"
@@ -95,7 +108,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/218620.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/CoD4.jpg" />
+                </Button>
             </Border>
             <Border Grid.Row="2"
                     Grid.Column="2"
@@ -109,7 +124,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/2200.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/CoD5.jpg" />
+                </Button>
             </Border>
 
             <Border Grid.Row="3"
@@ -124,7 +141,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/300.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/CSGO.jpg" />
+                </Button>
             </Border>
             <Border Grid.Row="3"
                     Grid.Column="1"
@@ -138,7 +157,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/42640.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/CSS.jpg" />
+                </Button>
             </Border>
             <Border Grid.Row="3"
                     Grid.Column="2"
@@ -152,10 +173,12 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/6030.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/DoDS.jpg" />
+                </Button>
             </Border>
 
-            <Border Grid.Row="4"
+            <Border Grid.Row="5"
                     Grid.Column="0"
                     Width="390"
                     Margin="10"
@@ -167,9 +190,11 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/7940.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/D2.jpg" />
+                </Button>
             </Border>
-            <Border Grid.Row="4"
+            <Border Grid.Row="5"
                     Grid.Column="1"
                     Width="390"
                     Margin="10"
@@ -181,9 +206,11 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/550.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/F2.jpg" />
+                </Button>
             </Border>
-            <Border Grid.Row="4"
+            <Border Grid.Row="5"
                     Grid.Column="2"
                     Width="390"
                     Margin="10"
@@ -195,7 +222,140 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Image Source="../Resources/img/730.jpg" />
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/Insurgency.jpg" />
+                </Button>
+            </Border>
+
+            <Border Grid.Row="6"
+                    Grid.Column="0"
+                    Width="390"
+                    Margin="10"
+                    BorderBrush="{Binding ActiveColorBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
+                                      Opacity="1"
+                                      ShadowDepth="0"
+                                      Color="{Binding ActiveColor}" />
+                </Border.Effect>
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/KF.jpg" />
+                </Button>
+            </Border>
+            <Border Grid.Row="6"
+                    Grid.Column="1"
+                    Width="390"
+                    Margin="10"
+                    BorderBrush="{Binding ActiveColorBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
+                                      Opacity="1"
+                                      ShadowDepth="0"
+                                      Color="{Binding ActiveColor}" />
+                </Border.Effect>
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/L4D2.jpg" />
+                </Button>
+            </Border>
+            <Border Grid.Row="6"
+                    Grid.Column="2"
+                    Width="390"
+                    Margin="10"
+                    BorderBrush="{Binding ActiveColorBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
+                                      Opacity="1"
+                                      ShadowDepth="0"
+                                      Color="{Binding ActiveColor}" />
+                </Border.Effect>
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/Q3.jpg" />
+                </Button>
+            </Border>
+
+            <Border Grid.Row="7"
+                    Grid.Column="0"
+                    Width="390"
+                    Margin="10"
+                    BorderBrush="{Binding ActiveColorBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
+                                      Opacity="1"
+                                      ShadowDepth="0"
+                                      Color="{Binding ActiveColor}" />
+                </Border.Effect>
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/SWJK2.jpg" />
+                </Button>
+            </Border>
+            <Border Grid.Row="7"
+                    Grid.Column="1"
+                    Width="390"
+                    Margin="10"
+                    BorderBrush="{Binding ActiveColorBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
+                                      Opacity="1"
+                                      ShadowDepth="0"
+                                      Color="{Binding ActiveColor}" />
+                </Border.Effect>
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/SSIV.jpg" />
+                </Button>
+            </Border>
+            <Border Grid.Row="7"
+                    Grid.Column="2"
+                    Width="390"
+                    Margin="10"
+                    BorderBrush="{Binding ActiveColorBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
+                                      Opacity="1"
+                                      ShadowDepth="0"
+                                      Color="{Binding ActiveColor}" />
+                </Border.Effect>
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/TF2.jpg" />
+                </Button>
+            </Border>
+
+            <Border Grid.Row="8"
+                    Grid.Column="0"
+                    Width="390"
+                    Margin="10"
+                    BorderBrush="{Binding ActiveColorBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
+                                      Opacity="1"
+                                      ShadowDepth="0"
+                                      Color="{Binding ActiveColor}" />
+                </Border.Effect>
+                <Button Height="182">
+                    <Image Margin="-22" Source="../Resources/img/UT3.jpg" />
+                </Button>
+            </Border>
+            <Border Grid.Row="8"
+                    Grid.Column="1"
+                    Width="390"
+                    Margin="10"
+                    BorderBrush="{Binding ActiveColorBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
+                                      Opacity="1"
+                                      ShadowDepth="0"
+                                      Color="{Binding ActiveColor}" />
+                </Border.Effect>
+                <Button Height="182" Click="BtnClick_More">
+                    <Image Margin="-22" Source="../Resources/img/more.png" />
+                </Button>
             </Border>
         </Grid>
     </ScrollViewer>

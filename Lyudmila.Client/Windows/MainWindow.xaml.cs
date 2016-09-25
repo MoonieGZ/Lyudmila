@@ -5,6 +5,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -157,5 +158,19 @@ namespace Lyudmila.Client.Windows
         }
 
         #endregion
+
+        private void ItemsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ItemsListBox.SelectedIndex == 1)
+            {
+                ActivePage = "Music";
+
+                if (!Music._ready)
+                {
+                    Music.Init();
+                    DrawerHost.IsLeftDrawerOpen = false;
+                }
+            }
+        }
     }
 }

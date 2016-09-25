@@ -133,7 +133,7 @@
         </Grid.ColumnDefinitions>
 
         <materialDesign:DialogHost Identifier="RootDialog">
-            <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+            <materialDesign:DrawerHost x:Name="DrawerHost" IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
                 <materialDesign:DrawerHost.LeftDrawerContent>
                     <StackPanel Orientation="Vertical">
                         <ToggleButton Margin="16"
@@ -146,15 +146,21 @@
                                  Width="200"
                                  Margin="0 16 0 16"
                                  PreviewMouseLeftButtonUp="UIElement_OnPreviewMouseLeftButtonUp"
-                                 SelectedIndex="0">
+                                 SelectedIndex="0"
+                                 SelectionChanged="ItemsListBox_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="helpers:DataItem">
                                     <TextBlock Margin="32 0 32 0" Text="{Binding Name}" />
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
-                            <helpers:DataItem Name="Games" x:Name="_Games">
+                            <helpers:DataItem Name="🎮 Games" x:Name="_Games">
                                 <helpers:DataItem.Content>
                                     <views:Games />
+                                </helpers:DataItem.Content>
+                            </helpers:DataItem>
+                            <helpers:DataItem Name="🎵 Music" x:Name="_Music">
+                                <helpers:DataItem.Content>
+                                    <views:Music />
                                 </helpers:DataItem.Content>
                             </helpers:DataItem>
                         </ListBox>
