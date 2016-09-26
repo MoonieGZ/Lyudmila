@@ -184,6 +184,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Friends.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Games.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -220,6 +224,9 @@
     <Compile Include="Helpers\SampleAggregator.cs" />
     <Compile Include="Helpers\TimeSpanToStringConverter.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
+    <Compile Include="Views\Friends.xaml.cs">
+      <DependentUpon>Friends.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Games.xaml.cs">
       <DependentUpon>Games.xaml</DependentUpon>
     </Compile>

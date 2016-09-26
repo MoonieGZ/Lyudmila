@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="Lyudmila.Client.Views.Friends"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:input="clr-namespace:Lada.Windows.Input;assembly=WpfMouseWheelLib"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="450"
+             d:DesignWidth="700"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Resources/Themes/ScrollBar.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ScrollViewer input:MouseWheel.Enhanced="True"
+                  input:MouseWheel.Smoothing="Smooth"
+                  input:MouseWheel.VScrollSmoothing="Smooth">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+
+            <materialDesign:Card Grid.Row="0"
+                                 Grid.Column="0"
+                                 Margin="5"
+                                 Background="{DynamicResource CheckBoxBackgroundBrush}"
+                                 Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Rectangle Grid.Row="0"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               Height="35"
+                               VerticalAlignment="Center"
+                               Fill="{DynamicResource PrimaryHueDarkBrush}" />
+                    <Label x:Name="Username"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           Margin="5"
+                           VerticalAlignment="Center"
+                           Content="Seditio des Plages"
+                           FontWeight="Bold" />
+                    <Rectangle Grid.Row="1"
+                               Grid.Column="0"
+                               Height="50"
+                               VerticalAlignment="Center" />
+                    <materialDesign:PackIcon Grid.Row="1"
+                                             Grid.Column="0"
+                                             Width="45"
+                                             Height="45"
+                                             Margin="5"
+                                             VerticalAlignment="Center"
+                                             Kind="Account" />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Margin="5,-15,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource AccentBaseColorBrush}"
+                               Text="In-Game" />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Margin="5,15,10,0"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource AccentBaseColorBrush}"
+                               Text="Counter-Strike: Global Offensive" />
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+
+    </ScrollViewer>
+</UserControl>
