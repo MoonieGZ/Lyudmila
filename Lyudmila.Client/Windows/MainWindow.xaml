@@ -11,6 +11,7 @@
                       Width="1280"
                       Height="720"
                       Background="{DynamicResource MaterialDesignPaper}"
+                      Closing="MetroWindow_Closing"
                       DataContext="{Binding RelativeSource={RelativeSource Self}}"
                       FontFamily="{DynamicResource MaterialDesignFont}"
                       GlowBrush="{DynamicResource AccentColorBrush}"
@@ -163,6 +164,11 @@
                                     <views:Music />
                                 </helpers:DataItem.Content>
                             </helpers:DataItem>
+                            <helpers:DataItem Name="👤 Friends" x:Name="_Friends">
+                                <helpers:DataItem.Content>
+                                    <views:Friends />
+                                </helpers:DataItem.Content>
+                            </helpers:DataItem>
                         </ListBox>
                     </StackPanel>
                 </materialDesign:DrawerHost.LeftDrawerContent>
@@ -191,7 +197,7 @@
 
                         </DockPanel>
                     </materialDesign:ColorZone>
-                    <ContentControl Margin="16,0,2,0" Content="{Binding ElementName=ItemsListBox, Path=SelectedItem.Content}" />
+                    <ContentControl Margin="0,0,2,0" Content="{Binding ElementName=ItemsListBox, Path=SelectedItem.Content}" />
                 </DockPanel>
             </materialDesign:DrawerHost>
         </materialDesign:DialogHost>
