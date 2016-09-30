@@ -183,5 +183,10 @@ namespace Lyudmila.Client.Windows
                 }
             }
         }
+
+        private void MetroWindow_Closing(object sender, CancelEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
