@@ -133,7 +133,7 @@ namespace Lyudmila.Client.Helpers
             if(ActiveStream != null)
                 maxFrequency = ActiveStream.WaveFormat.SampleRate / 2.0d;
             else
-                maxFrequency = 22050; // Assume a default 44.1 kHz sample rate.
+                maxFrequency = 24000; // Assume a default 44.1 kHz sample rate.
             return (int) (frequency / maxFrequency * (fftDataSize / 2));
         }
 
@@ -405,8 +405,10 @@ namespace Lyudmila.Client.Helpers
                     GenerateWaveformData(path);
                     CanPlay = true;
                 }
-                catch
+                catch(Exception ex)
                 {
+                    MessageBox.Show($"{ex.GetType()}: {ex.Message}");
+
                     ActiveStream = null;
                     CanPlay = false;
                 }
