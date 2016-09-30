@@ -17,7 +17,17 @@ namespace Lyudmila.Client
     {
         private void StartApp(object sender, StartupEventArgs e)
         {
-            if(Directory.Exists("Resources"))
+            AppDomain.CurrentDomain.UnhandledException += delegate (object sender2, UnhandledExceptionEventArgs eargs)
+            {
+                var exception = (Exception)eargs.ExceptionObject;
+
+                if (MessageBox.Show($"Unhandled exception:{Environment.NewLine}{exception.GetType()}: {exception.Message}", "Lyudmila", MessageBoxButton.OK, MessageBoxImage.Error) == MessageBoxResult.OK)
+                {
+                    Environment.Exit(1);
+                }
+            };
+
+            if (Directory.Exists("Resources"))
             {
                 if(!File.Exists("bass.dll"))
                     File.Move("Resources\\dep\\bass.dll", Path.Combine(Environment.CurrentDirectory, "bass.dll"));
