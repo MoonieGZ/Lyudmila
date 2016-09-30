@@ -161,10 +161,21 @@ namespace Lyudmila.Client.Windows
 
         private void ItemsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            switch(ItemsListBox.SelectedIndex)
+            {
+                case 0:
+                    ActivePage = "Games";
+                    break;
+                case 1:
+                    ActivePage = "Music";
+                    break;
+                case 2:
+                    ActivePage = "Friends";
+                    break;
+            }
+
             if(ItemsListBox.SelectedIndex == 1)
             {
-                ActivePage = "Music";
-
                 if (!Music._ready)
                 {
                     Music.Init();
