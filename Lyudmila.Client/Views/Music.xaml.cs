@@ -21,7 +21,6 @@ using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
 
 using Application = System.Windows.Application;
-using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Lyudmila.Client.Views
 {
@@ -46,9 +45,8 @@ namespace Lyudmila.Client.Views
 
             var soundEngine = NAudioEngine.Instance;
 
-            UIHelper.Bind(soundEngine, "CanPause", Button_PlayPause, IsEnabledProperty);
-
             spectrumAnalyzer.RegisterSoundPlayer(soundEngine);
+            waveformTimeline.RegisterSoundPlayer(soundEngine);
 
             LoadSongList += LoadSongs;
         }
@@ -69,11 +67,12 @@ namespace Lyudmila.Client.Views
                     else
                     {
                         Settings.Default.MusicDir = answer;
+                        Settings.Default.Save();
                         _ready = true;
-
-                        LoadSongList(null);
                     }
                 }
+
+                LoadSongList(null);
             }
         }
 
@@ -108,6 +107,7 @@ namespace Lyudmila.Client.Views
                 if(NAudioEngine.Instance.CanPause)
                 {
                     NAudioEngine.Instance.Pause();
+                    PlayPauseIcon.Kind = PackIconKind.Play;
                 }
             }
             else
@@ -115,6 +115,7 @@ namespace Lyudmila.Client.Views
                 if(NAudioEngine.Instance.CanPlay)
                 {
                     NAudioEngine.Instance.Play();
+                    PlayPauseIcon.Kind = PackIconKind.Pause;
                 }
             }
         }
@@ -137,18 +138,69 @@ namespace Lyudmila.Client.Views
         {
             MediaPlayer.Source = new Uri(Path.Combine(Settings.Default.MusicDir, SongList.SelectedItem + ".mp3"));
             SongTitle.Content = SongList.SelectedItem.ToString();
-            // Play();
+
+            NAudioEngine.Instance.OpenFile(Path.Combine(Settings.Default.MusicDir, SongList.SelectedItem + ".mp3"));
+            NAudioEngine.Instance.Play();
+
             PlayPauseIcon.Kind = PackIconKind.Pause;
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void ChangeFolder(object sender, RoutedEventArgs e)
         {
-            var openDialog = new OpenFileDialog { Filter = "(*.mp3, *.m4a)|*.mp3;*.m4a" };
-            if (openDialog.ShowDialog() == true)
+            if(NAudioEngine.Instance.CanPause)
+                NAudioEngine.Instance.Pause();
+            var answer = ShowSelectFolderDialog("Select music folder:", "C:\\");
+            if(!string.IsNullOrEmpty(answer))
             {
-                NAudioEngine.Instance.OpenFile(openDialog.FileName);
-                SongTitle.Content = openDialog.FileName;
+                Settings.Default.MusicDir = answer;
+                Settings.Default.Save();
+
+                LoadSongList(null);
             }
+        }
+
+        private void Btn_Previous(object sender, RoutedEventArgs e)
+        {
+            foreach(var song in SongList.Items)
+            {
+                var currentSong = NAudioEngine.Instance.FileTag.Name.Split('\\').Last().Replace(".mp3", "");
+
+                if(song.Equals(currentSong))
+                {
+                    var index = SongList.Items.IndexOf(currentSong) - 1;
+                    SongList.SelectedIndex = index == -1 ? SongList.Items.Count - 1 : index;
+
+                    PlayNew();
+
+                    break;
+                }
+            }
+        }
+
+        private void Btn_Next(object sender, RoutedEventArgs e)
+        {
+            foreach(var song in SongList.Items)
+            {
+                var currentSong = NAudioEngine.Instance.FileTag.Name.Split('\\').Last().Replace(".mp3", "");
+
+                if(song.Equals(currentSong))
+                {
+                    var index = SongList.Items.IndexOf(currentSong) + 1;
+                    SongList.SelectedIndex = index > SongList.Items.Count ? 0 : index;
+
+                    PlayNew();
+
+                    break;
+                }
+            }
+        }
+
+        private void PlayNew()
+        {
+            NAudioEngine.Instance.OpenFile(Path.Combine(Settings.Default.MusicDir, SongList.SelectedItem + ".mp3"));
+            NAudioEngine.Instance.Play();
+
+            SongTitle.Content = SongList.SelectedItem.ToString();
         }
     }
 }
