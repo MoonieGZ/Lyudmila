@@ -12,7 +12,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <ScrollViewer input:MouseWheel.Enhanced="True" input:MouseWheel.VScrollSmoothing="Smooth" input:MouseWheel.Smoothing="Smooth">
+    <ScrollViewer input:MouseWheel.Enhanced="True" input:MouseWheel.VScrollSmoothing="Smooth" input:MouseWheel.Smoothing="Smooth" input:MouseWheel.ScrollMode="Auto">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="16" />
