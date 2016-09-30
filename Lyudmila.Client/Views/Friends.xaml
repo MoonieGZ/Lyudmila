@@ -6,7 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              d:DesignHeight="450"
-             d:DesignWidth="700"
+             d:DesignWidth="1000"
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
              mc:Ignorable="d">
     <UserControl.Resources>
@@ -21,13 +21,13 @@
                   input:MouseWheel.VScrollSmoothing="Smooth">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="275" />
+                <ColumnDefinition Width="275" />
+                <ColumnDefinition Width="275" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="150" />
-                <RowDefinition Height="100" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <materialDesign:Card Grid.Row="0"
@@ -52,8 +52,7 @@
                                Height="35"
                                VerticalAlignment="Center"
                                Fill="{DynamicResource PrimaryHueDarkBrush}" />
-                    <Label x:Name="Username"
-                           Grid.Row="0"
+                    <Label Grid.Row="0"
                            Grid.Column="0"
                            Grid.ColumnSpan="2"
                            Margin="5"
@@ -83,6 +82,116 @@
                                VerticalAlignment="Center"
                                Foreground="{DynamicResource AccentBaseColorBrush}"
                                Text="Counter-Strike: Global Offensive" />
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Row="0"
+                                 Grid.Column="1"
+                                 Margin="5"
+                                 Background="{DynamicResource CheckBoxBackgroundBrush}"
+                                 Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Rectangle Grid.Row="0"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               Height="35"
+                               VerticalAlignment="Center"
+                               Fill="{DynamicResource PrimaryHueDarkBrush}" />
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           Margin="5"
+                           VerticalAlignment="Center"
+                           Content="Cunt des Plages"
+                           FontWeight="Bold" />
+                    <Rectangle Grid.Row="1"
+                               Grid.Column="0"
+                               Height="50"
+                               VerticalAlignment="Center" />
+                    <materialDesign:PackIcon Grid.Row="1"
+                                             Grid.Column="0"
+                                             Width="45"
+                                             Height="45"
+                                             Margin="5"
+                                             VerticalAlignment="Center"
+                                             Kind="Account" />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Margin="5,-15,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource AccentBaseColorBrush}"
+                               Text="In-Game" />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Margin="5,15,10,0"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource AccentBaseColorBrush}"
+                               Text="Counter-Strike: Source" />
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Row="0"
+                                 Grid.Column="2"
+                                 Margin="5"
+                                 Background="{DynamicResource CheckBoxBackgroundBrush}"
+                                 Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Rectangle Grid.Row="0"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               Height="35"
+                               VerticalAlignment="Center"
+                               Fill="{DynamicResource PrimaryHueDarkBrush}" />
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           Margin="5"
+                           VerticalAlignment="Center"
+                           Content="Civilian des Plages"
+                           FontWeight="Bold" />
+                    <Rectangle Grid.Row="1"
+                               Grid.Column="0"
+                               Height="50"
+                               VerticalAlignment="Center" />
+                    <materialDesign:PackIcon Grid.Row="1"
+                                             Grid.Column="0"
+                                             Width="45"
+                                             Height="45"
+                                             Margin="5"
+                                             VerticalAlignment="Center"
+                                             Kind="Account" />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Margin="5,-15,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource AccentBaseColorBrush}"
+                               Text="In-Game" />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Margin="5,15,10,0"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource AccentBaseColorBrush}"
+                               Text="Call of Duty: Elevator Warfare" />
                 </Grid>
             </materialDesign:Card>
         </Grid>
