@@ -137,19 +137,19 @@ namespace Lyudmila.Client.Windows
             ToggleFlyout(0);
         }
 
-        private void ButtonFriends_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonTeamSpeak_OnClick(object sender, RoutedEventArgs e)
         {
             ToggleFlyout(1);
         }
 
-        private void ButtonTeamSpeak_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonNotifications_OnClick(object sender, RoutedEventArgs e)
         {
             ToggleFlyout(2);
         }
 
-        private void ButtonNotifications_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonFriends_OnClick(object sender, RoutedEventArgs e)
         {
-            ToggleFlyout(3);
+            ItemsListBox.SelectedIndex = 2;
         }
 
         private void UIElement_OnPreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
