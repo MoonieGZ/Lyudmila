@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
 
+using NAudio.CoreAudioApi;
 using NAudio.Wave;
 
 using TagLib;
@@ -74,7 +75,7 @@ namespace Lyudmila.Client.Helpers
         private double channelLength;
         private double channelPosition;
         private bool inChannelSet;
-        private WaveOut waveOutDevice;
+        private WasapiOut waveOutDevice;
         private WaveStream activeStream;
         private WaveChannel32 inputStream;
         private SampleAggregator sampleAggregator;
@@ -133,7 +134,7 @@ namespace Lyudmila.Client.Helpers
             if(ActiveStream != null)
                 maxFrequency = ActiveStream.WaveFormat.SampleRate / 2.0d;
             else
-                maxFrequency = 24000; // Assume a default 44.1 kHz sample rate.
+                maxFrequency = 24000; // Assume a default 48 kHz sample rate.
             return (int) (frequency / maxFrequency * (fftDataSize / 2));
         }
 
@@ -394,7 +395,7 @@ namespace Lyudmila.Client.Helpers
             {
                 try
                 {
-                    waveOutDevice = new WaveOut {DesiredLatency = 100};
+                    waveOutDevice = new WasapiOut(AudioClientShareMode.Shared, 100);
                     ActiveStream = new Mp3FileReader(path);
                     inputStream = new WaveChannel32(ActiveStream);
                     sampleAggregator = new SampleAggregator(fftDataSize);
