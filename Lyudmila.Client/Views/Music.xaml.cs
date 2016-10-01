@@ -6,7 +6,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -21,6 +20,7 @@ using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
 
 using Application = System.Windows.Application;
+using MessageBox = System.Windows.MessageBox;
 
 namespace Lyudmila.Client.Views
 {
@@ -30,14 +30,6 @@ namespace Lyudmila.Client.Views
     public partial class Music
     {
         public static bool _ready;
-
-        private readonly MediaElement MediaPlayer = new MediaElement
-        {
-            Volume = 1,
-            Visibility = Visibility.Collapsed,
-            LoadedBehavior = MediaState.Manual,
-            UnloadedBehavior = MediaState.Manual
-        };
 
         public Music()
         {
@@ -57,7 +49,7 @@ namespace Lyudmila.Client.Views
         {
             if(!_ready)
             {
-                if(string.IsNullOrEmpty(Settings.Default.MusicDir))
+                if(string.IsNullOrEmpty(Settings.Default.MusicDir) || !Directory.Exists(Settings.Default.MusicDir))
                 {
                     var answer = ShowSelectFolderDialog("Select music folder:", "C:\\");
                     if(string.IsNullOrEmpty(answer))
@@ -104,9 +96,9 @@ namespace Lyudmila.Client.Views
         {
             if(NAudioEngine.Instance.IsPlaying)
             {
-                if(NAudioEngine.Instance.CanPause)
+                if (NAudioEngine.Instance.CanStop)
                 {
-                    NAudioEngine.Instance.Pause();
+                    NAudioEngine.Instance.Stop();
                     PlayPauseIcon.Kind = PackIconKind.Play;
                 }
             }
@@ -132,11 +124,8 @@ namespace Lyudmila.Client.Views
             }
         }
 
-        private void VolumeChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {}
-
         private void SongList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            MediaPlayer.Source = new Uri(Path.Combine(Settings.Default.MusicDir, SongList.SelectedItem + ".mp3"));
             SongTitle.Content = SongList.SelectedItem.ToString();
 
             NAudioEngine.Instance.OpenFile(Path.Combine(Settings.Default.MusicDir, SongList.SelectedItem + ".mp3"));
