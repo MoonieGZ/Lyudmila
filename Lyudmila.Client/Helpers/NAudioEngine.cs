@@ -395,7 +395,7 @@ namespace Lyudmila.Client.Helpers
             {
                 try
                 {
-                    waveOutDevice = new WasapiOut(AudioClientShareMode.Shared, 100);
+                    waveOutDevice = new WasapiOut(new MMDeviceEnumerator().GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia), AudioClientShareMode.Shared, false, 2);
                     ActiveStream = new Mp3FileReader(path);
                     inputStream = new WaveChannel32(ActiveStream);
                     sampleAggregator = new SampleAggregator(fftDataSize);
