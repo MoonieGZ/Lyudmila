@@ -212,3 +212,4 @@ _Pvt_Extensions/
 ModelManifest.xml
 
 !packages/WpfMouseWheelLib.dll
+!packages/WPFSoundVisualizationLib.dll
