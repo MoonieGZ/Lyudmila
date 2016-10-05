@@ -3,10 +3,14 @@
 // -----------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 
 using Lyudmila.Client.Windows;
+
+using MaterialDesignThemes.Wpf;
 
 namespace Lyudmila.Client
 {
@@ -27,15 +31,64 @@ namespace Lyudmila.Client
                 }
             };
 
-            if (Directory.Exists("Resources"))
+            if (File.Exists("easteregg.ini"))
             {
-                if(!File.Exists("bass.dll"))
-                    File.Move("Resources\\dep\\bass.dll", Path.Combine(Environment.CurrentDirectory, "bass.dll"));
-                if (!File.Exists("bass_aac.dll"))
-                    File.Move("Resources\\dep\\bass_aac.dll", Path.Combine(Environment.CurrentDirectory, "bass_aac.dll"));
-                if (!File.Exists("Bass.Net.dll"))
-                    File.Move("Resources\\dep\\Bass.Net.dll", Path.Combine(Environment.CurrentDirectory, "Bass.Net.dll"));
-                Directory.Delete("Resources", true);
+                var color = string.Empty;
+                var accent = string.Empty;
+                var file = File.ReadAllLines("easteregg.ini");
+                if (file.Length.Equals(2)) // Color, Accent
+                {
+                    color = file[0];
+                    accent = file[1];
+                }
+                if (file.Length.Equals(1)) // Color
+                {
+                    color = file[0];
+                }
+                try
+                {
+                    var accentList = new List<string>();
+                    var colorList = new List<string>();
+
+                    var assembly = Assembly.GetExecutingAssembly();
+                    using (var stream = assembly.GetManifestResourceStream("Lyudmila.Client.Resources.Colors.txt"))
+                    {
+                        if (stream != null)
+                            using (var reader = new StreamReader(stream))
+                            {
+                                while (reader.Peek() >= 0)
+                                {
+                                    colorList.Add(reader.ReadLine());
+                                }
+                            }
+                    }
+                    using (var stream = assembly.GetManifestResourceStream("Lyudmila.Client.Resources.Accents.txt"))
+                    {
+                        if (stream != null)
+                            using (var reader = new StreamReader(stream))
+                            {
+                                while (reader.Peek() >= 0)
+                                {
+                                    accentList.Add(reader.ReadLine());
+                                }
+                            }
+                    }
+
+                    if (!string.IsNullOrEmpty(color) && colorList.Contains(color))
+                    {
+                        new PaletteHelper().ReplacePrimaryColor(color);
+                    }
+
+                    if (!string.IsNullOrEmpty(accent) && accentList.Contains(accent))
+                    {
+                        new PaletteHelper().ReplaceAccentColor(accent);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Easter bunny doesn't like you for some reason...");
+                    throw;
+                }
             }
 
             new MainWindow().Show();

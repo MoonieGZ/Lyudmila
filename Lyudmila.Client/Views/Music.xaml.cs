@@ -3,11 +3,13 @@
 // -----------------------------------------------------------
 
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Media;
 
 using Caliburn.Micro;
 
@@ -20,20 +22,21 @@ using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
 
 using Application = System.Windows.Application;
-using MessageBox = System.Windows.MessageBox;
 
 namespace Lyudmila.Client.Views
 {
     /// <summary>
     ///   Interaction logic for Music.xaml
     /// </summary>
-    public partial class Music
+    public partial class Music : INotifyPropertyChanged
     {
         public static bool _ready;
 
         public Music()
         {
             InitializeComponent();
+
+            ((MainWindow)Application.Current.MainWindow).SetMusicColor += _SetColor;
 
             var soundEngine = NAudioEngine.Instance;
 
@@ -96,9 +99,9 @@ namespace Lyudmila.Client.Views
         {
             if(NAudioEngine.Instance.IsPlaying)
             {
-                if (NAudioEngine.Instance.CanStop)
+                if (NAudioEngine.Instance.CanPause)
                 {
-                    NAudioEngine.Instance.Stop();
+                    NAudioEngine.Instance.Pause();
                     PlayPauseIcon.Kind = PackIconKind.Play;
                 }
             }
@@ -191,5 +194,28 @@ namespace Lyudmila.Client.Views
 
             SongTitle.Content = SongList.SelectedItem.ToString();
         }
+
+        #region color stuff
+
+        private static SolidColorBrush _ActiveColorBrush = (SolidColorBrush)Application.Current.Resources["AccentColorBrush2"];
+
+        public SolidColorBrush ActiveColorBrush
+        {
+            get { return _ActiveColorBrush; }
+            set
+            {
+                _ActiveColorBrush = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ActiveColorBrush"));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void _SetColor(SolidColorBrush value)
+        {
+            ActiveColorBrush = value;
+        }
+
+        #endregion
     }
 }

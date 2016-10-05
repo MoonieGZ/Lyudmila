@@ -16,9 +16,6 @@ namespace Lyudmila.Client.Views
     /// </summary>
     public partial class Games : INotifyPropertyChanged
     {
-        private Color _ActiveColor = (Color) new ColorConverter().ConvertFrom("#F57C00");
-        private SolidColorBrush _ActiveColorBrush = (SolidColorBrush) new BrushConverter().ConvertFrom("#F57C00");
-
         public Games()
         {
             InitializeComponent();
@@ -36,6 +33,9 @@ namespace Lyudmila.Client.Views
         #endregion
 
         #region color stuff
+
+        private static SolidColorBrush _ActiveColorBrush = (SolidColorBrush)Application.Current.Resources["AccentColorBrush2"];
+        private Color _ActiveColor = BrushToDrawingColor(_ActiveColorBrush);
 
         public Color ActiveColor
         {

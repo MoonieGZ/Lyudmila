@@ -19,6 +19,7 @@
                       Icon="../Resources/Green-Leaf.ico"
                       IconBitmapScalingMode="Fant"
                       IconEdgeMode="Aliased"
+                      Loaded="MetroWindow_Loaded"
                       LostKeyboardFocus="MetroWindow_LostFocus"
                       ShowIconOnTitleBar="True"
                       TextElement.FontSize="13"
@@ -41,6 +42,18 @@
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
+            <Button Click="ButtonAdminstration_OnClick" ToolTip="Administration">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="12"
+                               Height="16"
+                               Fill="{Binding RelativeSource={RelativeSource AncestorType=Button},
+                                              Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_candy_cane}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </StackPanel>
+            </Button>
             <Button Click="ButtonSettings_OnClick" ToolTip="Settings">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="16"
@@ -144,20 +157,20 @@
                                  SelectionChanged="ItemsListBox_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="helpers:DataItem">
-                                    <TextBlock Margin="32 0 32 0" Text="{Binding Name}" />
+                                    <TextBlock Margin="32 0 32 0" Text="{Binding TabName}" />
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
-                            <helpers:DataItem Name="🎮 Games" x:Name="_Games">
+                            <helpers:DataItem x:Name="_Games" TabName="🎮 Games">
                                 <helpers:DataItem.Content>
                                     <views:Games />
                                 </helpers:DataItem.Content>
                             </helpers:DataItem>
-                            <helpers:DataItem Name="🎵 Music" x:Name="_Music">
+                            <helpers:DataItem x:Name="_Music" TabName="🎵 Music">
                                 <helpers:DataItem.Content>
                                     <views:Music />
                                 </helpers:DataItem.Content>
                             </helpers:DataItem>
-                            <helpers:DataItem Name="👤 Friends" x:Name="_Friends">
+                            <helpers:DataItem x:Name="_Friends" TabName="👤 Friends">
                                 <helpers:DataItem.Content>
                                     <views:Friends />
                                 </helpers:DataItem.Content>

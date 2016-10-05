@@ -10,9 +10,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using Lyudmila.Client.Helpers;
+using Lyudmila.Client.Properties;
 using Lyudmila.Client.Views;
 
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace Lyudmila.Client.Windows
 {
@@ -37,8 +39,11 @@ namespace Lyudmila.Client.Windows
             ClockUpdater.Start();
         }
 
+        private void Verify(string nickname) {}
+
         public event Action<SolidColorBrush> SetGamesColor;
-        
+        public event Action<SolidColorBrush> SetMusicColor;
+
         private void ToggleFlyout(int index)
         {
             var flyout = Flyouts.Items[index] as Flyout;
@@ -49,6 +54,77 @@ namespace Lyudmila.Client.Windows
 
             flyout.IsOpen = !flyout.IsOpen;
         }
+
+        private void ItemsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch(ItemsListBox.SelectedIndex)
+            {
+                case 0:
+                    ActivePage = "Games";
+                    break;
+                case 1:
+                    ActivePage = "Music";
+                    break;
+                case 2:
+                    ActivePage = "Friends";
+                    break;
+            }
+
+            if(ItemsListBox.SelectedIndex == 1)
+            {
+                if(!Music._ready)
+                {
+                    Music.Init();
+                    DrawerHost.IsLeftDrawerOpen = false;
+                }
+            }
+        }
+
+        private void MetroWindow_Closing(object sender, CancelEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private async void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(string.IsNullOrEmpty(Settings.Default.Nickname))
+            {
+                var m = new MetroDialogSettings
+                {
+                    AffirmativeButtonText = "OK",
+                    AnimateShow = true,
+                    AnimateHide = true,
+                    SuppressDefaultResources = true,
+                    CustomResourceDictionary = new ResourceDictionary {Source = new Uri("pack://application:,,,/Resources/Themes/Dialogs.xaml")}
+                };
+                var nickname = await this.ShowInputAsync("Lyudmila", "Entrez votre pseudo:", m);
+
+                Verify(nickname);
+            }
+        }
+
+        private async void ButtonAdminstration_OnClick(object sender, RoutedEventArgs e)
+        {
+            var m = new LoginDialogSettings
+            {
+                AffirmativeButtonText = "Se connecter",
+                NegativeButtonText = "Annuler",
+                AnimateShow = true,
+                AnimateHide = true,
+                SuppressDefaultResources = true,
+                CustomResourceDictionary = new ResourceDictionary {Source = new Uri("pack://application:,,,/Resources/Themes/Dialogs.xaml")},
+                InitialPassword = "password",
+                InitialUsername = "utilisateur",
+                NegativeButtonVisibility = Visibility.Visible,
+                RememberCheckBoxVisibility = Visibility.Visible,
+                RememberCheckBoxText = "Se souvenir de moi"
+            };
+            var login = await this.ShowLoginAsync("Se connecter a l'interface administrateur:", " ", m);
+
+            VerifyLogin(login);
+        }
+
+        private void VerifyLogin(LoginDialogData login) {}
 
         #region boring binding
 
@@ -117,14 +193,18 @@ namespace Lyudmila.Client.Windows
 
         private void MetroWindow_GotFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            StatusBarBrush = (SolidColorBrush) new BrushConverter().ConvertFrom("#F57C00");
-            SetGamesColor(StatusBarBrush);
+            var brush = Application.Current.Resources["AccentColorBrush"] as SolidColorBrush;
+            StatusBarBrush = brush;
+            SetGamesColor(brush);
+            SetMusicColor(brush);
         }
 
         private void MetroWindow_LostFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            StatusBarBrush = (SolidColorBrush) new BrushConverter().ConvertFrom("#808080");
-            SetGamesColor(StatusBarBrush);
+            var brush = new BrushConverter().ConvertFrom("#808080") as SolidColorBrush;
+            StatusBarBrush = brush;
+            SetGamesColor(brush);
+            SetMusicColor(brush);
         }
 
         private void ButtonDownloads_Click(object sender, MouseButtonEventArgs e)
@@ -158,35 +238,5 @@ namespace Lyudmila.Client.Windows
         }
 
         #endregion
-
-        private void ItemsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            switch(ItemsListBox.SelectedIndex)
-            {
-                case 0:
-                    ActivePage = "Games";
-                    break;
-                case 1:
-                    ActivePage = "Music";
-                    break;
-                case 2:
-                    ActivePage = "Friends";
-                    break;
-            }
-
-            if(ItemsListBox.SelectedIndex == 1)
-            {
-                if (!Music._ready)
-                {
-                    Music.Init();
-                    DrawerHost.IsLeftDrawerOpen = false;
-                }
-            }
-        }
-
-        private void MetroWindow_Closing(object sender, CancelEventArgs e)
-        {
-            Environment.Exit(0);
-        }
     }
 }

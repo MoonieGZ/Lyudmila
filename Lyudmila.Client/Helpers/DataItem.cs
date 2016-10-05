@@ -6,7 +6,7 @@ namespace Lyudmila.Client.Helpers
 {
     public class DataItem
     {
-        public string Name { get; set; }
+        public string TabName { get; set; }
 
         public object Content { get; set; }
     }
