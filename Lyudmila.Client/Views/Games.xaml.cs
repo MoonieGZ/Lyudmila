@@ -2,6 +2,7 @@
 // Copyrights (c) 2016 Seditio 🍂 INC. All rights reserved.
 // -----------------------------------------------------------
 
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
@@ -34,8 +35,8 @@ namespace Lyudmila.Client.Views
 
         #region color stuff
 
-        private static SolidColorBrush _ActiveColorBrush = (SolidColorBrush)Application.Current.Resources["AccentColorBrush2"];
-        private Color _ActiveColor = BrushToDrawingColor(_ActiveColorBrush);
+        private static SolidColorBrush _ActiveColorBrush = (SolidColorBrush) Application.Current.Resources["AccentColorBrush2"];
+        private static Color _ActiveColor = BrushToDrawingColor(_ActiveColorBrush);
 
         public Color ActiveColor
         {
@@ -67,7 +68,16 @@ namespace Lyudmila.Client.Views
 
         private static Color BrushToDrawingColor(SolidColorBrush br)
         {
-            return Color.FromArgb(br.Color.A, br.Color.R, br.Color.G, br.Color.B);
+            try
+            {
+                return Color.FromArgb(br.Color.A, br.Color.R, br.Color.G, br.Color.B);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"{ex.GetType()}: {ex.Message}");
+                return Colors.White;
+            }
+            
         }
 
         #endregion

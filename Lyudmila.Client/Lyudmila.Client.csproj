@@ -162,10 +162,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Themes\DateTimePicker.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources\Themes\Dialogs.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -236,6 +232,7 @@
     <Compile Include="Helpers\MaterialDesignIcons.cs" />
     <Compile Include="Helpers\MaterialDesignIconsCodepoints.cs" />
     <Compile Include="Helpers\NAudioEngine.cs" />
+    <Compile Include="Helpers\NetTools.cs" />
     <Compile Include="Helpers\SampleAggregator.cs" />
     <Compile Include="Helpers\TimeSpanToStringConverter.cs" />
     <Compile Include="Helpers\UIHelper.cs" />

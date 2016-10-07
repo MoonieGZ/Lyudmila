@@ -25,6 +25,7 @@ namespace Lyudmila.Server.Helpers
             RegisterCommand("clients", "Show all connected clients", Commands.Clients);
             RegisterCommand("flush", "Clear all log files", Commands.Flush);
             RegisterCommand("games", "Manage available games", Commands.Games);
+            RegisterCommand("ts_clients", "View connected clients on TeamSpeak", Commands.TeamSpeak);
         }
 
         public void RegisterCommand(string commandName, string helpText, CommandHandler handler)

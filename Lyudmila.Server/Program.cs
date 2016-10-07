@@ -19,7 +19,7 @@ namespace Lyudmila.Server
 {
     internal class Program
     {
-        public static readonly int httpPort = 8080;
+        public static readonly int httpPort = 8081;
         public static HttpServer httpServer = new HttpServer(httpPort, Routes.GET);
 
         private const int port = 54545;
@@ -38,11 +38,6 @@ namespace Lyudmila.Server
             if (!Directory.Exists("Web"))
             {
                 Directory.CreateDirectory("Web");
-            }
-            if (!File.Exists("Web\\games.json"))
-            {
-                Tools.CreateFile("Web\\games.json");
-                Tools.ForceClose("Games list is not ready for deployment.");
             }
 
             Logger.Write("Starting Web Server...", LogLevel.HTTP);
@@ -138,6 +133,10 @@ namespace Lyudmila.Server
             if(message.Contains("$CLIENT$"))
             {
                 tempBuffer.Add($"{message.Split(new[] {"$CLIENT$ "}, StringSplitOptions.None)[1]} @ {address}");
+            }
+            if(message.StartsWith("$ADMINLOGIN$ "))
+            {
+                //Administration.Login(message.Split(new[] {"$ADMINLOGIN$ "}, StringSplitOptions.None)[1], address);
             }
         }
     }

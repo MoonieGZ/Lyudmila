@@ -4,6 +4,8 @@
 
 using System;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -23,6 +25,15 @@ namespace Lyudmila.Client.Windows
     /// </summary>
     public partial class MainWindow : INotifyPropertyChanged
     {
+        private readonly MetroDialogSettings mDialog_settings = new MetroDialogSettings
+        {
+            AffirmativeButtonText = "OK",
+            AnimateShow = true,
+            AnimateHide = true,
+            SuppressDefaultResources = true,
+            CustomResourceDictionary = new ResourceDictionary {Source = new Uri("pack://application:,,,/Resources/Themes/Dialogs.xaml")}
+        };
+
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +50,13 @@ namespace Lyudmila.Client.Windows
             ClockUpdater.Start();
         }
 
-        private void Verify(string nickname) {}
+        private static bool Verify(string nickname)
+        {
+            if(string.IsNullOrEmpty(nickname))
+                Environment.Exit(0); // TODO
+            return (nickname.Length <= 16) && (nickname.Length >= 4) && Regex.IsMatch(nickname, @"^[a-zA-Z0-9_\-\[\]\s]+$")
+                   && !Regex.IsMatch(nickname, @"^[\s]+$") && !nickname.ToLower().Contains("admin");
+        }
 
         public event Action<SolidColorBrush> SetGamesColor;
         public event Action<SolidColorBrush> SetMusicColor;
@@ -87,20 +104,34 @@ namespace Lyudmila.Client.Windows
 
         private async void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrEmpty(Settings.Default.Nickname))
+            if(string.IsNullOrEmpty(Settings.Default.Username))
             {
-                var m = new MetroDialogSettings
+                var valid = false;
+                do
                 {
-                    AffirmativeButtonText = "OK",
-                    AnimateShow = true,
-                    AnimateHide = true,
-                    SuppressDefaultResources = true,
-                    CustomResourceDictionary = new ResourceDictionary {Source = new Uri("pack://application:,,,/Resources/Themes/Dialogs.xaml")}
-                };
-                var nickname = await this.ShowInputAsync("Lyudmila", "Entrez votre pseudo:", m);
-
-                Verify(nickname);
+                    var nickname = await this.ShowInputAsync("Lyudmila", "Entrez votre pseudo:", mDialog_settings);
+                    if(Verify(nickname))
+                    {
+                        valid = true;
+                        NetTools.Init();
+                        do
+                        {
+                            await Task.Delay(1000);
+                        }
+                        while(string.IsNullOrEmpty(Settings.Default.ServerIP));
+                    }
+                    else
+                    {
+                        ShowMessage("Invalid nickname");
+                    }
+                }
+                while(!valid);
             }
+        }
+
+        private async void ShowMessage(string message)
+        {
+            await this.ShowMessageAsync("Lyudmila", message, MessageDialogStyle.Affirmative, mDialog_settings);
         }
 
         private async void ButtonAdminstration_OnClick(object sender, RoutedEventArgs e)
@@ -121,10 +152,17 @@ namespace Lyudmila.Client.Windows
             };
             var login = await this.ShowLoginAsync("Se connecter a l'interface administrateur:", " ", m);
 
-            VerifyLogin(login);
+            if(VerifyLogin(login))
+            {
+                // TODO: make admin page visible
+            }
         }
 
-        private void VerifyLogin(LoginDialogData login) {}
+        private static bool VerifyLogin(LoginDialogData login)
+        {
+            // TODO: check login with server
+            return true;
+        }
 
         #region boring binding
 

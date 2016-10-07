@@ -50,7 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.2-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -62,8 +62,17 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TentacleSoftware.TeamSpeakQuery, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TentacleSoftware.TeamSpeakQuery.1.0.3.0\lib\net45\TentacleSoftware.TeamSpeakQuery.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TentacleSoftware.Telnet, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TentacleSoftware.Telnet.1.0.3.0\lib\net45\TentacleSoftware.Telnet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Administration.cs" />
     <Compile Include="Helpers\CommandHandler.cs" />
     <Compile Include="Helpers\Commands.cs" />
     <Compile Include="Helpers\PlayerList.cs" />
@@ -91,9 +100,7 @@
     <EmbeddedResource Include="Forms\JsonBuilder.resx">
       <DependentUpon>JsonBuilder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\games.json" />
     <None Include="packages.config" />
-    <None Include="Resources\Web\Web.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

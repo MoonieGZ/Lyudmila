@@ -5,7 +5,10 @@
     <Setting Name="MusicDir" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Nickname" Type="System.String" Scope="User">
+    <Setting Name="Username" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ServerIP" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

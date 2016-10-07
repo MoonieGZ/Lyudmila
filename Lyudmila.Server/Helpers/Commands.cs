@@ -9,6 +9,9 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
+using TentacleSoftware.TeamSpeakQuery;
+using TentacleSoftware.TeamSpeakQuery.ServerQueryResult;
+
 namespace Lyudmila.Server.Helpers
 {
     internal class Commands
@@ -64,6 +67,48 @@ namespace Lyudmila.Server.Helpers
             //Application.Run(new JsonBuilder());
 
             Process.Start("notepad.exe", "Web\\games.json");
+        }
+
+        public static void TeamSpeak(string param, Dictionary<string, CommandRecord> commandMap)
+        {
+            var TSclient = new ServerQueryClient("127.0.0.1", 10011, TimeSpan.Zero);
+            TSclient.ConnectionClosed += (sender, eventArgs) => Logger.Write(":sadface:", LogLevel.Error);
+
+            var init = TSclient.Initialize().Result;
+            if (!init.Success)
+            {
+                Logger.Write($"TeamSpeak: {init.ErrorMessage}");
+                return;
+            }
+
+            var login = TSclient.Login("serveradmin", "CrneScCM").Result;
+            if (!login.Success)
+            {
+                Logger.Write($"TeamSpeak: {login.ErrorMessage}");
+                return;
+            }
+
+            var use = TSclient.Use(UseServerBy.ServerId, 1).Result;
+            if(!use.Success)
+            {
+                Logger.Write($"TeamSpeak: {use.ErrorMessage}");
+                return;
+            }
+                
+
+            var clientList = TSclient.ClientList().Result;
+            if(clientList.Success)
+            {
+                foreach(var client in clientList.Values)
+                {
+                    if(!client.ClientNickname.Contains("serveradmin "))
+                    {
+                        Logger.Write($"{client.ClientNickname}", LogLevel.Info);
+                    }
+                }
+            }
+
+            Console.WriteLine("---");
         }
 
         public static async void Clients(string param, Dictionary<string, CommandRecord> commandMap)
