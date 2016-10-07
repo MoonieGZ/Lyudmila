@@ -132,6 +132,7 @@
     <Compile Include="LyudmilaAPIContext.cs" />
     <Compile Include="LyudmilaAPIContextRIP.cs" />
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Dto\PlayerDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
