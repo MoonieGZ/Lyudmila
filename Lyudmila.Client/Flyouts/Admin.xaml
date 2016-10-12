@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="Lyudmila.Client.Flyouts.Admin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="700"
+             d:DesignWidth="500"
+             Background="{DynamicResource MaterialDesignPaper}"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             mc:Ignorable="d">
+    <Grid>
+        <materialDesign:Card Grid.Row="0"
+                             Grid.Column="0"
+                             Margin="2"
+                             Background="{DynamicResource CheckBoxBackgroundBrush}"
+                             Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Rectangle Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           Height="35"
+                           VerticalAlignment="Center"
+                           Fill="{DynamicResource AccentColorBrush}" />
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Margin="5"
+                       VerticalAlignment="Center"
+                       Content="Administration"
+                       FontWeight="ExtraBold" />
+
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="5"
+                           FontFamily="Roboto"
+                           FontStyle="Italic"
+                           Foreground="{DynamicResource MaterialDesignBody}"
+                           Text="Démarrer une session" />
+                <ComboBox Grid.Row="2"
+                          Grid.Column="0"
+                          Margin="5">
+                    <ComboBoxItem Content="Test" />
+                    <ComboBoxItem Content="Test" />
+                    <ComboBoxItem Content="Test" />
+                </ComboBox>
+                <Button Grid.Row="2"
+                        Grid.Column="1"
+                        Width="150"
+                        Margin="5"
+                        Content="Start" />
+
+                <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Margin="5"
+                           FontFamily="Roboto"
+                           FontStyle="Italic"
+                           Foreground="{DynamicResource MaterialDesignBody}"
+                           Text="Sessions planifiées" />
+                <ComboBox Grid.Row="4"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="2"
+                          Margin="5">
+                    <ComboBoxItem Content="Test" />
+                    <ComboBoxItem Content="Test" />
+                    <ComboBoxItem Content="Test" />
+                </ComboBox>
+
+                <TextBlock Grid.Row="5"
+                           Grid.Column="0"
+                           Margin="5"
+                           FontFamily="Roboto"
+                           FontStyle="Italic"
+                           Foreground="{DynamicResource MaterialDesignBody}"
+                           Text="Planifier un tournoi" />
+                <ComboBox Grid.Row="6"
+                          Grid.Column="0"
+                          Margin="5">
+                    <ComboBoxItem Content="Test" />
+                    <ComboBoxItem Content="Test" />
+                    <ComboBoxItem Content="Test" />
+                </ComboBox>
+                <Button Grid.Row="6"
+                        Grid.Column="1"
+                        Width="150"
+                        Margin="5"
+                        Content="Start" />
+
+                <TextBlock Grid.Row="7"
+                           Grid.Column="0"
+                           Margin="5"
+                           FontFamily="Roboto"
+                           FontStyle="Italic"
+                           Foreground="{DynamicResource MaterialDesignBody}"
+                           Text="Tournois planifiées" />
+                <ComboBox Grid.Row="8"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="2"
+                          Margin="5">
+                    <ComboBoxItem Content="Test" />
+                    <ComboBoxItem Content="Test" />
+                    <ComboBoxItem Content="Test" />
+                </ComboBox>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

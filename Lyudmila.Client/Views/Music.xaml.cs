@@ -52,7 +52,7 @@ namespace Lyudmila.Client.Views
         {
             if(!_ready)
             {
-                if(string.IsNullOrEmpty(Settings.Default.MusicDir) || !Directory.Exists(Settings.Default.MusicDir))
+                if(string.IsNullOrEmpty(Properties.Settings.Default.MusicDir) || !Directory.Exists(Properties.Settings.Default.MusicDir))
                 {
                     var answer = ShowSelectFolderDialog("Select music folder:", "C:\\");
                     if(string.IsNullOrEmpty(answer))
@@ -61,8 +61,8 @@ namespace Lyudmila.Client.Views
                     }
                     else
                     {
-                        Settings.Default.MusicDir = answer;
-                        Settings.Default.Save();
+                        Properties.Settings.Default.MusicDir = answer;
+                        Properties.Settings.Default.Save();
                         _ready = true;
                     }
                 }
@@ -119,7 +119,7 @@ namespace Lyudmila.Client.Views
         {
             SongList.Items.Clear();
 
-            var files = Directory.GetFiles(Settings.Default.MusicDir, "*.mp3");
+            var files = Directory.GetFiles(Properties.Settings.Default.MusicDir, "*.mp3");
 
             foreach(var toAdd in files.Select(file => file.Split('\\').Last()).Select(toAdd => toAdd.Substring(0, toAdd.Length - 4)))
             {
@@ -131,7 +131,7 @@ namespace Lyudmila.Client.Views
         {
             SongTitle.Content = SongList.SelectedItem.ToString();
 
-            NAudioEngine.Instance.OpenFile(Path.Combine(Settings.Default.MusicDir, SongList.SelectedItem + ".mp3"));
+            NAudioEngine.Instance.OpenFile(Path.Combine(Properties.Settings.Default.MusicDir, SongList.SelectedItem + ".mp3"));
             NAudioEngine.Instance.Play();
 
             PlayPauseIcon.Kind = PackIconKind.Pause;
@@ -144,8 +144,8 @@ namespace Lyudmila.Client.Views
             var answer = ShowSelectFolderDialog("Select music folder:", "C:\\");
             if(!string.IsNullOrEmpty(answer))
             {
-                Settings.Default.MusicDir = answer;
-                Settings.Default.Save();
+                Properties.Settings.Default.MusicDir = answer;
+                Properties.Settings.Default.Save();
 
                 LoadSongList(null);
             }
@@ -189,7 +189,7 @@ namespace Lyudmila.Client.Views
 
         private void PlayNew()
         {
-            NAudioEngine.Instance.OpenFile(Path.Combine(Settings.Default.MusicDir, SongList.SelectedItem + ".mp3"));
+            NAudioEngine.Instance.OpenFile(Path.Combine(Properties.Settings.Default.MusicDir, SongList.SelectedItem + ".mp3"));
             NAudioEngine.Instance.Play();
 
             SongTitle.Content = SongList.SelectedItem.ToString();

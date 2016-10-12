@@ -111,7 +111,7 @@
                              AnimateOpacity="True"
                              Header="Settings"
                              Position="Right">
-                <flyouts:Notifications />
+                <flyouts:Settings />
             </controls:Flyout>
 
             <controls:Flyout Width="500"
@@ -126,6 +126,13 @@
                              Header="Notifications"
                              Position="Right">
                 <flyouts:Notifications />
+            </controls:Flyout>
+
+            <controls:Flyout Width="500"
+                             AnimateOpacity="True"
+                             Header="Admin"
+                             Position="Right">
+                <flyouts:Admin />
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>

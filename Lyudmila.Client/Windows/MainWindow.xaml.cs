@@ -5,7 +5,6 @@
 using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -17,6 +16,8 @@ using Lyudmila.Client.Views;
 
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+
+using Settings = Lyudmila.Client.Properties.Settings;
 
 namespace Lyudmila.Client.Windows
 {
@@ -52,9 +53,7 @@ namespace Lyudmila.Client.Windows
 
         private static bool Verify(string nickname)
         {
-            if(string.IsNullOrEmpty(nickname))
-                Environment.Exit(0); // TODO
-            return (nickname.Length <= 16) && (nickname.Length >= 4) && Regex.IsMatch(nickname, @"^[a-zA-Z0-9_\-\[\]\s]+$")
+            return !string.IsNullOrEmpty(nickname) && (nickname.Length <= 16) && (nickname.Length >= 4) && Regex.IsMatch(nickname, @"^[a-zA-Z0-9_\-\[\]\s]+$")
                    && !Regex.IsMatch(nickname, @"^[\s]+$") && !nickname.ToLower().Contains("admin");
         }
 
@@ -110,15 +109,23 @@ namespace Lyudmila.Client.Windows
                 do
                 {
                     var nickname = await this.ShowInputAsync("Lyudmila", "Entrez votre pseudo:", mDialog_settings);
+
+                    if(nickname == null)
+                    {
+                        Environment.Exit(0);
+                    }
+
                     if(Verify(nickname))
                     {
                         valid = true;
-                        NetTools.Init();
+                        Settings.Default.Username = nickname;
+                        Settings.Default.Save();
+                        /*NetTools.Init();
                         do
                         {
                             await Task.Delay(1000);
                         }
-                        while(string.IsNullOrEmpty(Settings.Default.ServerIP));
+                        while(string.IsNullOrEmpty(Settings.Default.ServerIP));*/
                     }
                     else
                     {
@@ -154,7 +161,7 @@ namespace Lyudmila.Client.Windows
 
             if(VerifyLogin(login))
             {
-                // TODO: make admin page visible
+                ToggleFlyout(3);
             }
         }
 

@@ -93,22 +93,24 @@
             </Grid>
         </materialDesign:Card>
 
-        <!-- <wpfSoundVisualizationLib:AlbumArtDisplay Grid.Row="0"
+        <wpfSoundVisualizationLib:AlbumArtDisplay Grid.Row="0"
                                                   Grid.Column="0"
                                                   Width="220"
                                                   Margin="5"
-                                                  HorizontalAlignment="Left" />-->
+                                                  HorizontalAlignment="Left" />
         <Label Grid.Row="0"
                Grid.Column="0"
                Height="14"
                Margin="10,96,5,343"
                Content="Song Title"
-               FontWeight="Bold" />
+               FontWeight="Bold"
+               Visibility="Collapsed" />
         <Label Grid.Row="0"
                Grid.Column="0"
                Height="14"
                Margin="10,110,5,329"
-               Content="Artist" />
+               Content="Artist"
+               Visibility="Collapsed" />
 
         <materialDesign:Card Grid.Row="0"
                              Grid.Column="1"
