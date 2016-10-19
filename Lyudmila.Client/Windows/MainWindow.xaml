@@ -182,6 +182,11 @@
                                     <views:Friends />
                                 </helpers:DataItem.Content>
                             </helpers:DataItem>
+                            <helpers:DataItem x:Name="_Share" TabName=" Share">
+                                <helpers:DataItem.Content>
+                                    <views:Share />
+                                </helpers:DataItem.Content>
+                            </helpers:DataItem>
                         </ListBox>
                     </StackPanel>
                 </materialDesign:DrawerHost.LeftDrawerContent>
