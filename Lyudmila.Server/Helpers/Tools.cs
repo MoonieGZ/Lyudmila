@@ -5,7 +5,6 @@
 using System;
 using System.IO;
 using System.Reflection;
-using System.Threading;
 
 namespace Lyudmila.Server.Helpers
 {
@@ -34,13 +33,13 @@ namespace Lyudmila.Server.Helpers
         {
             if(file == "Web\\games.json")
             {
-                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lyudmila.Server.Resources.games.json"))
+                using(var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lyudmila.Server.Resources.games.json"))
                 {
-                    using (var fileStream = new FileStream(Path.Combine(Environment.CurrentDirectory, file), FileMode.Create))
+                    using(var fileStream = new FileStream(Path.Combine(Environment.CurrentDirectory, file), FileMode.Create))
                     {
-                        for (var i = 0; i < stream.Length; i++)
+                        for(var i = 0; i < stream.Length; i++)
                         {
-                            fileStream.WriteByte((byte)stream.ReadByte());
+                            fileStream.WriteByte((byte) stream.ReadByte());
                         }
                         fileStream.Close();
                     }

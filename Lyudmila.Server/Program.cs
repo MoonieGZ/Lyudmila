@@ -12,18 +12,16 @@ using System.Text;
 using System.Threading;
 
 using Lyudmila.Server.Helpers;
-using Lyudmila.Server.Models;
 using Lyudmila.Server.RouteHandlers;
 
 namespace Lyudmila.Server
 {
     internal class Program
     {
-        public static readonly int httpPort = 8081;
-        public static HttpServer httpServer = new HttpServer(httpPort, Routes.GET);
-
         private const int port = 54545;
         private const string broadcastAddress = "192.168.0.255";
+        public static readonly int httpPort = 8081;
+        public static HttpServer httpServer = new HttpServer(httpPort, Routes.GET);
         private static string MyIP = string.Empty;
         public static UdpClient receivingClient;
         public static UdpClient sendingClient;
@@ -35,9 +33,12 @@ namespace Lyudmila.Server
             Console.Title = "Lyudmila Server App";
             Logger.Init();
 
-            if (!Directory.Exists("Web"))
+            if(!Directory.Exists("Web"))
             {
                 Directory.CreateDirectory("Web");
+                Logger.Write("No config files found.", LogLevel.Error);
+                Console.ReadKey(true);
+                Commands.Quit();
             }
 
             Logger.Write("Starting Web Server...", LogLevel.HTTP);
@@ -58,8 +59,6 @@ namespace Lyudmila.Server
             }
 
             Commands.Quit();
-
-            Environment.Exit(0);
         }
 
         public static string LocalIPAddress()

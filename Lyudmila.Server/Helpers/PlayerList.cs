@@ -12,7 +12,8 @@ namespace Lyudmila.Server.Helpers
 
         public static void PrepareAddToPlayersJS(string name, string ip)
         {
-            PlayersToAdd = PlayersToAdd + $"<tr><td style=\"width: 50%;\"><span style=\"color: #0099cc\">{name}</span></td><td style=\"width: 15%\"><span style=\"color: #0099cc\">{ip}</span></td>";
+            PlayersToAdd = PlayersToAdd
+                           + $"<tr><td style=\"width: 50%;\"><span style=\"color: #0099cc\">{name}</span></td><td style=\"width: 15%\"><span style=\"color: #0099cc\">{ip}</span></td>";
         }
 
         public static void AddToPlayersJS() //TODO: Fix this

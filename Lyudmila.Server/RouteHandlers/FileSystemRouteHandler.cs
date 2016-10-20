@@ -34,7 +34,7 @@ namespace Lyudmila.Server.RouteHandlers
             if(url_part.Length > 0)
             {
                 var first_char = url_part.ElementAt(0);
-                if(first_char == '/' || first_char == '\\')
+                if((first_char == '/') || (first_char == '\\'))
                 {
                     url_part = "." + url_part;
                 }

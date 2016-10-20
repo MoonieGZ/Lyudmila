@@ -9,15 +9,15 @@
     <script src="bundles/modernizr.js"></script>
     <script src="bundles/sorttable.js"></script>
     <script src="http://localhost:8080/Static/bundles/Players.js"></script>
-	<script>
-        window.onload = function () {
+    <script>
+        window.onload = function() {
             var o = document.getElementById('players');
             if (window.data != null && window.data !== "") {
                 o.innerHTML = window.data;
             } else {
                 o.innerHTML = '<tr><td colspan=\"3\">No players available.</td></tr>';
             }
-		}
+        }
     </script>
 </head>
 <body>

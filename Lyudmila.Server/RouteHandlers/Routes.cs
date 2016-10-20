@@ -14,20 +14,23 @@ namespace Lyudmila.Server.RouteHandlers
     {
         public static List<Route> GET
             =>
-                new List<Route>
+            new List<Route>
+            {
+                new Route {Callable = HomeIndex, UrlRegex = "^\\/$", Method = "GET"},
+                new Route
                 {
-                    new Route {Callable = HomeIndex, UrlRegex = "^\\/$", Method = "GET"},
-                    new Route
-                    {
-                        Callable = new FileSystemRouteHandler {BasePath = Path.Combine(Environment.CurrentDirectory, "Web")}.Handle,
-                        UrlRegex = "^\\/Static\\/(.*)$",
-                        Method = "GET"
-                    }
-                };
+                    Callable = new FileSystemRouteHandler {BasePath = Path.Combine(Environment.CurrentDirectory, "WebAPI")}.Handle,
+                    UrlRegex = "^\\/API\\/(.*)$",
+                    Method = "GET"
+                },
+                new Route
+                {
+                    Callable = new FileSystemRouteHandler {BasePath = Path.Combine(Environment.CurrentDirectory, "Web")}.Handle,
+                    UrlRegex = "^\\/(.*)$",
+                    Method = "GET"
+                }
+            };
 
-        private static HttpResponse HomeIndex(HttpRequest request)
-        {
-            return new HttpResponse { ContentAsUTF8 = "🍃", ReasonPhrase = "🍂", StatusCode = "200" };
-        }
+        private static HttpResponse HomeIndex(HttpRequest request) => new HttpResponse {ContentAsUTF8 = "🍃", ReasonPhrase = "🍂", StatusCode = "200"};
     }
 }

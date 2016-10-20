@@ -15,9 +15,9 @@ namespace Lyudmila.Server.Helpers
     public class HttpServer
     {
         private readonly int Port;
-        private TcpListener Listener;
         private readonly HttpProcessor Processor;
         public bool IsActive;
+        private TcpListener Listener;
 
         public HttpServer(int port, IEnumerable<Route> routes)
         {
@@ -47,7 +47,8 @@ namespace Lyudmila.Server.Helpers
 
         public static void IPList()
         {
-            foreach(var ipaddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList.Where(ipaddress => ipaddress.ToString().StartsWith("192."))) {
+            foreach(var ipaddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList.Where(ipaddress => ipaddress.ToString().StartsWith("192.")))
+            {
                 Logger.Write($"Listening on {ipaddress}:{Program.httpPort}", LogLevel.HTTP);
             }
         }

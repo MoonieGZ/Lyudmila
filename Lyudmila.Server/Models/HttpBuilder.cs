@@ -9,17 +9,9 @@ namespace Lyudmila.Server.Models
     internal class HttpBuilder
     {
         public static HttpResponse InternalServerError()
-        {
-            var content = File.ReadAllText("Resources/Pages/500.html");
-
-            return new HttpResponse {ReasonPhrase = "InternalServerError", StatusCode = "500", ContentAsUTF8 = content};
-        }
+            => new HttpResponse {ReasonPhrase = "InternalServerError", StatusCode = "500", ContentAsUTF8 = File.ReadAllText("Resources/Pages/500.html")};
 
         public static HttpResponse NotFound()
-        {
-            var content = File.ReadAllText("Resources/Pages/404.html");
-
-            return new HttpResponse {ReasonPhrase = "NotFound", StatusCode = "404", ContentAsUTF8 = content};
-        }
+            => new HttpResponse {ReasonPhrase = "NotFound", StatusCode = "404", ContentAsUTF8 = File.ReadAllText("Resources/Pages/404.html")};
     }
 }

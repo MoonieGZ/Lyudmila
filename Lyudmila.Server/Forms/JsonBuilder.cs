@@ -64,7 +64,6 @@ namespace Lyudmila.Server.Forms
             }
         }
 
-
         private void LoadValues(ListBox listbox, bool enabled)
         {
             switch(enabled)
@@ -115,13 +114,13 @@ namespace Lyudmila.Server.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text.StartsWith("http://"))
+            if(textBox2.Text.StartsWith("http://"))
             {
                 try
                 {
                     Process.Start(textBox2.Text);
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     MessageBox.Show($"{ex.GetType()}: {ex.Message}");
                 }
@@ -133,10 +132,7 @@ namespace Lyudmila.Server.Forms
             var i = 1;
             Build();
 
-            foreach(var item in listBox1.Items)
-            {
-                
-            }
+            foreach(var item in listBox1.Items) {}
         }
 
         private static void Build(string str = null)

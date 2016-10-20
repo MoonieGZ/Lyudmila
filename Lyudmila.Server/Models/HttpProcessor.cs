@@ -34,7 +34,7 @@ namespace Lyudmila.Server.Models
             {
                 Logger.Write($"{response.StatusCode} {request.Url}", LogLevel.HTTP);
             }
-            
+
             // build a default response for errors
             if(response.Content == null)
             {
@@ -92,14 +92,15 @@ namespace Lyudmila.Server.Models
                 {
                     break;
                 }
-                switch(next_char) {
+                switch(next_char)
+                {
                     case '\r':
                         continue;
                     case -1:
                         Thread.Sleep(1);
                         continue;
                 }
-                
+
                 data += Convert.ToChar(next_char);
             }
             return data;

@@ -33,7 +33,7 @@ namespace Lyudmila.Server.Helpers
         {
             try
             {
-                using (var log = File.AppendText(Path.Combine(_logDirectory, _currentFile + ".txt")))
+                using(var log = File.AppendText(Path.Combine(_logDirectory, _currentFile + ".txt")))
                 {
                     log.WriteLine(message);
                     log.Flush();

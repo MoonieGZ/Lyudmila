@@ -39,8 +39,8 @@ namespace Lyudmila.Server.Helpers
             inputLine = inputLine.TrimStart();
 
             var commandNameLength = 0;
-            
-            for (; commandNameLength < inputLine.Length && inputLine[commandNameLength] != ' '; commandNameLength++) {}
+
+            for(; (commandNameLength < inputLine.Length) && (inputLine[commandNameLength] != ' '); commandNameLength++) {}
 
             var commandName = inputLine.Substring(0, commandNameLength);
             var param = inputLine.Substring(commandNameLength).TrimStart();

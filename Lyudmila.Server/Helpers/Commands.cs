@@ -10,7 +10,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using TentacleSoftware.TeamSpeakQuery;
-using TentacleSoftware.TeamSpeakQuery.ServerQueryResult;
 
 namespace Lyudmila.Server.Helpers
 {
@@ -33,7 +32,7 @@ namespace Lyudmila.Server.Helpers
         {
             try
             {
-                foreach (var file in new DirectoryInfo("Logs").GetFiles())
+                foreach(var file in new DirectoryInfo("Logs").GetFiles())
                 {
                     file.Delete();
                 }
@@ -56,6 +55,8 @@ namespace Lyudmila.Server.Helpers
             Logger.Write("Stopping sender...", LogLevel.UDP);
             Program.sendingClient.Close();
             Thread.Sleep(1000);
+
+            Environment.Exit(0);
         }
 
         public static void Games(string param, Dictionary<string, CommandRecord> commandMap)
@@ -75,14 +76,14 @@ namespace Lyudmila.Server.Helpers
             TSclient.ConnectionClosed += (sender, eventArgs) => Logger.Write(":sadface:", LogLevel.Error);
 
             var init = TSclient.Initialize().Result;
-            if (!init.Success)
+            if(!init.Success)
             {
                 Logger.Write($"TeamSpeak: {init.ErrorMessage}");
                 return;
             }
 
             var login = TSclient.Login("serveradmin", "CrneScCM").Result;
-            if (!login.Success)
+            if(!login.Success)
             {
                 Logger.Write($"TeamSpeak: {login.ErrorMessage}");
                 return;
@@ -94,7 +95,6 @@ namespace Lyudmila.Server.Helpers
                 Logger.Write($"TeamSpeak: {use.ErrorMessage}");
                 return;
             }
-                
 
             var clientList = TSclient.ClientList().Result;
             if(clientList.Success)

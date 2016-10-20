@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// -----------------------------------------------------------
+// Copyrights (c) 2016 Seditio 🍂 INC. All rights reserved.
+// -----------------------------------------------------------
 
 namespace Lyudmila.Server.Helpers
 {
-    class Administration
-    {
-    }
+    internal class Administration {}
 }
