@@ -150,6 +150,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Flyouts\GameInstall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Flyouts\Notifications.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,6 +236,9 @@
     </Compile>
     <Compile Include="Flyouts\Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Flyouts\GameInstall.xaml.cs">
+      <DependentUpon>GameInstall.xaml</DependentUpon>
     </Compile>
     <Compile Include="Flyouts\Notifications.xaml.cs">
       <DependentUpon>Notifications.xaml</DependentUpon>
@@ -351,6 +358,16 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Accents.txt" />
     <EmbeddedResource Include="Resources\Colors.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\img\BF3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\img\SC2.jpg" />
+    <Resource Include="Resources\img\shootmania.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\img\rule.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,9 +5,11 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media;
 
+using Lyudmila.Client.Flyouts;
 using Lyudmila.Client.Windows;
 
 namespace Lyudmila.Client.Views
@@ -81,5 +83,55 @@ namespace Lyudmila.Client.Views
         }
 
         #endregion
+
+        private void AoE2HD_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Age of Empires II HD";
+            Thread.Sleep(100);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void BF3_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Battlefield 3";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void Blur_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Blur";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void CoD2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Call of Duty 2";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void CoD4_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CoD5_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CSGO_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoDS_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoTA2_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

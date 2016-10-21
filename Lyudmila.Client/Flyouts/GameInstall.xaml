@@ -1,0 +1,128 @@
+﻿<UserControl x:Class="Lyudmila.Client.Flyouts.GameInstall"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:Lyudmila.Client.Views"
+             xmlns:windows="clr-namespace:Lyudmila.Client.Windows"
+             d:DesignHeight="700"
+             d:DesignWidth="500"
+             Background="{DynamicResource MaterialDesignPaper}"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             IsVisibleChanged="UserControl_IsVisibleChanged"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Themes/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0"
+                   Height="75"
+                   VerticalAlignment="Top"
+                   Fill="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                 AncestorType=windows:MainWindow},
+                                  Path=StatusBarBrush,
+                                  Mode=OneWay}" />
+
+        <Border Grid.Row="0"
+                Width="250"
+                Height="150"
+                Margin="20,-3,0,0"
+                HorizontalAlignment="Left"
+                BorderBrush="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                     AncestorType=views:Games},
+                                      Path=ActiveColorBrush,
+                                      Mode=OneWay}"
+                BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20"
+                                  Opacity="1"
+                                  ShadowDepth="0"
+                                  Color="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                                 AncestorType=views:Games},
+                                                  Path=ActiveColor,
+                                                  Mode=OneWay}" />
+            </Border.Effect>
+            <Image Source="{Binding ActiveImage}" />
+        </Border>
+
+        <Button Grid.Row="0"
+                Margin="0,0,20,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Click="Play_Click"
+                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+            <Rectangle MinWidth="28"
+                       MinHeight="24"
+                       Fill="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                     AncestorType=Button},
+                                      Path=Foreground}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Uniform" Visual="{StaticResource appbar_control_play}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+
+        <Button Grid.Row="0"
+                Margin="0,0,68,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Click="Settings_Click"
+                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+            <Rectangle MinWidth="28"
+                       MinHeight="24"
+                       Fill="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                     AncestorType=Button},
+                                      Path=Foreground}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Uniform" Visual="{StaticResource appbar_cog}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+
+        <TextBlock Grid.Row="1"
+                   Margin="5,2,0,0"
+                   FontFamily="Roboto"
+                   FontSize="22"
+                   Text="Description:" />
+        <Image Grid.Row="1"
+               Margin="0,30,0,0"
+               VerticalAlignment="Top"
+               Source="pack://application:,,,/Resources/img/rule.png" />
+        <TextBlock Grid.Row="2"
+                   Margin="10"
+                   FontFamily="Roboto"
+                   Text="{Binding Description}"
+                   TextWrapping="Wrap" />
+
+        <Border Grid.Row="3"
+                Height="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                AncestorType=windows:MainWindow},
+                                 Path=TitlebarHeight,
+                                 Mode=OneWay}"
+                BorderBrush="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                     AncestorType=windows:MainWindow},
+                                      Path=StatusBarBrush,
+                                      Mode=OneWay}"
+                BorderThickness="1">
+            <TextBlock Margin="2"
+                       FontFamily="Roboto"
+                       Text="{Binding InstallLocation}" />
+        </Border>
+    </Grid>
+</UserControl>
+

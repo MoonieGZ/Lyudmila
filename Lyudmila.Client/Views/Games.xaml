@@ -26,7 +26,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -46,7 +45,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="AoE2HD_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/AoE2HD.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -62,8 +63,10 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
-                    <Image Source="pack://application:,,,/Resources/img/BFBC2.jpg" Stretch="Fill" />
+                <Button Height="182"
+                        Click="BF3_Click"
+                        Padding="0">
+                    <Image Source="pack://application:,,,/Resources/img/BF3.jpg" Stretch="Fill" />
                 </Button>
             </Border>
             <Border Grid.Row="1"
@@ -78,7 +81,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="Blur_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/Blur.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -95,7 +100,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="CoD2_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/CoD2.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -111,7 +118,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="CoD4_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/CoD4.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -127,7 +136,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="CoD5_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/CoD5.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -144,7 +155,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="CSGO_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/CSGO.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -160,10 +173,13 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
-                    <Image Source="pack://application:,,,/Resources/img/CSS.jpg" Stretch="Fill" />
+                <Button Height="182"
+                        Click="DoDS_Click"
+                        Padding="0">
+                    <Image Source="pack://application:,,,/Resources/img/DoDS.jpg" Stretch="Fill" />
                 </Button>
             </Border>
+
             <Border Grid.Row="3"
                     Grid.Column="2"
                     Width="390"
@@ -176,29 +192,14 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
-                    <Image Source="pack://application:,,,/Resources/img/DoDS.jpg" Stretch="Fill" />
-                </Button>
-            </Border>
-
-            <Border Grid.Row="5"
-                    Grid.Column="0"
-                    Width="390"
-                    Margin="10"
-                    BorderBrush="{Binding ActiveColorBrush}"
-                    BorderThickness="1">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="20"
-                                      Opacity="1"
-                                      ShadowDepth="0"
-                                      Color="{Binding ActiveColor}" />
-                </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="DoTA2_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/D2.jpg" Stretch="Fill" />
                 </Button>
             </Border>
             <Border Grid.Row="5"
-                    Grid.Column="1"
+                    Grid.Column="0"
                     Width="390"
                     Margin="10"
                     BorderBrush="{Binding ActiveColorBrush}"
@@ -214,7 +215,7 @@
                 </Button>
             </Border>
             <Border Grid.Row="5"
-                    Grid.Column="2"
+                    Grid.Column="1"
                     Width="390"
                     Margin="10"
                     BorderBrush="{Binding ActiveColorBrush}"
@@ -229,25 +230,8 @@
                     <Image Source="pack://application:,,,/Resources/img/Insurgency.jpg" Stretch="Fill" />
                 </Button>
             </Border>
-
-            <Border Grid.Row="6"
-                    Grid.Column="0"
-                    Width="390"
-                    Margin="10"
-                    BorderBrush="{Binding ActiveColorBrush}"
-                    BorderThickness="1">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="20"
-                                      Opacity="1"
-                                      ShadowDepth="0"
-                                      Color="{Binding ActiveColor}" />
-                </Border.Effect>
-                <Button Height="182" Padding="0">
-                    <Image Source="pack://application:,,,/Resources/img/KF.jpg" Stretch="Fill" />
-                </Button>
-            </Border>
-            <Border Grid.Row="6"
-                    Grid.Column="1"
+            <Border Grid.Row="5"
+                    Grid.Column="2"
                     Width="390"
                     Margin="10"
                     BorderBrush="{Binding ActiveColorBrush}"
@@ -263,7 +247,7 @@
                 </Button>
             </Border>
             <Border Grid.Row="6"
-                    Grid.Column="2"
+                    Grid.Column="0"
                     Width="390"
                     Margin="10"
                     BorderBrush="{Binding ActiveColorBrush}"
@@ -275,12 +259,27 @@
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
                 <Button Height="182" Padding="0">
-                    <Image Source="pack://application:,,,/Resources/img/Q3.jpg" Stretch="Fill" />
+                    <Image Source="pack://application:,,,/Resources/img/SC2.jpg" Stretch="Fill" />
                 </Button>
             </Border>
-
-            <Border Grid.Row="7"
-                    Grid.Column="0"
+            <Border Grid.Row="6"
+                    Grid.Column="1"
+                    Width="390"
+                    Margin="10"
+                    BorderBrush="{Binding ActiveColorBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20"
+                                      Opacity="1"
+                                      ShadowDepth="0"
+                                      Color="{Binding ActiveColor}" />
+                </Border.Effect>
+                <Button Height="182" Padding="0">
+                    <Image Source="pack://application:,,,/Resources/img/shootmania.jpg" Stretch="Fill" />
+                </Button>
+            </Border>
+            <Border Grid.Row="6"
+                    Grid.Column="2"
                     Width="390"
                     Margin="10"
                     BorderBrush="{Binding ActiveColorBrush}"
@@ -296,23 +295,7 @@
                 </Button>
             </Border>
             <Border Grid.Row="7"
-                    Grid.Column="1"
-                    Width="390"
-                    Margin="10"
-                    BorderBrush="{Binding ActiveColorBrush}"
-                    BorderThickness="1">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="20"
-                                      Opacity="1"
-                                      ShadowDepth="0"
-                                      Color="{Binding ActiveColor}" />
-                </Border.Effect>
-                <Button Height="182" Padding="0">
-                    <Image Source="pack://application:,,,/Resources/img/SSIV.jpg" Stretch="Fill" />
-                </Button>
-            </Border>
-            <Border Grid.Row="7"
-                    Grid.Column="2"
+                    Grid.Column="0"
                     Width="390"
                     Margin="10"
                     BorderBrush="{Binding ActiveColorBrush}"
@@ -328,8 +311,8 @@
                 </Button>
             </Border>
 
-            <Border Grid.Row="8"
-                    Grid.Column="0"
+            <Border Grid.Row="7"
+                    Grid.Column="1"
                     Width="390"
                     Margin="10"
                     BorderBrush="{Binding ActiveColorBrush}"
@@ -344,8 +327,8 @@
                     <Image Source="pack://application:,,,/Resources/img/UT3.jpg" Stretch="Fill" />
                 </Button>
             </Border>
-            <Border Grid.Row="8"
-                    Grid.Column="1"
+            <Border Grid.Row="7"
+                    Grid.Column="2"
                     Width="390"
                     Margin="10"
                     BorderBrush="{Binding ActiveColorBrush}"

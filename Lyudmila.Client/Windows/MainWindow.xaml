@@ -42,7 +42,8 @@
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Click="ButtonAdminstration_OnClick" ToolTip="Administration">
+            <TextBlock MouseLeftButtonUp="NickName_MouseLeftButtonUp" Text="{Binding NickName}" />
+            <!-- <Button Click="ButtonAdminstration_OnClick" ToolTip="Administration">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="12"
                                Height="16"
@@ -101,7 +102,7 @@
                         </Rectangle.OpacityMask>
                     </Rectangle>
                 </StackPanel>
-            </Button>
+            </Button>-->
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 
@@ -133,6 +134,13 @@
                              Header="Admin"
                              Position="Right">
                 <flyouts:Admin />
+            </controls:Flyout>
+
+            <controls:Flyout x:Name="GameInstall"
+                             Width="500"
+                             AnimateOpacity="True"
+                             Position="Right">
+                <flyouts:GameInstall />
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
@@ -177,7 +185,7 @@
                                     <views:Music />
                                 </helpers:DataItem.Content>
                             </helpers:DataItem>
-                            <helpers:DataItem x:Name="_Friends" TabName="👤 Friends">
+                            <!-- <helpers:DataItem x:Name="_Friends" TabName="👤 Friends">
                                 <helpers:DataItem.Content>
                                     <views:Friends />
                                 </helpers:DataItem.Content>
@@ -186,7 +194,7 @@
                                 <helpers:DataItem.Content>
                                     <views:Share />
                                 </helpers:DataItem.Content>
-                            </helpers:DataItem>
+                            </helpers:DataItem>-->
                         </ListBox>
                     </StackPanel>
                 </materialDesign:DrawerHost.LeftDrawerContent>
@@ -202,10 +210,10 @@
                                           IsChecked="False"
                                           Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
                             <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges">
-                                <ListBox Margin="0 6 0 6">
-                                    <ListBoxItem>put</ListBoxItem>
-                                    <ListBoxItem>stuff</ListBoxItem>
-                                    <ListBoxItem>here</ListBoxItem>
+                                <ListBox Margin="10">
+                                    <ListBoxItem Content="Désolé, il n'y rien ici :(" />
+                                    <ListBoxItem Content="..." />
+                                    <ListBoxItem Content="pour le moment ;)" />
                                 </ListBox>
                             </materialDesign:PopupBox>
                             <TextBlock HorizontalAlignment="Center"

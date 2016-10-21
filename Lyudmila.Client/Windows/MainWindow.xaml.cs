@@ -5,6 +5,7 @@
 using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -17,7 +18,7 @@ using Lyudmila.Client.Views;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
-using Settings = Lyudmila.Client.Properties.Settings;
+// ReSharper disable UnusedMember.Local
 
 namespace Lyudmila.Client.Windows
 {
@@ -44,8 +45,9 @@ namespace Lyudmila.Client.Windows
         private void PopulateStuff()
         {
             ActivePage = "Games";
-            StatusBarContent = "Hey look, it says test over here 🍂.";
-            StatusBarDownloads = "No current downloads.";
+            NickName = string.Empty;
+            StatusBarContent = string.Empty;
+            StatusBarDownloads = string.Empty;
             StatusBarClock = DateTime.Now.ToString("t");
 
             ClockUpdater.Start();
@@ -105,35 +107,48 @@ namespace Lyudmila.Client.Windows
         {
             if(string.IsNullOrEmpty(Settings.Default.Username))
             {
-                var valid = false;
-                do
-                {
-                    var nickname = await this.ShowInputAsync("Lyudmila", "Entrez votre pseudo:", mDialog_settings);
-
-                    if(nickname == null)
-                    {
-                        Environment.Exit(0);
-                    }
-
-                    if(Verify(nickname))
-                    {
-                        valid = true;
-                        Settings.Default.Username = nickname;
-                        Settings.Default.Save();
-                        /*NetTools.Init();
-                        do
-                        {
-                            await Task.Delay(1000);
-                        }
-                        while(string.IsNullOrEmpty(Settings.Default.ServerIP));*/
-                    }
-                    else
-                    {
-                        ShowMessage("Invalid nickname");
-                    }
-                }
-                while(!valid);
+                await ChangeNick(true);
             }
+
+            NickName = $"Bienvenue, {Settings.Default.Username}";
+        }
+
+        private async Task ChangeNick(bool quitOnCancel)
+        {
+            var valid = false;
+            do
+            {
+                var nickname = await this.ShowInputAsync("Lyudmila", "Entrez votre pseudo:", mDialog_settings);
+
+                if(nickname == null)
+                {
+                    if(!quitOnCancel)
+                        return;
+
+                    Environment.Exit(0);
+                }
+
+                if(Verify(nickname))
+                {
+                    valid = true;
+
+                    Settings.Default.Username = nickname;
+                    Settings.Default.Save();
+                    /*
+                     * NetTools.Init();
+                     * do
+                     * {
+                     *     await Task.Delay(1000);
+                     * }
+                     * while(string.IsNullOrEmpty(Settings.Default.ServerIP));
+                     */
+                }
+                else
+                {
+                    ShowMessage("Pseudo invalide :(");
+                }
+            }
+            while(!valid);
         }
 
         private async void ShowMessage(string message)
@@ -171,6 +186,13 @@ namespace Lyudmila.Client.Windows
             return true;
         }
 
+        private async void NickName_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            await ChangeNick(false);
+
+            NickName = $"Bienvenue, {Settings.Default.Username}";
+        }
+
         #region boring binding
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -179,6 +201,8 @@ namespace Lyudmila.Client.Windows
         private string _StatusBarContent;
         private string _StatusBarDownloads;
         private string _StatusBarClock;
+
+        private string _NickName;
 
         private string _ActivePage;
 
@@ -189,6 +213,16 @@ namespace Lyudmila.Client.Windows
             {
                 _StatusBarBrush = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("StatusBarBrush"));
+            }
+        }
+
+        public string NickName
+        {
+            get { return _NickName; }
+            set
+            {
+                _NickName = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NickName"));
             }
         }
 
