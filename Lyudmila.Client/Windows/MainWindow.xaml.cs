@@ -151,7 +151,7 @@ namespace Lyudmila.Client.Windows
             while(!valid);
         }
 
-        private async void ShowMessage(string message)
+        public async void ShowMessage(string message)
         {
             await this.ShowMessageAsync("Lyudmila", message, MessageDialogStyle.Affirmative, mDialog_settings);
         }
