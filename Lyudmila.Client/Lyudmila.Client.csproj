@@ -226,6 +226,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Location.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -248,6 +252,7 @@
     </Compile>
     <Compile Include="Helpers\ClockUpdater.cs" />
     <Compile Include="Helpers\DataItem.cs" />
+    <Compile Include="Helpers\GameDescriptions.cs" />
     <Compile Include="Helpers\MaterialDesignIcons.cs" />
     <Compile Include="Helpers\MaterialDesignIconsCodepoints.cs" />
     <Compile Include="Helpers\NAudioEngine.cs" />
@@ -269,6 +274,9 @@
     </Compile>
     <Compile Include="Views\Share.xaml.cs">
       <DependentUpon>Share.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Location.xaml.cs">
+      <DependentUpon>Location.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
