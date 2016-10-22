@@ -226,6 +226,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Download.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Location.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -260,6 +264,7 @@
     <Compile Include="Helpers\SampleAggregator.cs" />
     <Compile Include="Helpers\TimeSpanToStringConverter.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
+    <Compile Include="Helpers\UsernameUpdater.cs" />
     <Compile Include="Views\Friends.xaml.cs">
       <DependentUpon>Friends.xaml</DependentUpon>
     </Compile>
@@ -274,6 +279,9 @@
     </Compile>
     <Compile Include="Views\Share.xaml.cs">
       <DependentUpon>Share.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Download.xaml.cs">
+      <DependentUpon>Download.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Location.xaml.cs">
       <DependentUpon>Location.xaml</DependentUpon>
