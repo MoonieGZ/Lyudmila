@@ -43,19 +43,11 @@
                 Height="150"
                 Margin="20,-3,0,0"
                 HorizontalAlignment="Left"
-                BorderBrush="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                     AncestorType=views:Games},
-                                      Path=ActiveColorBrush,
-                                      Mode=OneWay}"
-                BorderThickness="1">
+                BorderThickness="0">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity="1"
-                                  ShadowDepth="0"
-                                  Color="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                 AncestorType=views:Games},
-                                                  Path=ActiveColor,
-                                                  Mode=OneWay}" />
+                                  ShadowDepth="0" />
             </Border.Effect>
             <Image Source="{Binding ActiveImage}" />
         </Border>
@@ -65,7 +57,7 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Click="Play_Click"
-                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}">
             <Rectangle MinWidth="28"
                        MinHeight="24"
                        Fill="{Binding RelativeSource={RelativeSource FindAncestor,
@@ -78,7 +70,7 @@
         </Button>
 
         <Button Grid.Row="0"
-                Margin="0,0,68,0"
+                Margin="0,0,85,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Click="Settings_Click"
@@ -119,7 +111,13 @@
                                       Path=StatusBarBrush,
                                       Mode=OneWay}"
                 BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20"
+                                  Opacity="1"
+                                  ShadowDepth="0" />
+            </Border.Effect>
             <TextBlock Margin="2"
+                       HorizontalAlignment="Right"
                        FontFamily="Roboto"
                        Text="{Binding InstallLocation}" />
         </Border>
