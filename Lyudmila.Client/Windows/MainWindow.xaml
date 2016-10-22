@@ -139,7 +139,8 @@
             <controls:Flyout x:Name="GameInstall"
                              Width="500"
                              AnimateOpacity="True"
-                             Position="Right">
+                             Position="Right"
+                             IsModal="True">
                 <flyouts:GameInstall />
             </controls:Flyout>
         </controls:FlyoutsControl>

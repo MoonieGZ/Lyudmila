@@ -4,9 +4,16 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 
+using Lyudmila.Client.Helpers;
 using Lyudmila.Client.Windows;
+
+using MahApps.Metro.Controls.Dialogs;
+
+using MaterialDesignThemes.Wpf;
 
 namespace Lyudmila.Client.Flyouts
 {
@@ -16,8 +23,10 @@ namespace Lyudmila.Client.Flyouts
     public partial class GameInstall : INotifyPropertyChanged
     {
         private string _activeImage;
-        private string _installLocation;
         private string _description;
+        private string _installLocation;
+
+        private bool _isInstalled;
 
         public GameInstall()
         {
@@ -63,19 +72,45 @@ namespace Lyudmila.Client.Flyouts
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if(_isInstalled)
+            {
+                if(Directory.Exists(InstallLocation))
+                {
+                    Process.Start(InstallLocation);
+                }
+            }
+            else
+            {
+                var dialog = new Location(((MainWindow) Application.Current.MainWindow).GameInstall.Header);
+                var showDialog = dialog.ShowDialog();
+                if(showDialog != null && !showDialog.Value)
+                {
+                    InstallLocation = dialog.GameLocation;
+                    InstallPlayIcon.Kind = PackIconKind.Play;
+                }
+            }
         }
 
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if((bool) e.NewValue)
             {
-                if(((MainWindow) Application.Current.MainWindow).GameInstall.Header.Equals("Age of Empires II HD"))
+                switch(((MainWindow) Application.Current.MainWindow).GameInstall.Header)
                 {
-                    ActiveImage = "pack://application:,,,/Resources/img/AoE2HD.jpg";
-                    Description =
-                        "Dans Age of Empires II: HD Edition, les fans du jeu original et les nouveaux venus vont tomber sous le charme de cette expérience authentique du classique Age of Empires II. Explorez toutes les campagnes solo des extensions Age of Kings et The Conquerors, faites votre choix parmi 18 civilisations s'étendant sur plus d'un millier d'années et affrontez d'autres joueurs pour votre quête dans la domination mondiale au fur et à mesure des âges. Développé originellement par Ensemble Studios et ré-imaginé en haute-définition par Hidden Path Entertainment.";
-                    InstallLocation = "D:\\Games\\LAN\\AoE2HD";
+                    case "Age of Empires II HD":
+                        ActiveImage = "pack://application:,,,/Resources/img/AoE2HD.jpg";
+                        Description = GameDescriptions.AoE2HD;
+                        if(Properties.Settings.Default.AoE2HD_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.AoE2HD_Location;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
                 }
             }
         }
