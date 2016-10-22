@@ -11,8 +11,6 @@ using System.Windows;
 using Lyudmila.Client.Helpers;
 using Lyudmila.Client.Windows;
 
-using MahApps.Metro.Controls.Dialogs;
-
 using MaterialDesignThemes.Wpf;
 
 namespace Lyudmila.Client.Flyouts
@@ -67,7 +65,35 @@ namespace Lyudmila.Client.Flyouts
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            switch(InstallPlayIcon.Kind) {
+                case PackIconKind.Download:
+                    switch (((MainWindow)Application.Current.MainWindow).GameInstall.Header)
+                    {
+                        case "Age of Empires II HD":
+                            new Download("AoE2HD", "http://192.168.0.252/jeux/AoE2HD.zip").ShowDialog();
+                            Properties.Settings.Default.AoE2HD_Installed = true;
+                            Properties.Settings.Default.AoE2HD_Location = Path.Combine(Environment.CurrentDirectory, "Jeux", "AoE2HD");
+                            UsernameUpdater.SetName("AoE2HD");
+                            break;
+                    }
+
+                    Properties.Settings.Default.Save();
+                    InstallPlayIcon.Kind = PackIconKind.Play;
+                    break;
+                case PackIconKind.Play:
+                    switch(((MainWindow) Application.Current.MainWindow).GameInstall.Header)
+                    {
+                        case "Age of Empires II HD":
+                            var game = new ProcessStartInfo
+                            {
+                                WorkingDirectory = Path.Combine(Properties.Settings.Default.AoE2HD_Location),
+                                FileName = Path.Combine(Properties.Settings.Default.AoE2HD_Location, "SmartSteamLoader.exe")
+                            };
+                            Process.Start(game);
+                            break;
+                    }
+                    break;
+            }
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
@@ -103,14 +129,33 @@ namespace Lyudmila.Client.Flyouts
                         if(Properties.Settings.Default.AoE2HD_Installed)
                         {
                             InstallLocation = Properties.Settings.Default.AoE2HD_Location;
+                            _isInstalled = true;
                             InstallPlayIcon.Kind = PackIconKind.Play;
                         }
                         else
                         {
                             InstallLocation = "Non installé";
+                            _isInstalled = false;
                             InstallPlayIcon.Kind = PackIconKind.Download;
                         }
                         break;
+                    case "Battlefield 3":
+                        ActiveImage = "pack://application:,,,/Resources/img/BF3.jpg";
+                        Description = GameDescriptions.BF3;
+                        if (Properties.Settings.Default.BF3_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.BF3_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+
                 }
             }
         }
