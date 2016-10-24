@@ -111,27 +111,74 @@ namespace Lyudmila.Client.Views
 
         private void CoD4_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Call of Duty 4";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
         }
 
         private void CoD5_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Call of Duty 5";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
         }
 
         private void CSGO_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Counter Strike: Global Offensive";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
         }
 
         private void DoDS_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Day of Defeat: Source";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
         }
 
         private void DoTA2_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "DoTA 2";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void Flatout2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Flatout 2";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void L4D2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Left 4 Dead 2";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void SC2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "StarCraft 2";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void Shootmania_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Shootmania";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void SWJK2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Star Wars: Jedi Knight 2";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void TF2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Team Fortress 2";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void UT3_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Unreal Tournament 3";
+            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
         }
     }
 }

@@ -210,7 +210,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="Flatout2_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/F2.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -226,7 +228,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="L4D2_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/L4D2.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -242,7 +246,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="SC2_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/SC2.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -258,7 +264,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="Shootmania_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/shootmania.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -274,7 +282,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="SWJK2_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/SWJK2.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -290,7 +300,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="TF2_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/TF2.jpg" Stretch="Fill" />
                 </Button>
             </Border>
@@ -307,7 +319,9 @@
                                       ShadowDepth="0"
                                       Color="{Binding ActiveColor}" />
                 </Border.Effect>
-                <Button Height="182" Padding="0">
+                <Button Height="182"
+                        Click="UT3_Click"
+                        Padding="0">
                     <Image Source="pack://application:,,,/Resources/img/UT3.jpg" Stretch="Fill" />
                 </Button>
             </Border>
