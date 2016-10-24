@@ -85,31 +85,33 @@ namespace Lyudmila.Client.Windows
             {
                 progressBar.IsIndeterminate = true;
             });
-            
+
+            if (!Directory.Exists("Jeux"))
+            {
+                Directory.CreateDirectory("Jeux");
+            }
+
             switch (_gameName)
             {
                 case "AoE2HD":
-                    if (!Directory.Exists("Jeux"))
-                    {
-                        Directory.CreateDirectory("Jeux");
-                    }
-
-                    var zipPath = Path.Combine(Environment.CurrentDirectory, "DL", "AoE2HD.zip");
-                    var extractPath = Path.Combine(Environment.CurrentDirectory, "Jeux", "AoE2HD");
-
-                    using (var archive = ZipArchive.Open(zipPath))
-                    {
-                        foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
-                        {
-                            entry.WriteToDirectory(extractPath, new ExtractionOptions { ExtractFullPath = true, Overwrite = true });
-                        }
-                    }
+                    ExtractCmd(Path.Combine(Environment.CurrentDirectory, "DL", "AoE2HD.zip"), Path.Combine(Environment.CurrentDirectory, "Jeux", "AoE2HD"));
 
                     Settings.Default.AoE2HD_Installed = true;
                     Settings.Default.AoE2HD_Location = Path.Combine(Environment.CurrentDirectory, "Jeux", "AoE2HD");
                     break;
             }
             Dispatcher.Invoke(Close);
+        }
+
+        private static void ExtractCmd(string zipPath, string extractPath)
+        {
+            using (var archive = ZipArchive.Open(zipPath))
+            {
+                foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
+                {
+                    entry.WriteToDirectory(extractPath, new ExtractionOptions { ExtractFullPath = true, Overwrite = true });
+                }
+            }
         }
 
         public string HeaderText
