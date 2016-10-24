@@ -13,3 +13,11 @@ main/players/[user]/config_mp.cfg[173] seta name "Unreal"
                     ^^^^
 
 exe: CoD2MP_s.exe
+
+Shootmania:
+===
+Nadeo.ini[5-6]: UserDir + CommonDir
+
+SWJK2:
+===
+GameData\base\jk2mpconfig.cfg[265]: seta name "Unreal"
