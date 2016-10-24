@@ -91,7 +91,7 @@ namespace Lyudmila.Client.Windows
                 Directory.CreateDirectory("Jeux");
             }
 
-            switch (_gameName)
+            switch (_gameName) // TODO
             {
                 case "AoE2HD":
                     ExtractCmd(Path.Combine(Environment.CurrentDirectory, "DL", "AoE2HD.zip"), Path.Combine(Environment.CurrentDirectory, "Jeux", "AoE2HD"));

@@ -10,7 +10,7 @@ namespace Lyudmila.Client.Helpers
 {
     internal class UsernameUpdater
     {
-        public static void SetName(string gameName)
+        public static void SetName(string gameName) // TODO
         {
             switch(gameName)
             {
