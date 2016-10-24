@@ -182,18 +182,6 @@ namespace Lyudmila.Client.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Insurgency_Installed {
-            get {
-                return ((bool)(this["Insurgency_Installed"]));
-            }
-            set {
-                this["Insurgency_Installed"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool L4D2_Installed {
             get {
                 return ((bool)(this["L4D2_Installed"]));
@@ -380,18 +368,6 @@ namespace Lyudmila.Client.Properties {
             }
             set {
                 this["F2_Location"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Insurgency_Location {
-            get {
-                return ((string)(this["Insurgency_Location"]));
-            }
-            set {
-                this["Insurgency_Location"] = value;
             }
         }
         

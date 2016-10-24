@@ -41,9 +41,6 @@
     <Setting Name="F2_Installed" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Insurgency_Installed" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="L4D2_Installed" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -90,9 +87,6 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="F2_Location" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Insurgency_Location" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="L4D2_Location" Type="System.String" Scope="User">
