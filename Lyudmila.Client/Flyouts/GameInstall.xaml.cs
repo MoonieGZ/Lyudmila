@@ -2,7 +2,6 @@
 // Copyrights (c) 2016 Seditio 🍂 INC. All rights reserved.
 // -----------------------------------------------------------
 
-using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -93,7 +92,7 @@ namespace Lyudmila.Client.Flyouts
                             new Download("CoD5", $"http://{Properties.Settings.Default.ServerIP}/jeux/CoD5.zip").ShowDialog();
                             UsernameUpdater.SetName("CoD5");
                             break;
-                        case "Counter Stike: Global Offensive":
+                        case "Counter Strike: Global Offensive":
                             new Download("CSGO", $"http://{Properties.Settings.Default.ServerIP}/jeux/CSGO.zip").ShowDialog();
                             UsernameUpdater.SetName("CSGO");
                             break;
@@ -113,7 +112,7 @@ namespace Lyudmila.Client.Flyouts
                             new Download("L4D2", $"http://{Properties.Settings.Default.ServerIP}/jeux/L4D2.zip").ShowDialog();
                             UsernameUpdater.SetName("L4D2");
                             break;
-                        case "Starcraft 2":
+                        case "StarCraft 2":
                             new Download("SC2", $"http://{Properties.Settings.Default.ServerIP}/jeux/SC2.zip").ShowDialog();
                             UsernameUpdater.SetName("SC2");
                             break;
@@ -191,7 +190,7 @@ namespace Lyudmila.Client.Flyouts
                             };
                             Process.Start(game);
                             break;
-                        case "Counter Stike: Global Offensive":
+                        case "Counter Strike: Global Offensive":
                             game = new ProcessStartInfo
                             {
                                 WorkingDirectory = Properties.Settings.Default.CSGO_Location,
@@ -231,7 +230,7 @@ namespace Lyudmila.Client.Flyouts
                             };
                             Process.Start(game);
                             break;
-                        case "Starcraft 2":
+                        case "StarCraft 2":
                             game = new ProcessStartInfo
                             {
                                 WorkingDirectory = Properties.Settings.Default.SC2_Location,
@@ -243,7 +242,7 @@ namespace Lyudmila.Client.Flyouts
                             game = new ProcessStartInfo
                             {
                                 WorkingDirectory = Properties.Settings.Default.Shootmania_Location,
-                                FileName = Path.Combine(Properties.Settings.Default.Shootmania_Location, "ManiaPlanetLauncher.exe") // TODO
+                                FileName = Path.Combine(Properties.Settings.Default.Shootmania_Location, "ManiaPlanetLauncher.exe")
                             };
                             Process.Start(game);
                             break;
@@ -335,7 +334,230 @@ namespace Lyudmila.Client.Flyouts
                             InstallPlayIcon.Kind = PackIconKind.Download;
                         }
                         break;
-
+                    case "Blur":
+                        ActiveImage = "pack://application:,,,/Resources/img/Blur.jpg";
+                        Description = GameDescriptions.Blur;
+                        if (Properties.Settings.Default.Blur_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.Blur_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Call of Duty 2":
+                        ActiveImage = "pack://application:,,,/Resources/img/CoD2.jpg";
+                        Description = GameDescriptions.CoD2;
+                        if (Properties.Settings.Default.CoD2_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.CoD2_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Call of Duty 4":
+                        ActiveImage = "pack://application:,,,/Resources/img/CoD4.jpg";
+                        Description = GameDescriptions.CoD4;
+                        if (Properties.Settings.Default.CoD4_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.CoD4_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Call of Duty 5":
+                        ActiveImage = "pack://application:,,,/Resources/img/CoD5.jpg";
+                        Description = GameDescriptions.CoD5;
+                        if (Properties.Settings.Default.CoD5_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.CoD5_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Counter Strike: Global Offensive":
+                        ActiveImage = "pack://application:,,,/Resources/img/CSGO.jpg";
+                        Description = GameDescriptions.CSGO;
+                        if (Properties.Settings.Default.CSGO_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.CSGO_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "DoTA 2":
+                        ActiveImage = "pack://application:,,,/Resources/img/D2.jpg";
+                        Description = GameDescriptions.D2;
+                        if (Properties.Settings.Default.DoTA2_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.DoTA2_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Day of Defeat: Source":
+                        ActiveImage = "pack://application:,,,/Resources/img/DoDS.jpg";
+                        Description = GameDescriptions.DoDS;
+                        if (Properties.Settings.Default.DoDS_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.DoDS_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Flatout 2":
+                        ActiveImage = "pack://application:,,,/Resources/img/F2.jpg";
+                        Description = GameDescriptions.F2;
+                        if (Properties.Settings.Default.F2_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.F2_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Left 4 Dead 2":
+                        ActiveImage = "pack://application:,,,/Resources/img/L4D2.jpg";
+                        Description = GameDescriptions.L4D2;
+                        if (Properties.Settings.Default.L4D2_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.L4D2_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "StarCraft 2":
+                        ActiveImage = "pack://application:,,,/Resources/img/SC2.jpg";
+                        Description = GameDescriptions.SC2;
+                        if (Properties.Settings.Default.SC2_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.SC2_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Shootmania":
+                        ActiveImage = "pack://application:,,,/Resources/img/Shootmania.jpg";
+                        Description = GameDescriptions.Shootmania;
+                        if (Properties.Settings.Default.Shootmania_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.Shootmania_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Star Wars: Jedi Knight 2":
+                        ActiveImage = "pack://application:,,,/Resources/img/SWJK2.jpg";
+                        Description = GameDescriptions.SWJK2;
+                        if (Properties.Settings.Default.SWJK2_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.SWJK2_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Team Fortress 2":
+                        ActiveImage = "pack://application:,,,/Resources/img/TF2.jpg";
+                        Description = GameDescriptions.TF2;
+                        if (Properties.Settings.Default.TF2_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.TF2_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
+                    case "Unreal Tournament 3":
+                        ActiveImage = "pack://application:,,,/Resources/img/UT3.jpg";
+                        Description = GameDescriptions.UT3;
+                        if (Properties.Settings.Default.UT3_Installed)
+                        {
+                            InstallLocation = Properties.Settings.Default.UT3_Location;
+                            _isInstalled = true;
+                            InstallPlayIcon.Kind = PackIconKind.Play;
+                        }
+                        else
+                        {
+                            InstallLocation = "Non installé";
+                            _isInstalled = false;
+                            InstallPlayIcon.Kind = PackIconKind.Download;
+                        }
+                        break;
                 }
             }
         }
