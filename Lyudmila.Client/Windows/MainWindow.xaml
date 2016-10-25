@@ -7,6 +7,7 @@
                       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                       xmlns:views="clr-namespace:Lyudmila.Client.Views"
                       xmlns:windows="clr-namespace:Lyudmila.Client.Windows"
+                      xmlns:wpf="clr-namespace:LoadingIndicators.WPF;assembly=LoadingIndicators.WPF"
                       Title="Lyudmila 🎮"
                       Width="1280"
                       Height="720"
@@ -139,8 +140,8 @@
             <controls:Flyout x:Name="GameInstall"
                              Width="500"
                              AnimateOpacity="True"
-                             Position="Right"
-                             IsModal="True">
+                             IsModal="True"
+                             Position="Right">
                 <flyouts:GameInstall />
             </controls:Flyout>
         </controls:FlyoutsControl>
@@ -155,7 +156,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <materialDesign:DialogHost Identifier="RootDialog">
+        <materialDesign:DialogHost Grid.Row="0"
+                                   Identifier="RootDialog"
+                                   Opacity="{Binding DialogOpacity}">
             <materialDesign:DrawerHost x:Name="DrawerHost" IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
                 <materialDesign:DrawerHost.LeftDrawerContent>
                     <StackPanel Orientation="Vertical">
@@ -228,6 +231,17 @@
                 </DockPanel>
             </materialDesign:DrawerHost>
         </materialDesign:DialogHost>
+
+        <wpf:LoadingIndicator Grid.Row="0"
+                              Grid.RowSpan="2"
+                              Grid.Column="0"
+                              Width="100"
+                              Height="100"
+                              IsActive="True"
+                              Opacity="{Binding LoaderOpacity}"
+                              SpeedRatio="2"
+                              Style="{DynamicResource LoadingIndicatorArcsRingStyle}"
+                              Visibility="{Binding LoadingReadyVisibility}" />
 
         <Rectangle x:Name="StatusBar"
                    Grid.Row="1"

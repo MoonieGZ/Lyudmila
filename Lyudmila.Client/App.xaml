@@ -22,6 +22,10 @@
                 <ResourceDictionary Source="pack://application:,,,/Resources/Themes/MaterialDesignTheme.MahApps.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/Themes/MaterialDesignTheme.MahApps.Flyout.xaml" />
 
+                <!--  Loading Indicators  -->
+                <ResourceDictionary Source="pack://application:,,,/LoadingIndicators.WPF;component/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/LoadingIndicators.WPF;component/Styles.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
 
             <SolidColorBrush x:Key="HighlightBrush" Color="{DynamicResource Primary700}" />

@@ -6,10 +6,10 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-using Lyudmila.Client.Flyouts;
 using Lyudmila.Client.Windows;
 
 namespace Lyudmila.Client.Views
@@ -34,6 +34,250 @@ namespace Lyudmila.Client.Views
         }
 
         #endregion
+
+        private async void AoE2HD_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Age of Empires II HD";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void BF3_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Battlefield 3";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void Blur_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Blur";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void CoD2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Call of Duty 2";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void CoD4_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Call of Duty 4";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void CoD5_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Call of Duty 5";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void CSGO_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Counter Strike: Global Offensive";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void DoDS_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Day of Defeat: Source";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void DoTA2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "DoTA 2";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void Flatout2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Flatout 2";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void L4D2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Left 4 Dead 2";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void SC2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "StarCraft 2";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void Shootmania_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Shootmania";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void SWJK2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Star Wars: Jedi Knight 2";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void TF2_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Team Fortress 2";
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private async void UT3_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Unreal Tournament 3";
+
+            var FadeThread = new Thread(Fade);
+            FadeThread.Start();
+            do
+            {
+                await Task.Delay(50);
+            }
+            while(FadeThread.IsAlive);
+
+            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
+        }
+
+        private void Fade()
+        {
+            Dispatcher.Invoke(() => { ((MainWindow) Application.Current.MainWindow).LoadingReadyVisibility = Visibility.Visible; });
+            var i = 0;
+            do
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    ((MainWindow) Application.Current.MainWindow).DialogOpacity = (float) (((MainWindow) Application.Current.MainWindow).DialogOpacity - .075);
+                    ((MainWindow) Application.Current.MainWindow).LoaderOpacity = (float) (((MainWindow) Application.Current.MainWindow).LoaderOpacity + .1);
+                });
+                i++;
+                Thread.Sleep(10);
+            }
+            while(i != 10);
+
+            Thread.Sleep(800);
+
+            i = 0;
+            do
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    ((MainWindow) Application.Current.MainWindow).DialogOpacity = (float) (((MainWindow) Application.Current.MainWindow).DialogOpacity + .075);
+                    ((MainWindow) Application.Current.MainWindow).LoaderOpacity = (float) (((MainWindow) Application.Current.MainWindow).LoaderOpacity - .1);
+                });
+                i++;
+                Thread.Sleep(10);
+            }
+            while(i != 10);
+
+            Dispatcher.Invoke(() => { ((MainWindow) Application.Current.MainWindow).LoadingReadyVisibility = Visibility.Collapsed; });
+        }
 
         #region color stuff
 
@@ -79,106 +323,8 @@ namespace Lyudmila.Client.Views
                 MessageBox.Show($"{ex.GetType()}: {ex.Message}");
                 return Colors.White;
             }
-            
         }
 
         #endregion
-
-        private void AoE2HD_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow) Application.Current.MainWindow).GameInstall.Header = "Age of Empires II HD";
-            Thread.Sleep(100);
-            ((MainWindow) Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void BF3_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Battlefield 3";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void Blur_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Blur";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void CoD2_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Call of Duty 2";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void CoD4_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Call of Duty 4";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void CoD5_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Call of Duty 5";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void CSGO_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Counter Strike: Global Offensive";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void DoDS_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Day of Defeat: Source";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void DoTA2_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "DoTA 2";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void Flatout2_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Flatout 2";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void L4D2_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Left 4 Dead 2";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void SC2_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "StarCraft 2";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void Shootmania_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Shootmania";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void SWJK2_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Star Wars: Jedi Knight 2";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void TF2_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Team Fortress 2";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
-
-        private void UT3_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).GameInstall.Header = "Unreal Tournament 3";
-            ((MainWindow)Application.Current.MainWindow).GameInstall.IsOpen = true;
-        }
     }
 }

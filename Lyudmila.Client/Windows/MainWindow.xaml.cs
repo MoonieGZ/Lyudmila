@@ -49,6 +49,9 @@ namespace Lyudmila.Client.Windows
             StatusBarContent = string.Empty;
             StatusBarDownloads = string.Empty;
             StatusBarClock = DateTime.Now.ToString("t");
+            LoadingReadyVisibility = Visibility.Collapsed;
+            DialogOpacity = 1;
+            LoaderOpacity = (float) 0.2;
 
             ClockUpdater.Start();
         }
@@ -202,9 +205,43 @@ namespace Lyudmila.Client.Windows
         private string _StatusBarDownloads;
         private string _StatusBarClock;
 
+        private Visibility _loadingReadyVisibility;
+        private float _dialogOpacity;
+        private float _loaderOpacity;
+
         private string _NickName;
 
         private string _ActivePage;
+
+        public Visibility LoadingReadyVisibility
+        {
+            get { return _loadingReadyVisibility; }
+            set
+            {
+                _loadingReadyVisibility = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LoadingReadyVisibility"));
+            }
+        }
+
+        public float DialogOpacity
+        {
+            get { return _dialogOpacity; }
+            set
+            {
+                _dialogOpacity = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("DialogOpacity"));
+            }
+        }
+
+        public float LoaderOpacity
+        {
+            get { return _loaderOpacity; }
+            set
+            {
+                _loaderOpacity = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LoaderOpacity"));
+            }
+        }
 
         public SolidColorBrush StatusBarBrush
         {
