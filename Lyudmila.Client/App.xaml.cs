@@ -37,6 +37,7 @@ namespace Lyudmila.Client
 
             if(e.Args.Length == 0)
             {
+#if !DEBUG
                 try
                 {
                     var newHash = new WebClient().DownloadString(new Uri($"http://{Settings.Default.ServerIP}/logiciels/launcher/hash.md5")).ToLower();
@@ -72,6 +73,9 @@ namespace Lyudmila.Client
                     MessageBox.Show($"{ex.GetType()}: {ex.Message}");
                     Environment.Exit(1);
                 }
+#else
+                new MainWindow().Show();
+#endif
             }
             else
             {
