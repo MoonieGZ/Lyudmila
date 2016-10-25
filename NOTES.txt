@@ -1,32 +1,18 @@
-AoE2HD:
-===
-SmartSteamEmu.ini[10]: PersonaName = Unreal
-
 BF3:
 ===
-config.ini[3]: redirector=192.168.1.200
-_startGame.bat: logintoken=\"Unreal\"
-!!! Il faut créer un dossier pour chaque pseudo coté serveur !!!
+
+config.ini[3] "redirector=192.168.1.200"
+remplacer par l'IP host (vm windows?)
+
+exe: bf3.exe -webMode MP -Origin_NoAppFocus -requestState State_ClaimReservation -requestStateParams "<data putinsquad=\"true\" gameid=\"1\" role=\"soldier\" personaref=\"2\" levelmode=\"mp\" logintoken=\"Unreal\"></data>"
 
 CoD2:
 ===
-main/players/Unreal/config_mp.cfg[173]: seta name "Unreal"
 
-CoD4:
-===
-players/Unreal/config_mp.cfg: seta name "Unreal"
+main/players/[user]/config_mp.cfg[173] seta name "Unreal"
+                    ^^^^
 
-CoD5:
-===
-AppData\Local\Activision\CoDWaW\players\profiles\$$$\config.cfg[297]: seta name "Unreal"
-
-DoDS:
-===
-rev.ini[16]: PlayerName = Unreal
-
-L4D2:
-===
-rev.ini[18]: PlayerName = Unreal
+exe: CoD2MP_s.exe
 
 Shootmania:
 ===
@@ -35,10 +21,6 @@ Nadeo.ini[5-6]: UserDir + CommonDir
 SWJK2:
 ===
 GameData\base\jk2mpconfig.cfg[265]: seta name "Unreal"
-
-TF2:
-===
-rev.ini[19]: PlayerName=Unreal
 
 UT3:
 ===
