@@ -183,11 +183,7 @@ namespace Lyudmila.Client.Windows
             }
         }
 
-        private static bool VerifyLogin(LoginDialogData login)
-        {
-            // TODO: check login with server
-            return true;
-        }
+        private static bool VerifyLogin(LoginDialogData login) => true;
 
         private async void NickName_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
