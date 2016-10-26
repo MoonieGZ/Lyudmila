@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -13,10 +14,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Lyudmila.Client.Properties;
-
-using SharpCompress.Archives;
-using SharpCompress.Archives.Zip;
-using SharpCompress.Readers;
 
 namespace Lyudmila.Client.Windows
 {
@@ -98,6 +95,7 @@ namespace Lyudmila.Client.Windows
                 Directory.CreateDirectory("Jeux");
             }
 
+            HeaderText = $"Extraction: {_gameName}";
             ExtractCmd(Path.Combine(Environment.CurrentDirectory, "DL", $"{_gameName}.zip"), Path.Combine(Environment.CurrentDirectory, "Jeux", _gameName));
 
             switch(_gameName)
@@ -169,11 +167,24 @@ namespace Lyudmila.Client.Windows
 
         private static void ExtractCmd(string zipPath, string extractPath)
         {
-            using(var archive = ZipArchive.Open(zipPath))
+            Thread.Sleep(500);
+            var dirName = Path.Combine(extractPath, Path.GetFileNameWithoutExtension(zipPath));
+
+            using (var archive = ZipFile.OpenRead(zipPath))
             {
-                foreach(var entry in archive.Entries.Where(entry => !entry.IsDirectory))
+                foreach (var entry in archive.Entries)
                 {
-                    entry.WriteToDirectory(extractPath, new ExtractionOptions {ExtractFullPath = true, Overwrite = true});
+                    if (entry.FullName.EndsWith("/"))
+                    {
+                        ZipFile.ExtractToDirectory(zipPath, extractPath);
+                        break;
+                    }
+                    if (!Directory.Exists(dirName))
+                    {
+                        Directory.CreateDirectory(dirName);
+                        ZipFile.ExtractToDirectory(zipPath, dirName);
+                        break;
+                    }
                 }
             }
         }
