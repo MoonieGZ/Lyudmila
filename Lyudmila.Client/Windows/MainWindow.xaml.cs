@@ -5,6 +5,7 @@
 using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -114,6 +115,19 @@ namespace Lyudmila.Client.Windows
             }
 
             NickName = $"Bienvenue, {Settings.Default.Username}";
+
+            if(Settings.Default.FirstRun)
+            {
+                ShowMessage("ATTENTION\r\n\r\nCe logiciel est en développement, fourni gratuitement par Seditio."
+                            + "\r\nIl se peut qu'il y'ait des erreurs, des bugs, des soucis de performance..."
+                            + "Si c'est le cas, merci de ne pas crier haut et fort mais plutot venez le signaler avec une description du bug, et comment le reproduire."
+                            + "\r\n\r\nDans l'état actuel, il est impossible de télécharger plusieurs jeux en même temps.\r\n"
+                            + "Si vous voulez télécharger les jeux depuis le wiki, placez les archives dans un dossier \"DL\""
+                            + " a la racine du launcher, vous pourrez ensuite installer via le launcher en échappant au temps de téléchargement."
+                            + "\r\n\r\nMerci et bon jeu!");
+                Settings.Default.FirstRun = false;
+                Settings.Default.Save();
+            }
         }
 
         private async Task ChangeNick(bool quitOnCancel)

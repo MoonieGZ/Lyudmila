@@ -73,66 +73,82 @@ namespace Lyudmila.Client.Flyouts
                         case "Age of Empires II HD":
                             new Download("AoE2HD", $"http://{Properties.Settings.Default.ServerIP}/jeux/AoE2HD.zip").ShowDialog();
                             UsernameUpdater.SetName("AoE2HD");
+                            InstallLocation = Properties.Settings.Default.AoE2HD_Location;
                             break;
                         case "Battlefield 3":
                             new Download("BF3", $"http://{Properties.Settings.Default.ServerIP}/jeux/BF3.zip").ShowDialog();
                             UsernameUpdater.SetName("BF3");
+                            InstallLocation = Properties.Settings.Default.BF3_Location;
                             break;
                         case "Blur":
                             new Download("Blur", $"http://{Properties.Settings.Default.ServerIP}/jeux/Blur.zip").ShowDialog();
                             UsernameUpdater.SetName("Blur");
+                            InstallLocation = Properties.Settings.Default.Blur_Location;
                             break;
                         case "Call of Duty 2":
                             new Download("CoD2", $"http://{Properties.Settings.Default.ServerIP}/jeux/CoD2.zip").ShowDialog();
                             UsernameUpdater.SetName("CoD2");
+                            InstallLocation = Properties.Settings.Default.CoD2_Location;
                             break;
                         case "Call of Duty 4":
                             new Download("CoD4", $"http://{Properties.Settings.Default.ServerIP}/jeux/CoD4.zip").ShowDialog();
                             UsernameUpdater.SetName("CoD4");
+                            InstallLocation = Properties.Settings.Default.CoD4_Location;
                             break;
                         case "Call of Duty 5":
                             new Download("CoD5", $"http://{Properties.Settings.Default.ServerIP}/jeux/CoD5.zip").ShowDialog();
                             UsernameUpdater.SetName("CoD5");
+                            InstallLocation = Properties.Settings.Default.CoD5_Location;
                             break;
                         case "Counter Strike: Global Offensive":
                             new Download("CSGO", $"http://{Properties.Settings.Default.ServerIP}/jeux/CSGO.zip").ShowDialog();
                             UsernameUpdater.SetName("CSGO");
+                            InstallLocation = Properties.Settings.Default.CSGO_Location;
                             break;
                         case "DoTA 2":
                             new Download("DoTA2", $"http://{Properties.Settings.Default.ServerIP}/jeux/DoTA2.zip").ShowDialog();
                             UsernameUpdater.SetName("DoTA2");
+                            InstallLocation = Properties.Settings.Default.DoTA2_Location;
                             break;
                         case "Day of Defeat: Source":
                             new Download("DoDS", $"http://{Properties.Settings.Default.ServerIP}/jeux/DoDS.zip").ShowDialog();
                             UsernameUpdater.SetName("DoDS");
+                            InstallLocation = Properties.Settings.Default.DoDS_Location;
                             break;
                         case "Flatout 2":
                             new Download("Flatout2", $"http://{Properties.Settings.Default.ServerIP}/jeux/Flatout2.zip").ShowDialog();
                             UsernameUpdater.SetName("Flatout2");
+                            InstallLocation = Properties.Settings.Default.F2_Location;
                             break;
                         case "Left 4 Dead 2":
                             new Download("L4D2", $"http://{Properties.Settings.Default.ServerIP}/jeux/L4D2.zip").ShowDialog();
                             UsernameUpdater.SetName("L4D2");
+                            InstallLocation = Properties.Settings.Default.L4D2_Location;
                             break;
                         case "StarCraft 2":
                             new Download("SC2", $"http://{Properties.Settings.Default.ServerIP}/jeux/SC2.zip").ShowDialog();
                             UsernameUpdater.SetName("SC2");
+                            InstallLocation = Properties.Settings.Default.SC2_Location;
                             break;
                         case "Shootmania":
                             new Download("Shootmania", $"http://{Properties.Settings.Default.ServerIP}/jeux/Shootmania.zip").ShowDialog();
                             UsernameUpdater.SetName("Shootmania");
+                            InstallLocation = Properties.Settings.Default.Shootmania_Location;
                             break;
                         case "Star Wars: Jedi Knight 2":
                             new Download("SWJK2", $"http://{Properties.Settings.Default.ServerIP}/jeux/SWJK2.zip").ShowDialog();
                             UsernameUpdater.SetName("SWJK2");
+                            InstallLocation = Properties.Settings.Default.SWJK2_Location;
                             break;
                         case "Team Fortress 2":
                             new Download("TF2", $"http://{Properties.Settings.Default.ServerIP}/jeux/TF2.zip").ShowDialog();
                             UsernameUpdater.SetName("TF2");
+                            InstallLocation = Properties.Settings.Default.TF2_Location;
                             break;
                         case "Unreal Tournament 3":
                             new Download("UT3", $"http://{Properties.Settings.Default.ServerIP}/jeux/UT3.zip").ShowDialog();
                             UsernameUpdater.SetName("UT3");
+                            InstallLocation = Properties.Settings.Default.UT3_Location;
                             break;
                     }
 
@@ -767,7 +783,7 @@ namespace Lyudmila.Client.Flyouts
         {
             try
             {
-                Directory.Delete(gameName, true);
+                Directory.Delete(Path.Combine(Environment.CurrentDirectory, "Jeux", gameName), true);
             }
             catch (Exception ex)
             {
