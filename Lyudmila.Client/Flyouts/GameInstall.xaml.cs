@@ -2,10 +2,10 @@
 // Copyrights (c) 2016 Seditio 🍂 INC. All rights reserved.
 // -----------------------------------------------------------
 
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
 using System.Windows;
 
 using Lyudmila.Client.Helpers;
@@ -65,9 +65,10 @@ namespace Lyudmila.Client.Flyouts
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            switch(InstallPlayIcon.Kind) {
+            switch(InstallPlayIcon.Kind)
+            {
                 case PackIconKind.Download:
-                    switch (((MainWindow)Application.Current.MainWindow).GameInstall.Header)
+                    switch(((MainWindow) Application.Current.MainWindow).GameInstall.Header)
                     {
                         case "Age of Empires II HD":
                             new Download("AoE2HD", $"http://{Properties.Settings.Default.ServerIP}/jeux/AoE2HD.zip").ShowDialog();
@@ -82,7 +83,7 @@ namespace Lyudmila.Client.Flyouts
                             UsernameUpdater.SetName("Blur");
                             break;
                         case "Call of Duty 2":
-                            new Download("CoD2", $"http://{Properties.Settings.Default.ServerIP}/jeux/Blur.zip").ShowDialog();
+                            new Download("CoD2", $"http://{Properties.Settings.Default.ServerIP}/jeux/CoD2.zip").ShowDialog();
                             UsernameUpdater.SetName("CoD2");
                             break;
                         case "Call of Duty 4":
@@ -141,7 +142,7 @@ namespace Lyudmila.Client.Flyouts
                 case PackIconKind.Play:
                     var game = new ProcessStartInfo();
 
-                    switch (((MainWindow) Application.Current.MainWindow).GameInstall.Header)
+                    switch(((MainWindow) Application.Current.MainWindow).GameInstall.Header)
                     {
                         case "Age of Empires II HD":
                             game = new ProcessStartInfo
@@ -235,7 +236,7 @@ namespace Lyudmila.Client.Flyouts
                             game = new ProcessStartInfo
                             {
                                 WorkingDirectory = Properties.Settings.Default.SC2_Location,
-                                FileName = Path.Combine(Properties.Settings.Default.SC2_Location, "????????????.exe") // TODO
+                                FileName = Path.Combine(Properties.Settings.Default.SC2_Location, "StarFriend_Client.exe")
                             };
                             Process.Start(game);
                             break;
@@ -560,6 +561,217 @@ namespace Lyudmila.Client.Flyouts
                         }
                         break;
                 }
+            }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            switch(((MainWindow) Application.Current.MainWindow).GameInstall.Header)
+            {
+                case "Age of Empires II HD":
+                    Delete("AoE2HD");
+                    if (Properties.Settings.Default.AoE2HD_Installed)
+                    {
+                        Properties.Settings.Default.AoE2HD_Location = string.Empty;
+                        Properties.Settings.Default.AoE2HD_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Battlefield 3":
+                    Delete("BF3");
+                    if (Properties.Settings.Default.BF3_Installed)
+                    {
+                        Properties.Settings.Default.BF3_Location = string.Empty;
+                        Properties.Settings.Default.BF3_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Blur":
+                    Delete("Blur");
+                    if (Properties.Settings.Default.Blur_Installed)
+                    {
+                        Properties.Settings.Default.Blur_Location = string.Empty;
+                        Properties.Settings.Default.Blur_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Call of Duty 2":
+                    Delete("CoD2");
+                    if (Properties.Settings.Default.CoD2_Installed)
+                    {
+                        Properties.Settings.Default.CoD2_Location = string.Empty;
+                        Properties.Settings.Default.CoD2_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Call of Duty 4":
+                    Delete("CoD4");
+                    if (Properties.Settings.Default.CoD4_Installed)
+                    {
+                        Properties.Settings.Default.CoD4_Location = string.Empty;
+                        Properties.Settings.Default.CoD4_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Call of Duty 5":
+                    Delete("CoD5");
+                    if (Properties.Settings.Default.CoD5_Installed)
+                    {
+                        Properties.Settings.Default.CoD5_Location = string.Empty;
+                        Properties.Settings.Default.CoD5_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Counter Strike: Global Offensive":
+                    Delete("CSGO");
+                    if (Properties.Settings.Default.CSGO_Installed)
+                    {
+                        Properties.Settings.Default.CSGO_Location = string.Empty;
+                        Properties.Settings.Default.CSGO_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "DoTA 2":
+                    Delete("DoTA2");
+                    if (Properties.Settings.Default.DoTA2_Installed)
+                    {
+                        Properties.Settings.Default.DoTA2_Location = string.Empty;
+                        Properties.Settings.Default.DoTA2_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Day of Defeat: Source":
+                    Delete("DoDS");
+                    if (Properties.Settings.Default.DoDS_Installed)
+                    {
+                        Properties.Settings.Default.DoDS_Location = string.Empty;
+                        Properties.Settings.Default.DoDS_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Flatout 2":
+                    Delete("F2");
+                    if (Properties.Settings.Default.F2_Installed)
+                    {
+                        Properties.Settings.Default.F2_Location = string.Empty;
+                        Properties.Settings.Default.F2_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Left 4 Dead 2":
+                    Delete("L4D2");
+                    if (Properties.Settings.Default.L4D2_Installed)
+                    {
+                        Properties.Settings.Default.L4D2_Location = string.Empty;
+                        Properties.Settings.Default.L4D2_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "StarCraft 2":
+                    Delete("SC2");
+                    if (Properties.Settings.Default.SC2_Installed)
+                    {
+                        Properties.Settings.Default.SC2_Location = string.Empty;
+                        Properties.Settings.Default.SC2_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Shootmania":
+                    Delete("Shootmania");
+                    if (Properties.Settings.Default.Shootmania_Installed)
+                    {
+                        Properties.Settings.Default.Shootmania_Location = string.Empty;
+                        Properties.Settings.Default.Shootmania_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Star Wars: Jedi Knight 2":
+                    Delete("SWJK2");
+                    if (Properties.Settings.Default.SWJK2_Installed)
+                    {
+                        Properties.Settings.Default.SWJK2_Location = string.Empty;
+                        Properties.Settings.Default.SWJK2_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Team Fortress 2":
+                    Delete("TF2");
+                    if (Properties.Settings.Default.TF2_Installed)
+                    {
+                        Properties.Settings.Default.TF2_Location = string.Empty;
+                        Properties.Settings.Default.TF2_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+                case "Unreal Tournament 3":
+                    Delete("UT3");
+                    if (Properties.Settings.Default.UT3_Installed)
+                    {
+                        Properties.Settings.Default.UT3_Location = string.Empty;
+                        Properties.Settings.Default.UT3_Installed = false;
+                        Properties.Settings.Default.Save();
+                        InstallLocation = "Non installé";
+                        _isInstalled = false;
+                        InstallPlayIcon.Kind = PackIconKind.Download;
+                    }
+                    break;
+            }
+        }
+
+        private static void Delete(string gameName)
+        {
+            try
+            {
+                Directory.Delete(gameName, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.GetType()}: {ex.Message}");
             }
         }
     }
