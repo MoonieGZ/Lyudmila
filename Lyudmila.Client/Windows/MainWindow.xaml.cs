@@ -5,7 +5,6 @@
 using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -128,6 +127,9 @@ namespace Lyudmila.Client.Windows
                 Settings.Default.FirstRun = false;
                 Settings.Default.Save();
             }
+            SnackbarContent = "Il est fortement récommandé d'installer CoD2, TF2 et UT3.";
+            await Task.Delay(750);
+            Snackbar.IsActive = true;
         }
 
         private async Task ChangeNick(bool quitOnCancel)
@@ -220,6 +222,7 @@ namespace Lyudmila.Client.Windows
         private float _loaderOpacity;
 
         private string _NickName;
+        private string _SnackbarContent;
 
         private string _ActivePage;
 
@@ -270,6 +273,16 @@ namespace Lyudmila.Client.Windows
             {
                 _NickName = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NickName"));
+            }
+        }
+
+        public string SnackbarContent
+        {
+            get { return _SnackbarContent; }
+            set
+            {
+                _SnackbarContent = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SnackbarContent"));
             }
         }
 
@@ -361,6 +374,10 @@ namespace Lyudmila.Client.Windows
         private void UIElement_OnPreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             MenuToggleButton.IsChecked = false;
+        }
+        private void SnackbarMessage_OnActionClick(object sender, RoutedEventArgs e)
+        {
+            Snackbar.IsActive = false;
         }
 
         #endregion

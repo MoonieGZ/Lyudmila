@@ -37,6 +37,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Themes/Icons.xaml" />
+                <ResourceDictionary Source="/Resources/Themes/MaterialDesignTheme.Snackbar.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -227,7 +228,29 @@
 
                         </DockPanel>
                     </materialDesign:ColorZone>
-                    <ContentControl Margin="0,0,2,0" Content="{Binding ElementName=ItemsListBox, Path=SelectedItem.Content}" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ContentControl Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Margin="0,0,2,0"
+                                        Content="{Binding ElementName=ItemsListBox,
+                                                          Path=SelectedItem.Content}" />
+                        <materialDesign:Snackbar x:Name="Snackbar"
+                                                 Grid.Row="1"
+                                                 HorizontalAlignment="Stretch"
+                                                 VerticalAlignment="Bottom"
+                                                 HorizontalContentAlignment="Center"
+                                                 ActionButtonStyle="{DynamicResource MaterialDesignSnackbarActionDarkButton}"
+                                                 IsActive="False">
+                            <materialDesign:SnackbarMessage VerticalAlignment="Center"
+                                                            ActionClick="SnackbarMessage_OnActionClick"
+                                                            ActionContent="OK"
+                                                            Content="{Binding SnackbarContent}" />
+                        </materialDesign:Snackbar>
+                    </Grid>
                 </DockPanel>
             </materialDesign:DrawerHost>
         </materialDesign:DialogHost>
@@ -242,7 +265,6 @@
                               SpeedRatio="2"
                               Style="{DynamicResource LoadingIndicatorArcsRingStyle}"
                               Visibility="{Binding LoadingReadyVisibility}" />
-
         <Rectangle x:Name="StatusBar"
                    Grid.Row="1"
                    Grid.Column="0"
