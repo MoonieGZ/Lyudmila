@@ -117,19 +117,20 @@ namespace Lyudmila.Client.Windows
 
             if(Settings.Default.FirstRun)
             {
-                ShowMessage("ATTENTION\r\n\r\nCe logiciel est en développement, fourni gratuitement par Seditio."
-                            + "\r\nIl se peut qu'il y'ait des erreurs, des bugs, des soucis de performance..."
-                            + "Si c'est le cas, merci de ne pas crier haut et fort mais plutot venez le signaler avec une description du bug, et comment le reproduire."
-                            + "\r\n\r\nDans l'état actuel, il est impossible de télécharger plusieurs jeux en même temps.\r\n"
-                            + "Si vous voulez télécharger les jeux depuis le wiki, placez les archives dans un dossier \"DL\""
-                            + " a la racine du launcher, vous pourrez ensuite installer via le launcher en échappant au temps de téléchargement."
-                            + "\r\n\r\nMerci et bon jeu!");
+                ShowMessage("ATTENTION\r\n\r\n Ce logiciel est en développement. Il est fournit gratuitement et généreusement par Seditio.."
+                            + "\r\nIl se peut qu'il y ait des erreurs, des bugs, des soucis de performance,..."
+                            + "Si c'est le cas, merci de ne pas hurler à travers la salle, allez plutôt le signaler à Seditio ou un membre du staff "
+                            + "(description du bug, actions pour le reproduire)."
+                            + "\r\n\r\nActuellement, il est impossible de télécharger plusieurs jeux en même temps.\r\n"
+                            + "Cependant, vous souhaitez télécharger plusieurs jeux à la fois, utilisez le wiki et placez les archives dans"
+                            + "le dossier \"DL\" à la racine du launcher. Ainsi, vous pourrez ensuite les installer directement depuis le launcher."
+                            + "\r\n\r\nMerci et bon jeu !!!");
+SnackbarContent = "Il est fortement récommandé d'installer CoD2, TF2 et UT3.";
+                await Task.Delay(750);
+                Snackbar.IsActive = true;
                 Settings.Default.FirstRun = false;
                 Settings.Default.Save();
             }
-            SnackbarContent = "Il est fortement récommandé d'installer CoD2, TF2 et UT3.";
-            await Task.Delay(750);
-            Snackbar.IsActive = true;
         }
 
         private async Task ChangeNick(bool quitOnCancel)

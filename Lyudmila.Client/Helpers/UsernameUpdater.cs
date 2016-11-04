@@ -52,6 +52,22 @@ namespace Lyudmila.Client.Helpers
                     SettingsFile[0] = newLine;
                     File.WriteAllLines(path, SettingsFile);
                     break;
+                case "CSGO":
+                    path = Path.Combine(Settings.Default.CSGO_Location, "rev.ini");
+                    SettingsFile = File.ReadAllLines(path);
+                    i = 0;
+                    foreach (var line in SettingsFile)
+                    {
+                        if (line.StartsWith("PlayerName=Unreal"))
+                        {
+                            newLine = line.Replace("Unreal", Settings.Default.Username);
+                            SettingsFile[i] = newLine;
+                            File.WriteAllLines(path, SettingsFile);
+                            return;
+                        }
+                        i++;
+                    }
+                    break;
                 case "CoD2":
                     path = Path.Combine(Settings.Default.CoD2_Location, "main\\players\\Unreal\\config_mp.cfg");
                     SettingsFile = File.ReadAllLines(path);
@@ -69,7 +85,7 @@ namespace Lyudmila.Client.Helpers
                     }
                     break;
                 case "CoD4":
-                    path = Path.Combine(Settings.Default.CoD4_Location, "players\\Unreal\\config_mp.cfg");
+                    path = Path.Combine(Settings.Default.CoD4_Location, "players\\profiles\\Unreal\\config_mp.cfg");
                     SettingsFile = File.ReadAllLines(path);
                     i = 0;
                     foreach(var line in SettingsFile)
@@ -191,44 +207,42 @@ namespace Lyudmila.Client.Helpers
                     break;
                 case "UT3":
                     new WebClient().DownloadFile(new Uri($"http://{Settings.Default.ServerIP}/logiciels/launcher/UT3.zip"), @"UT3.zip");
-                    using(var archive = ZipArchive.Open(Path.Combine(Environment.CurrentDirectory, "UT3.zip")))
+                    using (var archive = ZipArchive.Open(Path.Combine(Environment.CurrentDirectory, "UT3.zip")))
                     {
-                        foreach(var entry in archive.Entries.Where(entry => !entry.IsDirectory))
+                        foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
                         {
-                            entry.WriteToDirectory(Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents", "Unreal Tournament 3"),
-                                new ExtractionOptions {ExtractFullPath = true, Overwrite = true});
+                            entry.WriteToDirectory(Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents", "My Games", "Unreal Tournament 3"),
+                                new ExtractionOptions { ExtractFullPath = true, Overwrite = true });
                         }
                     }
                     File.Delete(Path.Combine(Environment.CurrentDirectory, "UT3.zip"));
-                    path = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents",
-                        "Unreal Tournament 3\\UTGame\\Config\\UTEngine.ini");
+                    path = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents", "My Games\\Unreal Tournament 3\\UTGame\\Config\\UTEngine.ini");
                     SettingsFile = File.ReadAllLines(path);
                     i = 0;
-                    foreach(var line in SettingsFile)
+                    foreach (var line in SettingsFile)
                     {
-                        if(line.StartsWith("Name=Unreal"))
+                        if (line.Equals("Name=Player"))
                         {
-                            newLine = line.Replace("Unreal", Settings.Default.Username);
+                            newLine = line.Replace("Player", Settings.Default.Username);
                             SettingsFile[i] = newLine;
                             File.WriteAllLines(path, SettingsFile);
-                            return;
                         }
                         i++;
                     }
-                    path = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents", "Unreal Tournament 3\\UTGame\\Config\\UTGame.ini");
+                    path = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents", "My Games\\Unreal Tournament 3\\UTGame\\Config\\UTGame.ini");
                     SettingsFile = File.ReadAllLines(path);
                     i = 0;
-                    foreach(var line in SettingsFile)
+                    foreach (var line in SettingsFile)
                     {
-                        if(line.StartsWith("Name=Unreal"))
+                        if (line.Equals("Name=Player"))
                         {
-                            newLine = line.Replace("Unreal", Settings.Default.Username);
+                            newLine = line.Replace("Player", Settings.Default.Username);
                             SettingsFile[i] = newLine;
                             File.WriteAllLines(path, SettingsFile);
                         }
-                        if(line.StartsWith("PlayerNames=Unreal"))
+                        if (line.Equals("PlayerNames="))
                         {
-                            newLine = line.Replace("Unreal", Settings.Default.Username);
+                            newLine = line.Replace("=", $"={Settings.Default.Username}");
                             SettingsFile[i] = newLine;
                             File.WriteAllLines(path, SettingsFile);
                         }
@@ -236,9 +250,9 @@ namespace Lyudmila.Client.Helpers
                     }
                     File.Move(
                         Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents",
-                            "Unreal Tournament 3\\UTGame\\SaveData\\Player.ue3profile"),
+                            "My Games\\Unreal Tournament 3\\UTGame\\SaveData\\Player.ue3profile"),
                         Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents",
-                            $"Unreal Tournament 3\\UTGame\\SaveData\\{Settings.Default.Username}.ue3profile"));
+                            $"My Games\\Unreal Tournament 3\\UTGame\\SaveData\\{Settings.Default.Username}.ue3profile"));
                     break;
                 case "TF2":
                     path = Path.Combine(Settings.Default.TF2_Location, "rev.ini");

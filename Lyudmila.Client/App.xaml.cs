@@ -31,7 +31,7 @@ namespace Lyudmila.Client
                 if(MessageBox.Show($"Unhandled exception:{Environment.NewLine}{exception.GetType()}: {exception.Message}", "Lyudmila", MessageBoxButton.OK,
                        MessageBoxImage.Error) == MessageBoxResult.OK)
                 {
-                    Environment.Exit(1);
+                    Environment.Exit(0);
                 }
             };
 
@@ -49,19 +49,6 @@ namespace Lyudmila.Client
                     }
                     else
                     {
-                        var updating = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Lyudmila\\updating.vbs";
-                        using (
-                            var resource =
-                                Assembly.GetExecutingAssembly()
-                                    .GetManifestResourceStream("Lyudmila.Client.Resources.scripts.updating.vbs"))
-                        {
-                            using (var updater = new FileStream(updating, FileMode.Create, FileAccess.Write))
-                            {
-                                resource?.CopyTo(updater);
-                            }
-                        }
-                        Process.Start(updating);
-
                         var me = Assembly.GetExecutingAssembly().Location;
                         File.Copy(me, "Updating_Lyudmila.exe");
                         Process.Start("Updating_Lyudmila.exe", "-update");

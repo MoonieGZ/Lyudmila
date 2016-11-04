@@ -49,7 +49,7 @@ namespace Lyudmila.Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.0.252")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.252")]
         public string ServerIP {
             get {
                 return ((string)(this["ServerIP"]));

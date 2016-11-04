@@ -97,8 +97,13 @@ namespace Lyudmila.Client.Windows
 
             HeaderText = $"Extraction: {_gameName}";
             ExtractCmd(Path.Combine(Environment.CurrentDirectory, "DL", $"{_gameName}.zip"), Path.Combine(Environment.CurrentDirectory, "Jeux", _gameName));
+            
+            Dispatcher.Invoke(Close);
+        }
 
-            switch(_gameName)
+        private void ExtractCmd(string zipPath, string extractPath)
+        {
+            switch (_gameName)
             {
                 case "AoE2HD":
                     Settings.Default.AoE2HD_Installed = true;
@@ -148,6 +153,10 @@ namespace Lyudmila.Client.Windows
                     Settings.Default.SC2_Installed = true;
                     Settings.Default.SC2_Location = Path.Combine(Environment.CurrentDirectory, "Jeux", _gameName);
                     break;
+                case "Shootmania":
+                    Settings.Default.Shootmania_Installed = true;
+                    Settings.Default.Shootmania_Location = Path.Combine(Environment.CurrentDirectory, "Jeux", _gameName);
+                    break;
                 case "SWJK2":
                     Settings.Default.SWJK2_Installed = true;
                     Settings.Default.SWJK2_Location = Path.Combine(Environment.CurrentDirectory, "Jeux", _gameName);
@@ -161,14 +170,9 @@ namespace Lyudmila.Client.Windows
                     Settings.Default.UT3_Location = Path.Combine(Environment.CurrentDirectory, "Jeux", _gameName);
                     break;
             }
+            Settings.Default.Save();
 
-            Dispatcher.Invoke(Close);
-        }
-
-        private static void ExtractCmd(string zipPath, string extractPath)
-        {
             Thread.Sleep(500);
-            var dirName = Path.Combine(extractPath, Path.GetFileNameWithoutExtension(zipPath));
 
             using (var archive = ZipFile.OpenRead(zipPath))
             {
@@ -179,10 +183,10 @@ namespace Lyudmila.Client.Windows
                         ZipFile.ExtractToDirectory(zipPath, extractPath);
                         break;
                     }
-                    if (!Directory.Exists(dirName))
+                    if (!Directory.Exists(extractPath))
                     {
-                        Directory.CreateDirectory(dirName);
-                        ZipFile.ExtractToDirectory(zipPath, dirName);
+                        Directory.CreateDirectory(extractPath);
+                        ZipFile.ExtractToDirectory(zipPath, extractPath);
                         break;
                     }
                 }
